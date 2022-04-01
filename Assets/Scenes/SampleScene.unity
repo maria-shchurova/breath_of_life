@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -631,8 +631,8 @@ MonoBehaviour:
   maxPointsForBranch: 30
   segmentLength: 0.05
   branchRadius: 0.01
-  branchMaterial: {fileID: 2100000, guid: 56b47004a97f4f748b47a6db6898b6ae, type: 2}
-  leafMaterial: {fileID: 2100000, guid: e581d5b5f0340bc49b2fce7d57f8bbe1, type: 2}
+  branchMaterial: {fileID: 2100000, guid: 9e1d1880de24ca4489d719aad3bc7826, type: 2}
+  leafMaterial: {fileID: 2100000, guid: 886920ab95cd11a4bb3c43c4ff2d7d87, type: 2}
   flowerMaterial: {fileID: 2100000, guid: 8aee90168cba20e4293f9c0a1889200e, type: 2}
   leafPrefab: {fileID: 2503682686998312604, guid: fb6de8fca1ef3ec4f92cb3f74dec135c, type: 3}
   flowerPrefab: {fileID: 2435367529418233688, guid: cb549a15fb3c67a4093ac3de78c2dfb9, type: 3}
