@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class Blossom : MonoBehaviour {
     const string AMOUNT = "_Amount";
-    const float MAX = 0.5f;
+    //const float MAX = 0.5f;
+    const float MAX = 0.25f;
+
 
     Material material;
     List<MeshRenderer> renderers;
 
     bool animate;
-    float growthSpeed = 2;
-    float currentAmount = -1;
+    public float growthSpeed = 2;
+    public float currentAmount = -1;
 
     public void init(Material material) {
         this.material = new Material(material);

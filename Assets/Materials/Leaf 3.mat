@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Leaf 2
+  m_Name: Leaf 3
   m_Shader: {fileID: 4800000, guid: 7bf4d42545a33cd47af93cc233c4c6b4, type: 3}
   m_ShaderKeywords: _DETAILSOURCE_SPECULARALPHA _ENABLETRIPLANARPROJECTION_ON _LEAF_ON
     _SOURCE_SPECULARALPHA _TRIPLANARSPACEPROJECTION_OBJECTSPACE _USEAOFROMMAINPROPERTIES_ON
@@ -54,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 096203c51403a7043a4d24304ec550aa, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6c9662eeb7824e147ad660deb0f0ea34, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -62,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f11715a04420f324bb769038e257c72f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -94,7 +94,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Amount: 1
+    - _Amount: 0.25
     - _AoIntensity: 1
     - _BlendMainNormal: 0
     - _BlendmodeOverlay: 0
@@ -147,9 +147,9 @@ Material:
     - _ZWrite: 1
     - __dirty: 1
     m_Colors:
-    - _Color: {r: 0.28132787, g: 0.5471698, b: 0.36994183, a: 1}
-    - _ColorCenter: {r: 0.0068084756, g: 0.084905684, b: 0.032075226, a: 1}
-    - _ColorEnd: {r: 0.4269313, g: 0.735849, b: 0.53174263, a: 1}
+    - _Color: {r: 0.18640976, g: 0.6698113, b: 0.2072624, a: 1}
+    - _ColorCenter: {r: 0.041162338, g: 0.23584908, b: 0.04699941, a: 1}
+    - _ColorEnd: {r: 1, g: 1, b: 0.6650944, a: 1}
     - _DetailColor: {r: 1, g: 1, b: 1, a: 0}
     - _DetailSpecularColor: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
