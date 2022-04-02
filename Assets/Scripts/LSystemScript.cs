@@ -57,8 +57,13 @@ public class LSystemScript : MonoBehaviour
                     Vector3 initialPosition = transform.position;
                     transform.Translate(Vector3.up * length);
                     GameObject treeSegment = Instantiate(Branch);
-                    treeSegment.GetComponent<LineRenderer>().SetPosition(0, initialPosition);
-                    treeSegment.GetComponent<LineRenderer>().SetPosition(1, transform.position);
+
+                    Vector3[] positions = new Vector3[]
+                    {
+                        initialPosition,
+                        transform.position
+                    };
+                    treeSegment.GetComponent<TubeRenderer>().SetPositions(positions);
                     break;
                 case 'X':
                     break;
