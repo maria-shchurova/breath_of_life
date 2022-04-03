@@ -4,14 +4,14 @@ using UnityEngine;
 public class MeshGroup {
     public string materialName;
     public Color color;
-    public Color colorEnd;
+    //public Color colorEnd;
     public List<Mesh> meshes;
     public List<Transform> transforms;
 
-    public MeshGroup(string materialName, Color materialColor, Color materialColorEnd) {
+    public MeshGroup(string materialName, Color materialColor) {
         this.materialName = materialName;
         this.color = materialColor;
-        this.colorEnd = materialColorEnd;
+        //this.colorEnd = materialColorEnd;
         this.meshes = new List<Mesh>();
         this.transforms = new List<Transform>();
     }

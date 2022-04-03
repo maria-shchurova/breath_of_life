@@ -23,11 +23,11 @@ public class MeshGroupRenderer : MonoBehaviour {
 
     public bool add(Transform t, Mesh mesh, Material material) {
         Color color = material.GetColor(COLOR);
-        Color colorEnd = material.GetColor(COLOREND);
+        //Color colorEnd = material.GetColor(COLOREND);
         // bool isValid = validate(material.name,color, colorEnd);
         // if(isValid){
         if (meshGroup == null) {
-            meshGroup = new MeshGroup(material.name, color, colorEnd);
+            meshGroup = new MeshGroup(material.name, color);
         }
         meshGroup.meshes.Add(mesh);
         meshGroup.transforms.Add(t);

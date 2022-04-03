@@ -30,6 +30,24 @@ public class LSystemScript : MonoBehaviour
             {'F', "FF" }
         };
         Generate();
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            // call this method when you are ready to group your meshes
+            combineAndClear();
+        }
+    }
+    void combineAndClear()
+    {
+        MeshManager.instance.combineAll();
+        foreach (Transform t in transform)
+        {
+            Destroy(t.gameObject);
+        }
     }
 
     void Generate()
@@ -37,13 +55,13 @@ public class LSystemScript : MonoBehaviour
         currentString = axiom;
         StringBuilder sb = new StringBuilder();
 
-        for(int i  = 0; i < iterations; i++)
+        for (int i = 0; i < iterations; i++)
         {
-            foreach(char c in currentString)
+            foreach (char c in currentString)
             {
                 sb.Append(rules.ContainsKey(c) ? rules[c] : c.ToString());
             }
-            
+
             currentString = sb.ToString();
             sb = new StringBuilder();
         }
@@ -51,7 +69,7 @@ public class LSystemScript : MonoBehaviour
 
         foreach (char c in currentString)
         {
-            switch(c)
+            switch (c)
             {
                 case 'F':
                     Vector3 initialPosition = transform.position;
@@ -64,6 +82,7 @@ public class LSystemScript : MonoBehaviour
                         transform.position
                     };
                     treeSegment.GetComponent<TubeRenderer>().SetPositions(positions);
+                   // treeSegment.transform.SetParent(transform);
                     break;
                 case 'X':
                     break;
@@ -76,8 +95,8 @@ public class LSystemScript : MonoBehaviour
                 case '[':
                     transformStack.Push(new TransformInfo()
                     {
-                        position =transform.position,
-                        rotation= transform.rotation
+                        position = transform.position,
+                        rotation = transform.rotation
                     });
                     break;
                 case ']':
@@ -90,6 +109,26 @@ public class LSystemScript : MonoBehaviour
                     throw new InvalidOperationException("invalid L operation");
             }
         }
+        // CombineMesh();
+    }
+
+    void CombineMesh()
+    {
+        MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
+        CombineInstance[] combine = new CombineInstance[meshFilters.Length];
+
+        int i = 0;
+        while (i < meshFilters.Length)
+        {
+            combine[i].mesh = meshFilters[i].sharedMesh;
+            combine[i].transform = meshFilters[i].transform.localToWorldMatrix;
+            meshFilters[i].gameObject.SetActive(false);
+
+            i++;
+        }
+        transform.GetComponent<MeshFilter>().mesh = new Mesh();
+        transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
+        transform.gameObject.SetActive(true);
     }
 
     
