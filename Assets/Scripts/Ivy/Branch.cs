@@ -24,7 +24,7 @@ public class Branch : MonoBehaviour {
     int meshFaces = 8;
 
     bool animate;
-    float growthSpeed = 0.05f;
+    float growthSpeed = 5f;
     float currentAmount = -1;
 
     public void init(List<IvyNode> branchNodes, float branchRadius, Material material) {
