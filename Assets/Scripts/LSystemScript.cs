@@ -26,11 +26,31 @@ public class LSystemScript : MonoBehaviour
         transformStack = new Stack<TransformInfo>();
         rules = new Dictionary<char, string>
         {
-            {'X', "[F-[[X]+X]+F[+FX]-X]" },
+            {'X', "[F-[[X]A+XA]D+F[+FAX]DA-X]D" },
+            //{'X', RandomString() },
             {'F', "FF" }
         };
         Generate();
 
+    }
+
+    string  RandomString()
+    {
+        System.Random random = new System.Random();
+        string entry = string.Empty;
+
+        string[] array = new string[]
+        {
+            "X", "F", "-", "+", "[", "A", "D"
+        };
+
+        for (int i = 0; i < 27; ++i)
+        {
+            int index = random.Next(array.Length);
+            entry += array[index];            
+        }
+        Debug.Log("string generated:  " + entry);
+        return entry;
     }
 
     private void Update()
@@ -104,12 +124,17 @@ public class LSystemScript : MonoBehaviour
                     transform.position = ti.position;
                     transform.rotation = ti.rotation;
                     break;
-
+                case 'A':
+                    transform.Rotate(Vector3.left * angle);
+                    break;                
+                case 'D':
+                    transform.Rotate(Vector3.right * angle);
+                    break;
                 default:
                     throw new InvalidOperationException("invalid L operation");
             }
         }
-        // CombineMesh();
+        combineAndClear();
     }
 
     void CombineMesh()

@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: 9b7026f304bb4d94ab8afcd516d0a069
+ModelImporter:
+  serializedVersion: 20200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Base_Floor2_pCube39Mat
+    second: {fileID: 2100000, guid: 088311a0c65fab94bba6a9606ce15527, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beer_Crates_group98_pasted__group97_pasted__pasted__group96_pasted__group95_pasted__pasted__group92_pasted__pasted__pasted__pCube45Mat
+    second: {fileID: 2100000, guid: 057d39d3b1a4375418ff05cde4911b5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Ceiling_pCube44Mat
+    second: {fileID: 2100000, guid: 3f059d60b3d7ef54da8f96798674cd4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chair_pCylinder26Mat
+    second: {fileID: 2100000, guid: 235a017d1711b774f838927751242b06, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Coatrack1_pCylinder9Mat
+    second: {fileID: 2100000, guid: 1c344b0ec3784dc4c9e3cdde5287e3f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Corner_Structure_pasted__pCube43Mat
+    second: {fileID: 2100000, guid: 8154adeca21ba284793910fc45bf58d2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Corner_rubble_polySurface185Mat
+    second: {fileID: 2100000, guid: bb2116979da668143b4f1274673310c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fallen_Painting_pCube43Mat
+    second: {fileID: 2100000, guid: 900bce713fbb9724da1a02815c3053d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor_group11_Floor_pasted__pCube3_Floor_polySurface1Mat
+    second: {fileID: 2100000, guid: 95d3a85e2a9b6104a8e5f21991602298, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Geiger_Obj_pCylinder19Mat
+    second: {fileID: 2100000, guid: 0a2a22b55d8b13043b460811845b0eb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ID_Badge_pPlane2Mat
+    second: {fileID: 2100000, guid: bfc7fe4cbbda38446940ccb38602e5c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Outside_rubble_polySurface182Mat
+    second: {fileID: 2100000, guid: 443a1c92ffadb0d4788f891e53364007, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Painting_on_wall_pCylinder30Mat
+    second: {fileID: 2100000, guid: dcdbf0ef095ff5c4a9c2b22a8bed0f90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Piece_of_Brick1_pCube49_group127Mat
+    second: {fileID: 2100000, guid: e836bc5386483e241bad2d7770676749, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Piece_of_Brick2_pCube49_group128Mat
+    second: {fileID: 2100000, guid: 206f8039699032e4ba987215f5bcb5bd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Piece_of_Brick_pCube49Mat
+    second: {fileID: 2100000, guid: c94eac44bd57da1439367354ef976425, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Radioactive_Sign4_pasted__pCylinder3_group90Mat
+    second: {fileID: 2100000, guid: 9cd02286a025a4c47be964cf08433fdf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Radioactive_Sign_pasted__pCylinder3Mat
+    second: {fileID: 2100000, guid: 4e42bf2036ea6cf4cba431cd55d95043, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rubble_pile_attempt1_group119_pasted__pPlatonic3_group126Mat
+    second: {fileID: 2100000, guid: 651f3d6a0c028d042a7fffea0fe2e28e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rubble_pile_attempt_group119_pasted__pPlatonic3Mat
+    second: {fileID: 2100000, guid: fd47f3f9bf748c143900ae9691ec85d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TV_Radio_pCube36Mat
+    second: {fileID: 2100000, guid: 61691b91dd8c4a343854d97cfe911b8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Table_polySurface18Mat
+    second: {fileID: 2100000, guid: d6871e3b713f55c47a2f56583a0bfe34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Top_floor_walls_pasted__group_pasted__pasted__pCube2Mat
+    second: {fileID: 2100000, guid: e67cb1a79470f7948b0bc56bc3a1ae12, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Warning_Line_pCube43Mat
+    second: {fileID: 2100000, guid: 8b77be303fbc85144a6ada8c47574e34, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pCube41Mat
+    second: {fileID: 2100000, guid: bb47c1e633776cc408c2f030b3bd9c78, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pasted__pCylinder27_group72Mat
+    second: {fileID: 2100000, guid: ca42dc08879993e4fac8c31656636daf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: polySurface159Mat
+    second: {fileID: 2100000, guid: 2a1fe0a70de0c604c8b102bac73c392a, type: 2}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
