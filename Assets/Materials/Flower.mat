@@ -33,7 +33,7 @@ Material:
     - _Leaf: 0
     - _Radius: 0
     m_Colors:
-    - _Color: {r: 0.7209346, g: 0.30588233, b: 1, a: 1}
-    - _ColorCenter: {r: 1, g: 0.54527926, b: 0.2352941, a: 1}
+    - _Color: {r: 0.83538544, g: 0.5896226, b: 1, a: 1}
+    - _ColorCenter: {r: 0.3773585, g: 0.0017799971, b: 0.048842464, a: 1}
     - _ColorEnd: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
