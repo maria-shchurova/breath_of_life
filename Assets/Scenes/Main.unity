@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45469832, g: 0.5010539, b: 0.5489849, a: 1}
+  m_IndirectSpecularColor: {r: 0.4547221, g: 0.5010416, b: 0.5489719, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1660,6 +1660,7 @@ GameObject:
   - component: {fileID: 940512325862164818}
   - component: {fileID: 4446269219070705557}
   - component: {fileID: 16994113211041638}
+  - component: {fileID: 16994113211041639}
   m_Layer: 0
   m_Name: Building_12
   m_TagString: Untagged
@@ -1681,6 +1682,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3172891190325790054, guid: 9352ac39b0539124585d781497a7edd8, type: 3}
+--- !u!114 &16994113211041639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16994113211041637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4327a1cb0bc68f42af3fc7f3897a974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CutCascades: 3
+  ExplodeForce: 1
 --- !u!1 &124425835594291357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1693,6 +1708,7 @@ GameObject:
   - component: {fileID: 6288352840833595340}
   - component: {fileID: 6290617368537560559}
   - component: {fileID: 124425835594291358}
+  - component: {fileID: 124425835594291359}
   m_Layer: 0
   m_Name: Wreckages
   m_TagString: Untagged
@@ -1714,6 +1730,20 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 552101455681628262, guid: 9352ac39b0539124585d781497a7edd8, type: 3}
+--- !u!114 &124425835594291359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124425835594291357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4327a1cb0bc68f42af3fc7f3897a974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CutCascades: 3
+  ExplodeForce: 1
 --- !u!4 &139974115450091327
 Transform:
   m_ObjectHideFlags: 0
@@ -1948,6 +1978,7 @@ GameObject:
   - component: {fileID: 953163892248746485}
   - component: {fileID: 7813890536731804124}
   - component: {fileID: 8603801169462251063}
+  - component: {fileID: 8603801169462251064}
   m_Layer: 0
   m_Name: Road_004
   m_TagString: Untagged
@@ -1969,3 +2000,17 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3860747177700847175, guid: 9352ac39b0539124585d781497a7edd8, type: 3}
+--- !u!114 &8603801169462251064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8603801169462251062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4327a1cb0bc68f42af3fc7f3897a974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CutCascades: 3
+  ExplodeForce: 1
