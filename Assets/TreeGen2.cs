@@ -5,46 +5,55 @@ using UnityEngine;
 [RequireComponent(typeof(MeshFilter))]
 public class TreeGen2 : MonoBehaviour
 {
-    Vector3[] vertices;
+    List<Vector3> vertices = new List<Vector3>();
+    //Vector3[] vertices;
     int[] triangles;
     Mesh mesh;
 
     [SerializeField] float radius;
     [SerializeField] int subdivisions; // min 3 todo adda range from 3 to ...?
 
+    [SerializeField] float cylynderHeight;
     public GameObject debug;
     void Start()
     {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
-        CreateShape();
+        CreateCircle();
+        DisplayPoints();
     }
 
-    void CreateShape()
+    void CreateCircle()
     {
-        vertices = new Vector3[subdivisions];
-
-        Vector3 center = transform.position;
+        Vector3 center = transform.position; //todo use this somehow??
 
         float angle = 0;
         print(angle);
 
-        for (int i = 0; i < subdivisions; i++)
+        //forming the circle
+        for (int i = 0; i < subdivisions; i++) 
         {
-            vertices[i] = new Vector3(
+            vertices.Add(new Vector3(
                 Mathf.Cos(Mathf.Deg2Rad * angle) * radius, //x
-                Mathf.Sin(Mathf.Deg2Rad * angle) * radius,//y
-                0); //z
+                0,//y
+                Mathf.Sin(Mathf.Deg2Rad * angle) * radius)); //z
 
             angle += (360f / subdivisions);
         }
+        //adding height
+        foreach (Vector3 pos in vertices.ToArray())
+        {
+            vertices.Add(pos + Vector3.up * cylynderHeight);
+        }
+    }
 
 
+
+    void DisplayPoints()
+    {
         foreach (Vector3 pos in vertices)
         {
             Instantiate(debug, pos, Quaternion.identity);
         }
     }
-
-
 }

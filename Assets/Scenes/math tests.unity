@@ -153,8 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e8c537d2b3c764e8a44f5a33fde77d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 16
-  subdivisions: 16
+  radius: 10
+  subdivisions: 8
+  cylynderHeight: 5
   debug: {fileID: 2206913467354232555, guid: 1e9dd2d44578de246a3dcd2381184cea, type: 3}
 --- !u!33 &19935346
 MeshFilter:
