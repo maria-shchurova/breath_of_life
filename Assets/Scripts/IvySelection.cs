@@ -14,6 +14,8 @@ public class IvySelection : MonoBehaviour
     public Material green;
     public Material flowerViolet;
     public Material flowerWhite;
+
+    public CameraControl camControl;
     void Start()
     {
         redIvy = GameObject.Find("SelectRedIvy").GetComponent<Button>();
@@ -33,19 +35,23 @@ public class IvySelection : MonoBehaviour
     void SelectRedIvy()
     {
         IvyCreator.leafMaterial = red;
+        camControl.enabled = true;
     }
     void SelectGreenIvy()
     {
         IvyCreator.leafMaterial = green;
+        camControl.enabled = true;
     }    
     
     void SelectVioletFlowers()
     {
         IvyCreator.flowerMaterial = flowerViolet;
+        camControl.enabled = true;
     }
 
     void SelectWhiteFlowers()
     {
         IvyCreator.flowerMaterial = flowerWhite;
+        camControl.enabled = true;
     }
 }

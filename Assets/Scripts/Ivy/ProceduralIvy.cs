@@ -50,23 +50,32 @@ public class ProceduralIvy : MonoBehaviour {
     }
 
     public void createIvy(RaycastHit hit) {
-        Vector3 tangent = findTangentFromArbitraryNormal(hit.normal);
-        GameObject ivy = new GameObject("Ivy " + ivyCount);
-        ivy.transform.SetParent(transform);
-        for (int i = 0; i < branches; i++) {
-            Vector3 dir = Quaternion.AngleAxis(360 / branches * i + Random.Range(0, 360 / branches), hit.normal) * tangent;
-            List<IvyNode> nodes = createBranch(maxPointsForBranch, hit.point, hit.normal, dir);
-            GameObject branch = new GameObject("Branch " + i);
-            Branch b = branch.AddComponent<Branch>();
-            if (!wantBlossoms) {
-                b.init(nodes, branchRadius, branchMaterial);
-            } else {
-                b.init(nodes, branchRadius, branchMaterial, leafMaterial, leafPrefab, flowerMaterial, flowerPrefab, i == 0);
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Vector3 tangent = findTangentFromArbitraryNormal(hit.normal);
+            GameObject ivy = new GameObject("Ivy " + ivyCount);
+            ivy.transform.SetParent(transform);
+            for (int i = 0; i < branches; i++)
+            {
+                Vector3 dir = Quaternion.AngleAxis(360 / branches * i + Random.Range(0, 360 / branches), hit.normal) * tangent;
+                List<IvyNode> nodes = createBranch(maxPointsForBranch, hit.point, hit.normal, dir);
+                GameObject branch = new GameObject("Branch " + i);
+                Branch b = branch.AddComponent<Branch>();
+                if (!wantBlossoms)
+                {
+                    b.init(nodes, branchRadius, branchMaterial);
+                }
+                else
+                {
+                    b.init(nodes, branchRadius, branchMaterial, leafMaterial, leafPrefab, flowerMaterial, flowerPrefab, i == 0);
+                }
+                branch.transform.SetParent(ivy.transform);
             }
-            branch.transform.SetParent(ivy.transform);
-        }
 
-        ivyCount++;
+            ivyCount++;
+        }
+        else
+            return;
     }
 
     Vector3 calculateTangent(Vector3 p0, Vector3 p1, Vector3 normal) {
