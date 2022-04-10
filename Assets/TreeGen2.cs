@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshRenderer))]
 public class TreeGen2 : MonoBehaviour
 {
     List<Vector3> vertices = new List<Vector3>();
@@ -21,6 +22,7 @@ public class TreeGen2 : MonoBehaviour
         GetComponent<MeshFilter>().mesh = mesh;
         CreateCircle();
         DisplayPoints();
+        UpdateMesh();
     }
 
     void CreateCircle()
@@ -28,10 +30,9 @@ public class TreeGen2 : MonoBehaviour
         Vector3 center = transform.position; //todo use this somehow??
 
         float angle = 0;
-        print(angle);
 
         //forming the circle
-        for (int i = 0; i < subdivisions; i++) 
+        for (int i = 0; i < subdivisions; i++)
         {
             vertices.Add(new Vector3(
                 Mathf.Cos(Mathf.Deg2Rad * angle) * radius, //x
@@ -40,20 +41,40 @@ public class TreeGen2 : MonoBehaviour
 
             angle += (360f / subdivisions);
         }
-        //adding height
+        //adding height aka @second floor
         foreach (Vector3 pos in vertices.ToArray())
         {
             vertices.Add(pos + Vector3.up * cylynderHeight);
         }
     }
 
+    void CalculateIndices()
+    {
+        triangles = new int[subdivisions * 2 * 2 * 3];
 
+        var currentIndicesIndex = 0;
+        //for (int i = 0; i < triangles.Length; i += 3)
+        //{
+        //    triangles[i] = i;
+        //    triangles[i + 1] = i + subdivisions;
+        //    triangles[i + 2] = i + 1;
+        //}
+    }
+
+    void UpdateMesh()
+    {
+        mesh.Clear();
+        mesh.vertices = vertices.ToArray();
+        mesh.triangles = triangles;
+        mesh.RecalculateNormals();
+    }
 
     void DisplayPoints()
     {
-        foreach (Vector3 pos in vertices)
+        for (int i = 0; i < vertices.Count; i++)
         {
-            Instantiate(debug, pos, Quaternion.identity);
+            GameObject point =  Instantiate(debug, vertices[i], Quaternion.identity);
+            point.name = "point " + i;
         }
     }
 }
