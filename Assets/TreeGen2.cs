@@ -22,6 +22,7 @@ public class TreeGen2 : MonoBehaviour
         GetComponent<MeshFilter>().mesh = mesh;
         CreateCircle();
         DisplayPoints();
+        CalculateIndices();
         UpdateMesh();
     }
 
@@ -50,15 +51,32 @@ public class TreeGen2 : MonoBehaviour
 
     void CalculateIndices()
     {
-        triangles = new int[subdivisions * 2 * 2 * 3];
+        triangles = new int[subdivisions * 2 * 3];
 
-        var currentIndicesIndex = 0;
-        //for (int i = 0; i < triangles.Length; i += 3)
+        //for (int i = 0; i < subdivisions; i++)
         //{
-        //    triangles[i] = i;
-        //    triangles[i + 1] = i + subdivisions;
-        //    triangles[i + 2] = i + 1;
+        //    if (i == subdivisions) // last in a cycle
+        //    {
+        //        triangles[i] = i;
+        //        triangles[i + 1] = 0;
+        //        triangles[i + 2] = i + subdivisions;
+        //    }
+        //    else
+        //    {
+        //        triangles[i] = i;
+        //        triangles[i + 1] = i + 1;
+        //        triangles[i + 2] = i + subdivisions + 1;
+        //    }
+
+        //    print("Triangle built: " + triangles[i] + " " + triangles[i + 1] + " " + triangles[i + 2]);
         //}
+
+        triangles = new int[]
+        {
+            0, 1, 5,
+            1, 2, 6,
+            2, 3, 7
+        };
     }
 
     void UpdateMesh()
