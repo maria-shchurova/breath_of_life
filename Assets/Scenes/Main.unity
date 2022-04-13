@@ -1401,10 +1401,10 @@ MonoBehaviour:
   branchRadius: 0.01
   branchMaterial: {fileID: 2100000, guid: 5866d69ecdd3d834a96f6c0896112c48, type: 2}
   leafMaterial: {fileID: 2100000, guid: cc5cf9d7eed4bc44fa0d84df88cfa2b0, type: 2}
-  flowerMaterial: {fileID: 2100000, guid: 2fe0ffa8a1fe8894289bfdca7fc07603, type: 2}
+  flowerMaterial: {fileID: 2100000, guid: 505875972f1ff3a48a35963a497b8c50, type: 2}
   leafPrefab: {fileID: 2503682686998312604, guid: fb6de8fca1ef3ec4f92cb3f74dec135c, type: 3}
   flowerPrefab: {fileID: 2435367529418233688, guid: cb549a15fb3c67a4093ac3de78c2dfb9, type: 3}
-  wantBlossoms: 0
+  wantBlossoms: 1
 --- !u!4 &762264514
 Transform:
   m_ObjectHideFlags: 0
