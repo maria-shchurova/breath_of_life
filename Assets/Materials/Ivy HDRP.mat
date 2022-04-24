@@ -61,7 +61,7 @@ Material:
     - _AlphaSrcBlend: 1
     - _AlphaToMask: 0
     - _AlphaToMaskInspectorValue: 0
-    - _Amount: 0.32
+    - _Amount: -1
     - _BlendMode: 0
     - _CullMode: 2
     - _CullModeForward: 2
@@ -109,8 +109,8 @@ Material:
     - Color_4b1de1c2e376414995a4f5d6ccb3fddb: {r: 0, g: 0, b: 0, a: 0}
     - Color_5cf6c20c134e48e3b2e04cdba12ae302: {r: 0, g: 0, b: 0, a: 0}
     - Color_637ba9251d8d4880bfc55b02440b7831: {r: 0.48235294, g: 0.19607843, b: 0.08235294, a: 0}
-    - _Color: {r: 0.4811321, g: 0.19509228, b: 0.083971165, a: 1}
-    - _ColorEnd: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 0.4528302, g: 0.17002073, b: 0.057671774, a: 1}
+    - _ColorEnd: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
