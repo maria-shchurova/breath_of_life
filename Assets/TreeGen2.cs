@@ -51,32 +51,22 @@ public class TreeGen2 : MonoBehaviour
 
     void CalculateIndices()
     {
-        triangles = new int[subdivisions * 2 * 3];
-
-        //for (int i = 0; i < subdivisions; i++)
-        //{
-        //    if (i == subdivisions) // last in a cycle
-        //    {
-        //        triangles[i] = i;
-        //        triangles[i + 1] = 0;
-        //        triangles[i + 2] = i + subdivisions;
-        //    }
-        //    else
-        //    {
-        //        triangles[i] = i;
-        //        triangles[i + 1] = i + 1;
-        //        triangles[i + 2] = i + subdivisions + 1;
-        //    }
-
-        //    print("Triangle built: " + triangles[i] + " " + triangles[i + 1] + " " + triangles[i + 2]);
-        //}
-
-        triangles = new int[]
+        triangles = new int[subdivisions * 6];
+        for (int t = 0, v = 0, x = 0; x < subdivisions - 1; x++, t += 6, v++)
         {
-            0, 1, 5,
-            1, 2, 6,
-            2, 3, 7
-        };
+            //    //if (i == subdivisions) // last in a cycle
+            //    //{
+            //    //    triangles[i] = i;
+            //    //    triangles[i + 1] = 0;
+            //    //    triangles[i + 2] = i + subdivisions;
+            //    //}
+            //    //else
+            //    //{
+            triangles[t] = v;
+            triangles[t + 1] = v + subdivisions + 1;
+            triangles[t + 2] = v + 1;
+            print("Triangle built: " + triangles[t] + triangles[t + 1] + triangles[t + 2]);
+        }
     }
 
     void UpdateMesh()
