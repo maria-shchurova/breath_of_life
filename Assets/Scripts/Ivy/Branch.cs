@@ -4,7 +4,7 @@ using UnityEngine;
 public class Branch : MonoBehaviour {
     const string AMOUNT = "_Amount";
     const string RADIUS = "_Radius";
-    const float MAX = 0.5f;
+    const float MAX = 1f;//0.5f;
 
     List<IvyNode> branchNodes;
 

@@ -55,6 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_a721ddd483e74fa9a924b82497d5c9bf: 0
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 10
@@ -109,7 +110,7 @@ Material:
     - Color_4b1de1c2e376414995a4f5d6ccb3fddb: {r: 0, g: 0, b: 0, a: 0}
     - Color_5cf6c20c134e48e3b2e04cdba12ae302: {r: 0, g: 0, b: 0, a: 0}
     - Color_637ba9251d8d4880bfc55b02440b7831: {r: 0.48235294, g: 0.19607843, b: 0.08235294, a: 0}
-    - _Color: {r: 0.4528302, g: 0.17002073, b: 0.057671774, a: 1}
+    - _Color: {r: 0.33962262, g: 0.24619436, b: 0.20986114, a: 1}
     - _ColorEnd: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
