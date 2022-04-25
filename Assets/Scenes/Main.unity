@@ -1398,7 +1398,7 @@ MonoBehaviour:
   branches: 5
   maxPointsForBranch: 15
   segmentLength: 0.05
-  branchRadius: 0.01
+  branchRadius: 0.02
   branchMaterial: {fileID: 2100000, guid: 5866d69ecdd3d834a96f6c0896112c48, type: 2}
   leafMaterial: {fileID: 2100000, guid: cc5cf9d7eed4bc44fa0d84df88cfa2b0, type: 2}
   flowerMaterial: {fileID: 2100000, guid: 505875972f1ff3a48a35963a497b8c50, type: 2}
@@ -2337,7 +2337,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163247848}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.186949, y: 1.6721873, z: 17.38138}
+  m_LocalPosition: {x: 16.186949, y: 1.61, z: 17.38138}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
