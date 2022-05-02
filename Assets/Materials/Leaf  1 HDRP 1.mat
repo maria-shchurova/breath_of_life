@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Leaf  1 HDRP
+  m_Name: Leaf  1 HDRP 1
   m_Shader: {fileID: -6465566751694194690, guid: 4599f2e0444fa804e827d247fa2c55ad, type: 3}
   m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT _ENABLE_FOG_ON_TRANSPARENT _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 4
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 096203c51403a7043a4d24304ec550aa, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -124,14 +124,14 @@ Material:
     - _ZTestGBuffer: 4
     - _ZTestTransparent: 4
     - _ZWrite: 0
-    - _isLeaf: 0.1
+    - _isLeaf: 1
     m_Colors:
-    - Color_5cf6c20c134e48e3b2e04cdba12ae302: {r: 0.8784314, g: 0.3372549, b: 0, a: 0}
-    - Color_637ba9251d8d4880bfc55b02440b7831: {r: 0.6784314, g: 0.08627451, b: 0.043137256, a: 0}
-    - Color_bb8c2c7aa0894e799eab43006132beeb: {r: 0.35686275, g: 0.02745098, b: 0, a: 0}
-    - _Color: {r: 0.6792453, g: 0.08481198, b: 0.041651852, a: 1}
-    - _ColorCenter: {r: 0.3584906, g: 0.029064853, b: 0, a: 1}
-    - _ColorEnd: {r: 0.8773585, g: 0.3375657, b: 0, a: 1}
+    - Color_5cf6c20c134e48e3b2e04cdba12ae302: {r: 0.42745098, g: 0.7372549, b: 0.53333336, a: 0}
+    - Color_637ba9251d8d4880bfc55b02440b7831: {r: 0.28235295, g: 0.54901963, b: 0.36862746, a: 0}
+    - Color_bb8c2c7aa0894e799eab43006132beeb: {r: 0.06553254, g: 0.2830189, b: 0.028034888, a: 0}
+    - _Color: {r: 0.13230987, g: 0.4056604, b: 0.04018334, a: 1}
+    - _ColorCenter: {r: 0.2270826, g: 0.5943396, b: 0.2726575, a: 1}
+    - _ColorEnd: {r: 0.4971461, g: 0.9245283, b: 0.31835172, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

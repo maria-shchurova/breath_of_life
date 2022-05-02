@@ -54,6 +54,7 @@ public class ProceduralIvy : MonoBehaviour {
         {
             Vector3 tangent = findTangentFromArbitraryNormal(hit.normal);
             GameObject ivy = new GameObject("Ivy " + ivyCount);
+            //ivy.tag = "Ivy"; 
             ivy.transform.SetParent(transform);
             for (int i = 0; i < branches; i++)
             {
