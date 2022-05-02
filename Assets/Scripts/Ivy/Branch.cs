@@ -26,7 +26,6 @@ public class Branch : MonoBehaviour {
     bool animate;
     float growthSpeed = 0.5f;
     float currentAmount = -1;
-
     public void init(List<IvyNode> branchNodes, float branchRadius, Material material) {
         this.branchNodes = branchNodes;
         this.branchRadius = branchRadius;
@@ -166,6 +165,7 @@ public class Branch : MonoBehaviour {
         for (int i = 0; i < nodes.Count; i++) {
 
             var r = Random.Range(0, 10);
+
             if (i > 0 || isFirst) {
 
                 if (r > 2) {
@@ -194,6 +194,12 @@ public class Branch : MonoBehaviour {
                     b.init(isFlower ? flowerMaterial : leafMaterial);
                     b.transform.SetParent(transform);
                     bls.Add(i, b);
+
+                    if (i == 0)
+                    {
+                        var breaker = Instantiate(new GameObject(), nodes[i].getPosition() + nodes[i].getNormal() + transform.forward / 2, rotation);
+                        breaker.AddComponent<SlowForce>();
+                    }
                 }
             }
 
