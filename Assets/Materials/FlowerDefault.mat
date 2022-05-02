@@ -104,7 +104,7 @@ Material:
     - _ZWrite: 0
     - _isLeaf: 0
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.96600676, b: 0.5731132, a: 1}
     - _ColorCenter: {r: 0.735849, g: 0.66078895, b: 0.13536847, a: 1}
     - _ColorEnd: {r: 0.5471698, g: 0.4258633, b: 0.46180594, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
