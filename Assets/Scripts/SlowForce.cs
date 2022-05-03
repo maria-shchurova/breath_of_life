@@ -5,9 +5,10 @@ using UnityEngine;
 public class SlowForce : MonoBehaviour
 {
     [SerializeField] GameObject breaker;
-    [SerializeField] float mass  = 1;
+    [SerializeField] float mass  = 1.5f;
     [SerializeField] float raduis  = 0.05f;
-    [SerializeField] float force = 10;
+    [SerializeField] float force = 0;
+    [SerializeField] float maxForce = 5.5f;
 
     [SerializeField] float timeInterval = 5;
     float currentTime;
@@ -24,9 +25,9 @@ public class SlowForce : MonoBehaviour
         breaker.transform.rotation = transform.rotation;
         breaker.transform.localScale = new Vector3(raduis, raduis, raduis);
         var  rb  = breaker.AddComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
         breaker.AddComponent<SphereCollider>().radius = raduis;
         rb.mass = mass;
-        rb.AddForce(rb.transform.up * -1 * force, ForceMode.Impulse);
     }
 
     void Update()
@@ -38,6 +39,9 @@ public class SlowForce : MonoBehaviour
                 Instantiate();
             else
             {
+                if(force< maxForce)
+                    force += 0.25f;
+
                 breaker.transform.position = transform.position;
                 breaker.transform.rotation = transform.rotation;
                 breaker.GetComponent<Rigidbody>().AddForce(breaker.transform.up * -1 * force, ForceMode.Impulse);

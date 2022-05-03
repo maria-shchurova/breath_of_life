@@ -197,7 +197,7 @@ public class Branch : MonoBehaviour {
 
                     if (i == 0)
                     {
-                        var breaker = Instantiate(new GameObject(), nodes[i].getPosition() + nodes[i].getNormal() + transform.forward / 2, rotation);
+                        var breaker = Instantiate(new GameObject(), nodes[i].getPosition() + nodes[i].getNormal(), rotation);
                         breaker.AddComponent<SlowForce>();
                     }
                 }
