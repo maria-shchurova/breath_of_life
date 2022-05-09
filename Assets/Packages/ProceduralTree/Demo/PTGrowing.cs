@@ -29,6 +29,7 @@ namespace ProceduralModeling {
 				time += Time.deltaTime;
 			}
 			material.SetFloat(kGrowingKey, 1f);
+			gameObject.AddComponent<MeshCollider>();
 		}
 
 		void OnDestroy() {

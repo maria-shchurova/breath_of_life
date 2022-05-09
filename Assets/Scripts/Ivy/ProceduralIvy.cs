@@ -50,8 +50,8 @@ public class ProceduralIvy : MonoBehaviour {
     }
 
     public void createIvy(RaycastHit hit) {
-        if (Cursor.lockState == CursorLockMode.Locked)
-        {
+        //if (Cursor.lockState == CursorLockMode.Locked)
+        //{
             Vector3 tangent = findTangentFromArbitraryNormal(hit.normal);
             GameObject ivy = new GameObject("Ivy " + ivyCount);
             //ivy.tag = "Ivy"; 
@@ -74,9 +74,9 @@ public class ProceduralIvy : MonoBehaviour {
             }
 
             ivyCount++;
-        }
-        else
-            return;
+        //}
+        //else
+        //    return;
     }
 
     Vector3 calculateTangent(Vector3 p0, Vector3 p1, Vector3 normal) {
