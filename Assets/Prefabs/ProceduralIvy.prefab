@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1871431724620767271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1871431724620767269}
+  - component: {fileID: 1871431724620767270}
+  m_Layer: 0
+  m_Name: ProceduralIvy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1871431724620767269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871431724620767271}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 22.97105, y: 2.8860817, z: 11.436383}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1871431724620767270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871431724620767271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907fe73d11fc8eb4aae88876750f5a22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 0}
+  recycleInterval: 30
+  branches: 5
+  maxPointsForBranch: 20
+  segmentLength: 0.2
+  branchRadius: 0.02
+  branchMaterial: {fileID: 2100000, guid: 5866d69ecdd3d834a96f6c0896112c48, type: 2}
+  leafMaterial: {fileID: 2100000, guid: 6a716c25d5926c34e8394a3b2a52707b, type: 2}
+  flowerMaterial: {fileID: 2100000, guid: 505875972f1ff3a48a35963a497b8c50, type: 2}
+  leafPrefab: {fileID: 2503682686998312604, guid: fb6de8fca1ef3ec4f92cb3f74dec135c, type: 3}
+  flowerPrefab: {fileID: 2435367529418233688, guid: cb549a15fb3c67a4093ac3de78c2dfb9, type: 3}
+  wantBlossoms: 1

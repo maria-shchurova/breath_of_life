@@ -41,6 +41,7 @@ public class MeshGroupRenderer : MonoBehaviour {
             Mesh mesh = combineMeshes(meshGroup);
             meshFilter.mesh = mesh;
             meshRenderer.material = lastAddedMaterial;
+            //Messenger.Broadcast<Mesh>("MeshCombined", mesh);
         }
     }
 

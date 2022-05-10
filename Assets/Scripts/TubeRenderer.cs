@@ -9,8 +9,8 @@ public class TubeRenderer : MonoBehaviour
 {
 	[SerializeField] Vector3[] _positions;
 	[SerializeField] int _sides;
-	[SerializeField] float _radiusOne;
-	[SerializeField] float _radiusTwo;
+	public float _radiusOne;
+	public float _radiusTwo;
 	[SerializeField] bool _useWorldSpace = true;
 	[SerializeField] bool _useTwoRadii = false;
 
@@ -46,6 +46,7 @@ public class TubeRenderer : MonoBehaviour
 	private void OnEnable()
 	{
 		_meshRenderer.enabled = true;
+		var Spawner = GameObject.FindObjectOfType<LSystemScript>();
 	}
 
 	private void OnDisable()

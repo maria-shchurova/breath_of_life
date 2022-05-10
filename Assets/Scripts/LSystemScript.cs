@@ -10,7 +10,11 @@ public class TransformInfo
 }
 public class LSystemScript : MonoBehaviour
 {
-    [SerializeField]private int iterations  = 4;
+    [SerializeField] private int iterations  = 4;
+    [SerializeField] private int StartThickness;
+    [SerializeField] private float RadiusDelta;
+    [SerializeField] private bool applyRadiuses;
+    
     [SerializeField] private GameObject Branch;
     [SerializeField] private float length =  10;
     [SerializeField] private float angle =  30;
@@ -26,12 +30,13 @@ public class LSystemScript : MonoBehaviour
         transformStack = new Stack<TransformInfo>();
         rules = new Dictionary<char, string>
         {
-            {'X', "[F-[[X]A+XA]D+F[+FAX]DA-X]D" },
+            //{'X', "[F-[[X]A+XA]D+F[+FAX]DA-X]D" },
+            {'X', "F-[X]+X+F[+FX]-X" },
             //{'X', RandomString() },
             {'F', "FF" }
         };
         Generate();
-
+        //Messenger.AddListener<Mesh>("MeshCombined", GenerateUV);
     }
 
     string  RandomString()
@@ -73,6 +78,7 @@ public class LSystemScript : MonoBehaviour
     void Generate()
     {
         currentString = axiom;
+
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < iterations; i++)
@@ -86,15 +92,21 @@ public class LSystemScript : MonoBehaviour
             sb = new StringBuilder();
         }
 
-
+        int notClosedBracesCount = 0;
+        List<TubeRenderer> branchSequence = new List<TubeRenderer>();
+        int branchIndex = 0;
+        print(currentString);
         foreach (char c in currentString)
         {
+
             switch (c)
             {
                 case 'F':
                     Vector3 initialPosition = transform.position;
                     transform.Translate(Vector3.up * length);
                     GameObject treeSegment = Instantiate(Branch);
+                    treeSegment.name = "branch " + branchIndex;
+                    branchIndex++;
 
                     Vector3[] positions = new Vector3[]
                     {
@@ -102,7 +114,18 @@ public class LSystemScript : MonoBehaviour
                         transform.position
                     };
                     treeSegment.GetComponent<TubeRenderer>().SetPositions(positions);
-                   // treeSegment.transform.SetParent(transform);
+                   if(notClosedBracesCount == 0)
+                    {
+                        if (branchSequence.Count > 0)
+                        {
+                            ShapeBranchSequence(branchSequence);
+                            branchSequence.Clear();
+                        }
+                    }
+                   else
+                    {
+                        branchSequence.Add(treeSegment.GetComponent<TubeRenderer>());
+                    }
                     break;
                 case 'X':
                     break;
@@ -113,6 +136,8 @@ public class LSystemScript : MonoBehaviour
                     transform.Rotate(Vector3.forward * angle);
                     break;
                 case '[':
+                    notClosedBracesCount++;
+
                     transformStack.Push(new TransformInfo()
                     {
                         position = transform.position,
@@ -120,22 +145,50 @@ public class LSystemScript : MonoBehaviour
                     });
                     break;
                 case ']':
+                    notClosedBracesCount--;
                     TransformInfo ti = transformStack.Pop();
                     transform.position = ti.position;
                     transform.rotation = ti.rotation;
                     break;
-                case 'A':
-                    transform.Rotate(Vector3.left * angle);
-                    break;                
-                case 'D':
-                    transform.Rotate(Vector3.right * angle);
-                    break;
+                //case 'A':
+                //    transform.Rotate(Vector3.left * angle);
+                //    break;                
+                //case 'D':
+                //    transform.Rotate(Vector3.right * angle);
+                //    break;
                 default:
                     throw new InvalidOperationException("invalid L operation");
             }
         }
+
         combineAndClear();
     }
+    void ShapeBranchSequence(List<TubeRenderer> sequence)
+    {
+
+            print(sequence);
+
+        if (applyRadiuses)
+        {
+            for (int i = 0; i < sequence.Count; i++)
+            {
+                if (i == 0)
+                {
+                    sequence[i]._radiusOne = StartThickness;
+                }
+                else
+                {
+                    sequence[i]._radiusOne = sequence[i - 1]._radiusTwo;
+                }
+
+                if (sequence[i]._radiusOne - RadiusDelta > 0)
+                    sequence[i]._radiusTwo = sequence[i]._radiusOne - RadiusDelta;
+                else
+                    sequence[i]._radiusTwo = sequence[i]._radiusOne;
+            }
+        }
+    }
+
 
     void CombineMesh()
     {
@@ -156,5 +209,16 @@ public class LSystemScript : MonoBehaviour
         transform.gameObject.SetActive(true);
     }
 
-    
+    //void GenerateUV(Mesh  mesh)
+    //{
+    //    Vector3[] vertices = mesh.vertices;
+    //    Vector2[] uvs = new Vector2[vertices.Length];
+
+    //    for (int i = 0; i < uvs.Length; i++)
+    //    {
+    //        uvs[i] = new Vector2(vertices[i].x, vertices[i].z);
+    //    }
+    //    mesh.uv = uvs;
+    //}
+
 }
