@@ -60124,7 +60124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5ab9cc53396444db150fedcefa9462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnInterval: 1
+  maxGrassCount: 100
+  spawnInterval: 0.5
   grass: {fileID: 709848394307112126, guid: 3ad8167b5ec122741a8eef0f0b8696a7, type: 3}
   grassParent: {fileID: 517662089}
 --- !u!4 &1712258815

@@ -8,6 +8,8 @@ public class GrassSpawn: MonoBehaviour
     Vector3 corner2;
 
     float timer;
+    int grassCount;
+    [SerializeField] int maxGrassCount;
     [SerializeField] float spawnInterval;
     [SerializeField] GameObject grass;
     [SerializeField] GameObject grassParent;
@@ -22,19 +24,20 @@ public class GrassSpawn: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer >= spawnInterval)
+        if(timer >= spawnInterval && grassCount < maxGrassCount)
         {
             float spawnX = Random.Range(corner1.x, corner2.x);
             float spawnZ = Random.Range(corner1.z, corner2.z);
             Debug.Log("checking spot " + spawnX + " , " + spawnZ);
 
-            if (!(Physics.Raycast(new Vector3(spawnX, -1, spawnZ), Vector3.up, 2f)))
+            if (!(Physics.Raycast(new Vector3(spawnX, -1.1f, spawnZ), Vector3.up, 2f)))
             {
-                GameObject.Instantiate(grass, new Vector3(spawnX, -1, spawnZ), Quaternion.identity, grassParent.transform);
+                GameObject.Instantiate(grass, new Vector3(spawnX, -1.1f, spawnZ), Quaternion.identity, grassParent.transform);
+                grassCount++;
             }
 
             Debug.Log("Planting grass");
-            timer = 0;
+            timer = 0;            
         }
 
         timer += Time.deltaTime;
