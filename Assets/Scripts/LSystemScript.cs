@@ -40,24 +40,24 @@ public class LSystemScript : MonoBehaviour
         //Messenger.AddListener<Mesh>("MeshCombined", GenerateUV);
     }
 
-    string  RandomString()
-    {
-        System.Random random = new System.Random();
-        string entry = string.Empty;
+    //string  RandomString()
+    //{
+    //    System.Random random = new System.Random();
+    //    string entry = string.Empty;
 
-        string[] array = new string[]
-        {
-            "X", "F", "-", "+", "[", "A", "D"
-        };
+    //    string[] array = new string[]
+    //    {
+    //        "X", "F", "-", "+", "[", "A", "D"
+    //    };
 
-        for (int i = 0; i < 27; ++i)
-        {
-            int index = random.Next(array.Length);
-            entry += array[index];            
-        }
-        Debug.Log("string generated:  " + entry);
-        return entry;
-    }
+    //    for (int i = 0; i < 27; ++i)
+    //    {
+    //        int index = random.Next(array.Length);
+    //        entry += array[index];            
+    //    }
+    //    Debug.Log("string generated:  " + entry);
+    //    return entry;
+    //}
 
     private void Update()
     {
@@ -79,6 +79,7 @@ public class LSystemScript : MonoBehaviour
     void Generate()
     {
         currentString = axiom;
+        bool branchingStarted = false;
 
         StringBuilder sb = new StringBuilder();
 
@@ -97,10 +98,10 @@ public class LSystemScript : MonoBehaviour
         List<TubeRenderer> branchSequence = new List<TubeRenderer>();
         int branchIndex = 0;
         print(currentString);
-        foreach (char c in currentString)
+        foreach (char ch in currentString)
         {
 
-            switch (c)
+            switch (ch)
             {
                 case 'F':
                     Vector3 initialPosition = transform.position;
@@ -114,6 +115,7 @@ public class LSystemScript : MonoBehaviour
                         initialPosition,
                         transform.position
                     };
+
                     treeSegment.GetComponent<TubeRenderer>().SetPositions(positions);
                    if(notClosedBracesCount == 0)
                     {
@@ -127,6 +129,9 @@ public class LSystemScript : MonoBehaviour
                     {
                         branchSequence.Add(treeSegment.GetComponent<TubeRenderer>());
                     }
+
+                    if (branchingStarted == true)
+                        GrowSprouts(initialPosition, transform.position);
                     break;
                 case 'X':
                     break;
@@ -145,11 +150,15 @@ public class LSystemScript : MonoBehaviour
                         rotation = transform.rotation
                     });
 
-                    Instantiate(debugObj, transform.position, transform.rotation);
+                    //Instantiate(debugObj, transform.position, new Quaternion(Normal.x, Normal.y, Normal.z, 0));
 
                     break;
                 case ']':
                     notClosedBracesCount--;
+
+                    if (branchingStarted == false)
+                        branchingStarted = true;
+
                     TransformInfo ti = transformStack.Pop();
                     transform.position = ti.position;
                     transform.rotation = ti.rotation;
@@ -225,5 +234,19 @@ public class LSystemScript : MonoBehaviour
     //    }
     //    mesh.uv = uvs;
     //}
+
+    void GrowSprouts(Vector3 a, Vector3 b)
+    {
+        var rnd = UnityEngine.Random.Range(0, 100);
+        var c = new Vector3(rnd, rnd, rnd);
+
+        var side1 = b - a;
+        var side2 = c - a;
+
+        var Normal = Vector3.Cross(side1, side2);
+
+        var sprout = Instantiate(debugObj, transform.position, Quaternion.identity);
+        sprout.transform.LookAt(Normal);
+    }
 
 }
