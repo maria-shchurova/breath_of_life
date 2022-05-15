@@ -26,7 +26,8 @@ public class LSystemScript : MonoBehaviour
 
     private string currentString = string.Empty;
 
-    public GameObject debugObj;
+    public GameObject leavesPlane;
+    int leavesIndex;
     void Start()
     {
         transformStack = new Stack<TransformInfo>();
@@ -131,7 +132,11 @@ public class LSystemScript : MonoBehaviour
                     }
 
                     if (branchingStarted == true)
+                    {
+                        leavesIndex++;
                         GrowSprouts(initialPosition, transform.position);
+                    }
+
                     break;
                 case 'X':
                     break;
@@ -150,8 +155,6 @@ public class LSystemScript : MonoBehaviour
                         rotation = transform.rotation
                     });
 
-                    //Instantiate(debugObj, transform.position, new Quaternion(Normal.x, Normal.y, Normal.z, 0));
-
                     break;
                 case ']':
                     notClosedBracesCount--;
@@ -162,7 +165,6 @@ public class LSystemScript : MonoBehaviour
                     TransformInfo ti = transformStack.Pop();
                     transform.position = ti.position;
                     transform.rotation = ti.rotation;
-                    Instantiate(debugObj, transform.position, transform.rotation);
                     break;
                 case 'A':
                     transform.Rotate(Vector3.left * angle);
@@ -245,8 +247,9 @@ public class LSystemScript : MonoBehaviour
 
         var Normal = Vector3.Cross(side1, side2);
 
-        var sprout = Instantiate(debugObj, transform.position, Quaternion.identity);
+        var sprout = Instantiate(leavesPlane, transform.position, Quaternion.identity);
         sprout.transform.LookAt(Normal);
+        sprout.name = "leaves " + leavesIndex;
     }
 
 }
