@@ -25,13 +25,14 @@ public class LSystemScript : MonoBehaviour
     private Dictionary<char, string> rules;
 
     private string currentString = string.Empty;
+
+    public GameObject debugObj;
     void Start()
     {
         transformStack = new Stack<TransformInfo>();
         rules = new Dictionary<char, string>
         {
-            //{'X', "[F-[[X]A+XA]D+F[+FAX]DA-X]D" },
-            {'X', "F-[X]+X+F[+FX]-X" },
+            {'X', "[F-[[X]A+XA]D+F[+FAX]DA-X]D" },
             //{'X', RandomString() },
             {'F', "FF" }
         };
@@ -143,19 +144,23 @@ public class LSystemScript : MonoBehaviour
                         position = transform.position,
                         rotation = transform.rotation
                     });
+
+                    Instantiate(debugObj, transform.position, transform.rotation);
+
                     break;
                 case ']':
                     notClosedBracesCount--;
                     TransformInfo ti = transformStack.Pop();
                     transform.position = ti.position;
                     transform.rotation = ti.rotation;
+                    Instantiate(debugObj, transform.position, transform.rotation);
                     break;
-                //case 'A':
-                //    transform.Rotate(Vector3.left * angle);
-                //    break;                
-                //case 'D':
-                //    transform.Rotate(Vector3.right * angle);
-                //    break;
+                case 'A':
+                    transform.Rotate(Vector3.left * angle);
+                    break;
+                case 'D':
+                    transform.Rotate(Vector3.right * angle);
+                    break;
                 default:
                     throw new InvalidOperationException("invalid L operation");
             }
