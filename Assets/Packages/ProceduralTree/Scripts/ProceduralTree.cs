@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 namespace ProceduralModeling {
@@ -196,7 +195,14 @@ namespace ProceduralModeling {
 			this.offset = offset;
 
 			segments = BuildSegments(data, fromRadius, toRadius, normal, binormal);
-
+			///////////////////////////////////////////////
+            //foreach (TreeSegment ts in segments)
+            //{
+            //    GameObject debugObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            //    debugObj.transform.position = ts.Position;
+            //    debugObj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            //}
+			//////////////////////////////////////////////
             branches.Add(this);
 
 			children = new List<TreeBranch>();
@@ -249,7 +255,16 @@ namespace ProceduralModeling {
 					);
 
 					children.Add(child);
-				}
+
+					////////////////////////////////////////////////////////////////////
+                    foreach (TreeSegment ts in segments)
+                    {
+                        GameObject debugObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                        debugObj.transform.position = child.from;
+                        debugObj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                    }
+					//////////////////////////////////////////////////////////////////////
+                }
 			}
 		}
 
@@ -320,6 +335,11 @@ namespace ProceduralModeling {
 			return Mathf.Lerp(a, b, v);
 		}
 	}
+
+	//void OnDrawGizmosSelected()
+ //   {
+		
+ //   }
 
 }
 

@@ -108,7 +108,7 @@ MonoBehaviour:
     heightSegments: 12
     radialSegments: 8
     bendDegree: 0.134
-  generations: 5
+  generations: 2
   length: 1.2
   radius: 0.15
 --- !u!114 &172721510443648151
