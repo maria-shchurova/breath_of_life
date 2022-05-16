@@ -755,5 +755,13 @@ PrefabInstance:
       propertyPath: iterations
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6658893581530216983, guid: cf1dc108ea86933459f003f2d0a46eb8, type: 3}
+      propertyPath: wantLeaves
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6658893581530216983, guid: cf1dc108ea86933459f003f2d0a46eb8, type: 3}
+      propertyPath: leavesPlane
+      value: 
+      objectReference: {fileID: 2331859440229791086, guid: cbe823705c3768141b6ce72ee144c889, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf1dc108ea86933459f003f2d0a46eb8, type: 3}
