@@ -70,6 +70,11 @@ public class TubeRenderer : MonoBehaviour
 		GenerateMesh();
 	}
 
+	public Vector3[] GetPositions()
+    {
+		return _positions;
+	}
+
 	private void GenerateMesh()
 	{
 		if (_mesh == null || _positions == null || _positions.Length <= 1)

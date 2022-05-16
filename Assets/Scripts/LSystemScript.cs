@@ -8,12 +8,26 @@ public class TransformInfo
     public Vector3 position;
     public Quaternion rotation;
 }
+
+[System.Serializable]
+public class BranchSequence
+{
+    public List<TubeRenderer> list;
+}
+
+[System.Serializable]
+public class AllBranchSequences
+{
+    public List<BranchSequence> BranchSequences;
+}
+
 public class LSystemScript : MonoBehaviour
 {
     [SerializeField] private int iterations  = 4;
     [SerializeField] private int StartThickness;
     [SerializeField] private float RadiusDelta;
     [SerializeField] private bool applyRadiuses;
+    [SerializeField] private bool wantLeaves;
     
     [SerializeField] private GameObject Branch;
     [SerializeField] private float length =  10;
@@ -27,7 +41,25 @@ public class LSystemScript : MonoBehaviour
     private string currentString = string.Empty;
 
     public GameObject leavesPlane;
-    int leavesIndex;
+
+    /// thickness
+    public AllBranchSequences allBranchSequences = new AllBranchSequences();
+    BranchSequence currentSequence;
+
+    public int StartingBranchingPoints;//al branching  points
+    private int _startingBranchingPoints
+    {
+        get { return StartingBranchingPoints; }
+        set
+        {
+            StartingBranchingPoints = value;
+            BranchSequence newBranchSequence = new BranchSequence(); //every time this value increases, new list is created 
+            newBranchSequence.list = new List<TubeRenderer>();  
+
+            currentSequence = newBranchSequence;
+        }
+    }
+
     void Start()
     {
         transformStack = new Stack<TransformInfo>();
@@ -80,8 +112,6 @@ public class LSystemScript : MonoBehaviour
     void Generate()
     {
         currentString = axiom;
-        bool branchingStarted = false;
-
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < iterations; i++)
@@ -95,21 +125,24 @@ public class LSystemScript : MonoBehaviour
             sb = new StringBuilder();
         }
 
-        int notClosedBracesCount = 0;
-        List<TubeRenderer> branchSequence = new List<TubeRenderer>();
-        int branchIndex = 0;
+
+        BranchSequence newBranchSequence = new BranchSequence(); //first sequebce
+        newBranchSequence.list = new List<TubeRenderer>();
+
+        currentSequence = newBranchSequence;
+        allBranchSequences.BranchSequences.Add(currentSequence);//add sequence to all     
+        
+
+
         print(currentString);
         foreach (char ch in currentString)
         {
-
             switch (ch)
             {
                 case 'F':
                     Vector3 initialPosition = transform.position;
                     transform.Translate(Vector3.up * length);
                     GameObject treeSegment = Instantiate(Branch);
-                    treeSegment.name = "branch " + branchIndex;
-                    branchIndex++;
 
                     Vector3[] positions = new Vector3[]
                     {
@@ -118,23 +151,17 @@ public class LSystemScript : MonoBehaviour
                     };
 
                     treeSegment.GetComponent<TubeRenderer>().SetPositions(positions);
-                   if(notClosedBracesCount == 0)
+                    
+
+                    if (StartingBranchingPoints > 0 )
                     {
-                        if (branchSequence.Count > 0)
-                        {
-                            ShapeBranchSequence(branchSequence);
-                            branchSequence.Clear();
-                        }
-                    }
-                   else
-                    {
-                        branchSequence.Add(treeSegment.GetComponent<TubeRenderer>());
+                        GrowSprouts(initialPosition, transform.position);   
                     }
 
-                    if (branchingStarted == true)
+
+                    if (StartingBranchingPoints == 0) //if branching is not yet started
                     {
-                        leavesIndex++;
-                        GrowSprouts(initialPosition, transform.position);
+                        currentSequence.list.Add(treeSegment.GetComponent<TubeRenderer>()); //there currentSequence.list[currentSequence.list.Count - 1].Positions[0] is the one to which alorithm returns after branchsequence is done
                     }
 
                     break;
@@ -147,8 +174,6 @@ public class LSystemScript : MonoBehaviour
                     transform.Rotate(Vector3.forward * angle);
                     break;
                 case '[':
-                    notClosedBracesCount++;
-
                     transformStack.Push(new TransformInfo()
                     {
                         position = transform.position,
@@ -157,10 +182,8 @@ public class LSystemScript : MonoBehaviour
 
                     break;
                 case ']':
-                    notClosedBracesCount--;
 
-                    if (branchingStarted == false)
-                        branchingStarted = true;
+                    StartingBranchingPoints++;
 
                     TransformInfo ti = transformStack.Pop();
                     transform.position = ti.position;
@@ -179,31 +202,34 @@ public class LSystemScript : MonoBehaviour
 
         combineAndClear();
     }
-    void ShapeBranchSequence(List<TubeRenderer> sequence)
-    {
+    //void ShapeBranchSequence(List<TubeRenderer> sequence)
+    //{
+    //    if (applyRadiuses)
+    //    {
+    //        Vector3 startBranchingPoint = branchSequence[branchSequence.Count - 1].GetPositions()[0];
 
-            print(sequence);
+    //        for (int i = 0; i < sequence.Count - 1; i++)
+    //        {
+    //            if (i == 0)
+    //            {
+    //                sequence[i]._radiusOne = StartThickness;
+    //            }
+    //            else
+    //            {
+    //                sequence[i]._radiusOne = sequence[i - 1]._radiusTwo;
+    //            }
 
-        if (applyRadiuses)
-        {
-            for (int i = 0; i < sequence.Count; i++)
-            {
-                if (i == 0)
-                {
-                    sequence[i]._radiusOne = StartThickness;
-                }
-                else
-                {
-                    sequence[i]._radiusOne = sequence[i - 1]._radiusTwo;
-                }
+    //            if (sequence[i]._radiusOne - RadiusDelta > 0)
+    //                sequence[i]._radiusTwo = sequence[i]._radiusOne - RadiusDelta;
+    //            else
+    //                sequence[i]._radiusTwo = sequence[i]._radiusOne;
+    //        }
+    //    }
 
-                if (sequence[i]._radiusOne - RadiusDelta > 0)
-                    sequence[i]._radiusTwo = sequence[i]._radiusOne - RadiusDelta;
-                else
-                    sequence[i]._radiusTwo = sequence[i]._radiusOne;
-            }
-        }
-    }
+        
+    //    TubeRenderer segment = treeSegment.GetComponent<TubeRenderer>();
+    //    if (segment.GetPositions()[0] == startBranchingPoint)
+    //}
 
 
     void CombineMesh()
@@ -239,17 +265,19 @@ public class LSystemScript : MonoBehaviour
 
     void GrowSprouts(Vector3 a, Vector3 b)
     {
-        var rnd = UnityEngine.Random.Range(0, 100);
-        var c = new Vector3(rnd, rnd, rnd);
+        if(wantLeaves)
+        {
+            var rnd = UnityEngine.Random.Range(0, 100);
+            var c = new Vector3(rnd, rnd, rnd);
 
-        var side1 = b - a;
-        var side2 = c - a;
+            var side1 = b - a;
+            var side2 = c - a;
 
-        var Normal = Vector3.Cross(side1, side2);
+            var Normal = Vector3.Cross(side1, side2);
 
-        var sprout = Instantiate(leavesPlane, transform.position, Quaternion.identity);
-        sprout.transform.LookAt(Normal);
-        sprout.name = "leaves " + leavesIndex;
+            var sprout = Instantiate(leavesPlane, transform.position, Quaternion.identity);
+            sprout.transform.LookAt(Normal);
+        }
     }
 
 }
