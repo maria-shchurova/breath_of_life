@@ -3678,9 +3678,10 @@ GameObject:
   - component: {fileID: 7283125281918657749}
   - component: {fileID: 4343330435120737597}
   - component: {fileID: 4340479474797194059}
+  - component: {fileID: 372049568137845464}
   m_Layer: 0
   m_Name: ArmatureStairs
-  m_TagString: Untagged
+  m_TagString: Armature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3748,6 +3749,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &372049568137845464
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2519106650249861153}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7218734296478117051, guid: 68c96428434af6a47af06b515e64516b, type: 3}
 --- !u!1 &4022370966087682196
 GameObject:
   m_ObjectHideFlags: 0

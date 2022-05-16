@@ -17,6 +17,7 @@ public class ChunkRuntimeInfo : MonoBehaviour
     public List<Rigidbody> rightConnections = new List<Rigidbody>();
 
     bool collidersEnabled = true;
+    float passedTime;
 
     new Rigidbody rigidbody;
     FractureObject fractureObject;
@@ -58,6 +59,16 @@ public class ChunkRuntimeInfo : MonoBehaviour
             onFracture.Invoke(this);
             isBrokenOff = true;
         }
+
+        if(collidersEnabled)
+        {
+            passedTime += Time.deltaTime;
+        }
+
+        if(passedTime >= 10)
+        {
+            rigidbody.isKinematic = true;
+        }
             
     }
 
@@ -91,5 +102,13 @@ public class ChunkRuntimeInfo : MonoBehaviour
         //    if(fractureObject.onChunkCollideVFX)
         //        Instantiate(fractureObject.onChunkCollideVFX);
         //}
+
+        if(collision.transform.CompareTag("Armature") && passedTime <= 1)
+        {
+            if (Random.Range(0, 2) == 0)
+                rigidbody.isKinematic = true;
+        }
+
     }
+
 }
