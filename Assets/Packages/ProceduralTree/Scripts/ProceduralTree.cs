@@ -257,19 +257,19 @@ namespace ProceduralModeling {
 					children.Add(child);
 
 					////////////////////////////////////////////////////////////////////
-                    foreach (TreeSegment ts in segments)
-                    {
-						var rnd = UnityEngine.Random.Range(0, 100);
-						var c = new Vector3(rnd, rnd, rnd);
+      //              foreach (TreeSegment ts in segments)
+      //              {
+						//var rnd = UnityEngine.Random.Range(0, 100);
+						//var c = new Vector3(rnd, rnd, rnd);
 
-						var side1 = child.to - child.from;
-						var side2 = c - child.from;
+						//var side1 = child.to - child.from;
+						//var side2 = c - child.from;
 
-						var Normal = Vector3.Cross(side1, side2);
+						//var Normal = Vector3.Cross(side1, side2);
 
-						var leaves = UnityEngine.Object.Instantiate(data.leavesPlane, child.to, Quaternion.identity);						
-						leaves.transform.LookAt(Normal);
-                    }
+						//var leaves = UnityEngine.Object.Instantiate(data.leavesPlane, child.to, Quaternion.identity);						
+						//leaves.transform.LookAt(Normal);
+      //              }
 					//////////////////////////////////////////////////////////////////////
                 }
 			}

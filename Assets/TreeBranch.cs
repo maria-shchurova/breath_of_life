@@ -14,4 +14,10 @@ public class TreeBranch : MonoBehaviour
 
 
     }
+
+    private void Update()
+    {
+        body._radiusOne = thicknessMultiplier  / (transform.position.y);
+        //body._radiusTwo = body.GetPositions()[1].y * thicknessMultiplier;
+    }
 }

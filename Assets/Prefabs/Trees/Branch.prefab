@@ -115,4 +115,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a575ac559ddc60043818f8b94577a176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thicknessMultiplier: 1
+  thicknessMultiplier: 8.38
