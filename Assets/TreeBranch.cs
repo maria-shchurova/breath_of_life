@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class TreeBranch : MonoBehaviour
 {
-    // Start is called before the first frame update
+    TubeRenderer body;
+
+    public float thicknessMultiplier;
     void Start()
     {
         MeshManager.instance.addMesh(transform, GetComponent<MeshFilter>().mesh, GetComponent<MeshRenderer>().sharedMaterial);
+        body = GetComponent<TubeRenderer>();
+
+
     }
 }

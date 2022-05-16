@@ -9,21 +9,9 @@ public class TransformInfo
     public Quaternion rotation;
 }
 
-[System.Serializable]
-public class BranchSequence
-{
-    public List<TubeRenderer> list;
-}
-
-[System.Serializable]
-public class AllBranchSequences
-{
-    public List<BranchSequence> BranchSequences;
-}
-
 public class LSystemScript : MonoBehaviour
 {
-    [SerializeField] private int iterations  = 4;
+    [SerializeField, Range(2, 5)] private int iterations = 4;
     [SerializeField] private int StartThickness;
     [SerializeField] private float RadiusDelta;
     [SerializeField] private bool applyRadiuses;
@@ -43,22 +31,8 @@ public class LSystemScript : MonoBehaviour
     public GameObject leavesPlane;
 
     /// thickness
-    public AllBranchSequences allBranchSequences = new AllBranchSequences();
-    BranchSequence currentSequence;
-
-    public int StartingBranchingPoints;//al branching  points
-    private int _startingBranchingPoints
-    {
-        get { return StartingBranchingPoints; }
-        set
-        {
-            StartingBranchingPoints = value;
-            BranchSequence newBranchSequence = new BranchSequence(); //every time this value increases, new list is created 
-            newBranchSequence.list = new List<TubeRenderer>();  
-
-            currentSequence = newBranchSequence;
-        }
-    }
+    [SerializeField] private List<TubeRenderer> TreeSegments = new List<TubeRenderer>();
+    private bool StartingBranching;
 
     void Start()
     {
@@ -123,15 +97,7 @@ public class LSystemScript : MonoBehaviour
 
             currentString = sb.ToString();
             sb = new StringBuilder();
-        }
-
-
-        BranchSequence newBranchSequence = new BranchSequence(); //first sequebce
-        newBranchSequence.list = new List<TubeRenderer>();
-
-        currentSequence = newBranchSequence;
-        allBranchSequences.BranchSequences.Add(currentSequence);//add sequence to all     
-        
+        }     
 
 
         print(currentString);
@@ -151,17 +117,11 @@ public class LSystemScript : MonoBehaviour
                     };
 
                     treeSegment.GetComponent<TubeRenderer>().SetPositions(positions);
-                    
+                    TreeSegments.Add(treeSegment.GetComponent<TubeRenderer>());
 
-                    if (StartingBranchingPoints > 0 )
+                    if (StartingBranching)
                     {
                         GrowSprouts(initialPosition, transform.position);   
-                    }
-
-
-                    if (StartingBranchingPoints == 0) //if branching is not yet started
-                    {
-                        currentSequence.list.Add(treeSegment.GetComponent<TubeRenderer>()); //there currentSequence.list[currentSequence.list.Count - 1].Positions[0] is the one to which alorithm returns after branchsequence is done
                     }
 
                     break;
@@ -183,7 +143,7 @@ public class LSystemScript : MonoBehaviour
                     break;
                 case ']':
 
-                    StartingBranchingPoints++;
+                    StartingBranching = true;
 
                     TransformInfo ti = transformStack.Pop();
                     transform.position = ti.position;
@@ -201,6 +161,55 @@ public class LSystemScript : MonoBehaviour
         }
 
         combineAndClear();
+        if(applyRadiuses)
+        {
+            Vector3 firstBranchingPoint;
+            TubeRenderer branchingRootSegment;
+            switch (iterations)
+            {
+                case 2:
+                    branchingRootSegment = TreeSegments[1];
+                    firstBranchingPoint = branchingRootSegment.GetPositions()[1];
+                    break;
+                case 3:
+                    branchingRootSegment = TreeSegments[3];
+                    firstBranchingPoint = branchingRootSegment.GetPositions()[1];
+                    break;
+                case 4:
+                    branchingRootSegment = TreeSegments[7];
+                    firstBranchingPoint = branchingRootSegment.GetPositions()[1];
+                    break;
+                case 5:
+                    branchingRootSegment = TreeSegments[15];
+                    firstBranchingPoint = branchingRootSegment.GetPositions()[1];
+                    break;
+                default:
+                    throw new InvalidOperationException("branching point not defined");
+            }
+
+            for (int i = 0; i <= TreeSegments.Count; i++)
+            {
+                if (i == 0)
+                {
+                    TreeSegments[i]._radiusOne = StartThickness;
+                    TreeSegments[i]._radiusTwo = StartThickness - RadiusDelta;
+                }
+                else
+                {
+                    if(TreeSegments[i].GetPositions()[0] != firstBranchingPoint)
+                    {
+                        TreeSegments[i]._radiusOne = TreeSegments[i - 1]._radiusTwo;
+                        TreeSegments[i]._radiusTwo = TreeSegments[i]._radiusOne - RadiusDelta;
+                    }
+                    else
+                    {
+                        TreeSegments[i]._radiusOne = branchingRootSegment._radiusTwo;
+                        TreeSegments[i]._radiusTwo = TreeSegments[i]._radiusOne - RadiusDelta;
+                    }
+                }
+            }
+        }
+
     }
     //void ShapeBranchSequence(List<TubeRenderer> sequence)
     //{
