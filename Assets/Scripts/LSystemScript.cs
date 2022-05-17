@@ -8,12 +8,14 @@ public class TransformInfo
     public Vector3 position;
     public Quaternion rotation;
 }
+
 public class LSystemScript : MonoBehaviour
 {
-    [SerializeField] private int iterations  = 4;
+    [SerializeField, Range(2, 5)] private int iterations = 4;
     [SerializeField] private int StartThickness;
     [SerializeField] private float RadiusDelta;
     [SerializeField] private bool applyRadiuses;
+    [SerializeField] private bool wantLeaves;
     
     [SerializeField] private GameObject Branch;
     [SerializeField] private float length =  10;
@@ -25,13 +27,19 @@ public class LSystemScript : MonoBehaviour
     private Dictionary<char, string> rules;
 
     private string currentString = string.Empty;
+
+    public GameObject leavesPlane;
+
+    /// thickness
+    [SerializeField] private List<TubeRenderer> TreeSegments = new List<TubeRenderer>();
+    private bool StartingBranching;
+
     void Start()
     {
         transformStack = new Stack<TransformInfo>();
         rules = new Dictionary<char, string>
         {
-            //{'X', "[F-[[X]A+XA]D+F[+FAX]DA-X]D" },
-            {'X', "F-[X]+X+F[+FX]-X" },
+            {'X', "[F-[[X]A+XA]D+F[+FAX]DA-X]D" },
             //{'X', RandomString() },
             {'F', "FF" }
         };
@@ -39,24 +47,24 @@ public class LSystemScript : MonoBehaviour
         //Messenger.AddListener<Mesh>("MeshCombined", GenerateUV);
     }
 
-    string  RandomString()
-    {
-        System.Random random = new System.Random();
-        string entry = string.Empty;
+    //string  RandomString()
+    //{
+    //    System.Random random = new System.Random();
+    //    string entry = string.Empty;
 
-        string[] array = new string[]
-        {
-            "X", "F", "-", "+", "[", "A", "D"
-        };
+    //    string[] array = new string[]
+    //    {
+    //        "X", "F", "-", "+", "[", "A", "D"
+    //    };
 
-        for (int i = 0; i < 27; ++i)
-        {
-            int index = random.Next(array.Length);
-            entry += array[index];            
-        }
-        Debug.Log("string generated:  " + entry);
-        return entry;
-    }
+    //    for (int i = 0; i < 27; ++i)
+    //    {
+    //        int index = random.Next(array.Length);
+    //        entry += array[index];            
+    //    }
+    //    Debug.Log("string generated:  " + entry);
+    //    return entry;
+    //}
 
     private void Update()
     {
@@ -78,7 +86,6 @@ public class LSystemScript : MonoBehaviour
     void Generate()
     {
         currentString = axiom;
-
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < iterations; i++)
@@ -90,42 +97,33 @@ public class LSystemScript : MonoBehaviour
 
             currentString = sb.ToString();
             sb = new StringBuilder();
-        }
+        }     
 
-        int notClosedBracesCount = 0;
-        List<TubeRenderer> branchSequence = new List<TubeRenderer>();
-        int branchIndex = 0;
+
         print(currentString);
-        foreach (char c in currentString)
+        foreach (char ch in currentString)
         {
-
-            switch (c)
+            switch (ch)
             {
                 case 'F':
                     Vector3 initialPosition = transform.position;
                     transform.Translate(Vector3.up * length);
                     GameObject treeSegment = Instantiate(Branch);
-                    treeSegment.name = "branch " + branchIndex;
-                    branchIndex++;
 
                     Vector3[] positions = new Vector3[]
                     {
                         initialPosition,
                         transform.position
                     };
+
                     treeSegment.GetComponent<TubeRenderer>().SetPositions(positions);
-                   if(notClosedBracesCount == 0)
+                    TreeSegments.Add(treeSegment.GetComponent<TubeRenderer>());
+
+                    if (StartingBranching)
                     {
-                        if (branchSequence.Count > 0)
-                        {
-                            ShapeBranchSequence(branchSequence);
-                            branchSequence.Clear();
-                        }
+                        GrowSprouts(initialPosition, transform.position);   
                     }
-                   else
-                    {
-                        branchSequence.Add(treeSegment.GetComponent<TubeRenderer>());
-                    }
+
                     break;
                 case 'X':
                     break;
@@ -136,58 +134,111 @@ public class LSystemScript : MonoBehaviour
                     transform.Rotate(Vector3.forward * angle);
                     break;
                 case '[':
-                    notClosedBracesCount++;
-
                     transformStack.Push(new TransformInfo()
                     {
                         position = transform.position,
                         rotation = transform.rotation
                     });
+
                     break;
                 case ']':
-                    notClosedBracesCount--;
+
+                    StartingBranching = true;
+
                     TransformInfo ti = transformStack.Pop();
                     transform.position = ti.position;
                     transform.rotation = ti.rotation;
                     break;
-                //case 'A':
-                //    transform.Rotate(Vector3.left * angle);
-                //    break;                
-                //case 'D':
-                //    transform.Rotate(Vector3.right * angle);
-                //    break;
+                case 'A':
+                    transform.Rotate(Vector3.left * angle);
+                    break;
+                case 'D':
+                    transform.Rotate(Vector3.right * angle);
+                    break;
                 default:
                     throw new InvalidOperationException("invalid L operation");
             }
         }
 
         combineAndClear();
-    }
-    void ShapeBranchSequence(List<TubeRenderer> sequence)
-    {
-
-            print(sequence);
-
-        if (applyRadiuses)
+        if(applyRadiuses)
         {
-            for (int i = 0; i < sequence.Count; i++)
+            Vector3 firstBranchingPoint;
+            TubeRenderer branchingRootSegment;
+            switch (iterations)
+            {
+                case 2:
+                    branchingRootSegment = TreeSegments[1];
+                    firstBranchingPoint = branchingRootSegment.GetPositions()[1];
+                    break;
+                case 3:
+                    branchingRootSegment = TreeSegments[3];
+                    firstBranchingPoint = branchingRootSegment.GetPositions()[1];
+                    break;
+                case 4:
+                    branchingRootSegment = TreeSegments[7];
+                    firstBranchingPoint = branchingRootSegment.GetPositions()[1];
+                    break;
+                case 5:
+                    branchingRootSegment = TreeSegments[15];
+                    firstBranchingPoint = branchingRootSegment.GetPositions()[1];
+                    break;
+                default:
+                    throw new InvalidOperationException("branching point not defined");
+            }
+
+            for (int i = 0; i <= TreeSegments.Count; i++)
             {
                 if (i == 0)
                 {
-                    sequence[i]._radiusOne = StartThickness;
+                    TreeSegments[i]._radiusOne = StartThickness;
+                    TreeSegments[i]._radiusTwo = StartThickness - RadiusDelta;
                 }
                 else
                 {
-                    sequence[i]._radiusOne = sequence[i - 1]._radiusTwo;
+                    if(TreeSegments[i].GetPositions()[0] != firstBranchingPoint)
+                    {
+                        TreeSegments[i]._radiusOne = TreeSegments[i - 1]._radiusTwo;
+                        TreeSegments[i]._radiusTwo = TreeSegments[i]._radiusOne - RadiusDelta;
+                    }
+                    else
+                    {
+                        TreeSegments[i]._radiusOne = branchingRootSegment._radiusTwo;
+                        TreeSegments[i]._radiusTwo = TreeSegments[i]._radiusOne - RadiusDelta;
+                    }
                 }
-
-                if (sequence[i]._radiusOne - RadiusDelta > 0)
-                    sequence[i]._radiusTwo = sequence[i]._radiusOne - RadiusDelta;
-                else
-                    sequence[i]._radiusTwo = sequence[i]._radiusOne;
             }
         }
+
     }
+    //void ShapeBranchSequence(List<TubeRenderer> sequence)
+    //{
+    //    if (applyRadiuses)
+    //    {
+    //        Vector3 startBranchingPoint = branchSequence[branchSequence.Count - 1].GetPositions()[0];
+
+    //        for (int i = 0; i < sequence.Count - 1; i++)
+    //        {
+    //            if (i == 0)
+    //            {
+    //                sequence[i]._radiusOne = StartThickness;
+    //            }
+    //            else
+    //            {
+    //                sequence[i]._radiusOne = sequence[i - 1]._radiusTwo;
+    //            }
+
+    //            if (sequence[i]._radiusOne - RadiusDelta > 0)
+    //                sequence[i]._radiusTwo = sequence[i]._radiusOne - RadiusDelta;
+    //            else
+    //                sequence[i]._radiusTwo = sequence[i]._radiusOne;
+    //        }
+    //    }
+
+        
+    //    TubeRenderer segment = treeSegment.GetComponent<TubeRenderer>();
+    //    if (segment.GetPositions()[0] == startBranchingPoint)
+    //}
 
 
     void CombineMesh()
@@ -220,5 +271,22 @@ public class LSystemScript : MonoBehaviour
     //    }
     //    mesh.uv = uvs;
     //}
+
+    void GrowSprouts(Vector3 a, Vector3 b)
+    {
+        if(wantLeaves)
+        {
+            var rnd = UnityEngine.Random.Range(0, 100);
+            var c = new Vector3(rnd, rnd, rnd);
+
+            var side1 = b - a;
+            var side2 = c - a;
+
+            var Normal = Vector3.Cross(side1, side2);
+
+            var sprout = Instantiate(leavesPlane, transform.position, Quaternion.identity);
+            sprout.transform.LookAt(Normal);
+        }
+    }
 
 }

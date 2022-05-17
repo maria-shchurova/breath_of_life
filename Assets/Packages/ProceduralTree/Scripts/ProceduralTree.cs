@@ -127,7 +127,7 @@ namespace ProceduralModeling {
         [Range(0f, 45f)] public float branchingAngle = 15f;
 		[Range(4, 20)] public int heightSegments = 10, radialSegments = 8;
 		[Range(0.0f, 0.35f)] public float bendDegree = 0.1f;
-
+		public GameObject leavesPlane;
 		Rand rnd;
 
 		public void Setup() {
@@ -195,14 +195,6 @@ namespace ProceduralModeling {
 			this.offset = offset;
 
 			segments = BuildSegments(data, fromRadius, toRadius, normal, binormal);
-			///////////////////////////////////////////////
-            //foreach (TreeSegment ts in segments)
-            //{
-            //    GameObject debugObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            //    debugObj.transform.position = ts.Position;
-            //    debugObj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            //}
-			//////////////////////////////////////////////
             branches.Add(this);
 
 			children = new List<TreeBranch>();
@@ -257,14 +249,21 @@ namespace ProceduralModeling {
 					children.Add(child);
 
 					////////////////////////////////////////////////////////////////////
-                    foreach (TreeSegment ts in segments)
+					/*foreach (TreeSegment ts in segments)
                     {
-                        GameObject debugObj = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                        debugObj.transform.position = child.from;
-                        debugObj.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-                    }
+                        var rnd = UnityEngine.Random.Range(0, 100);
+                        var c = new Vector3(rnd, rnd, rnd);
+
+                        var side1 = child.to - child.from;
+                        var side2 = c - child.from;
+
+                        var Normal = Vector3.Cross(side1, side2);
+
+                        var leaves = UnityEngine.Object.Instantiate(data.leavesPlane, side1, Quaternion.identity);
+                        leaves.transform.LookAt(Normal);
+                    }*/
 					//////////////////////////////////////////////////////////////////////
-                }
+				}
 			}
 		}
 

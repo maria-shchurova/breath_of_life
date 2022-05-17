@@ -30,8 +30,6 @@ public class CameraControl : MonoBehaviour {
 		// Input
 		if( Focused )
 			UpdateInput();
-		else if( Input.GetKey(KeyCode.Escape))
-			this.enabled = false;
 
 		// Physics
 		velocity = Vector3.Lerp( velocity, Vector3.zero, dampingCoefficient * Time.deltaTime );
@@ -46,10 +44,6 @@ public class CameraControl : MonoBehaviour {
 		Vector2 mouseDelta = lookSensitivity * new Vector2( Input.GetAxis( "Mouse X" ), -Input.GetAxis( "Mouse Y" ) );
 		transform.Rotate( Vector3.up, mouseDelta.x, Space.World );
 		transform.Rotate( Vector3.right, mouseDelta.y, Space.Self );
-
-		// Leave cursor lock
-		if( Input.GetKeyDown( KeyCode.Escape ) )
-			Focused = false;
 	}
 
 	Vector3 GetAccelerationVector() {

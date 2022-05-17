@@ -8,16 +8,21 @@ namespace ProceduralModeling {
 	public class PTGrowing : MonoBehaviour {
 
 		Material material;
+		public float fillingSpeed;
+		public float scalingSpeed;
 
 		const string kGrowingKey = "_T";
 
 		void OnEnable () {
 			material = GetComponent<MeshRenderer>().material;
 			material.SetFloat(kGrowingKey, 0f);
+
 		}
 
 		void Start () {
-			StartCoroutine(IGrowing(3f));
+			transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+
+			StartCoroutine(IGrowing(fillingSpeed));
 		}
 
 		IEnumerator IGrowing(float duration) {
@@ -30,6 +35,15 @@ namespace ProceduralModeling {
 			}
 			material.SetFloat(kGrowingKey, 1f);
 			gameObject.AddComponent<MeshCollider>();
+		}
+
+        private void Update()
+        {
+			if (transform.localScale.x <= 1)
+			{
+				transform.localScale += new Vector3(scalingSpeed * Time.deltaTime, scalingSpeed * Time.deltaTime, scalingSpeed * Time.deltaTime);
+			}
+
 		}
 
 		void OnDestroy() {
