@@ -14,8 +14,8 @@ public class ProceduralIvy : MonoBehaviour {
     public float branchRadius = 0.02f;
     [Space]
     public Material branchMaterial;
-    public Material leafMaterial;
-    public Material flowerMaterial;
+    public Material[] leafMaterials;
+    public Material[] flowerMaterials;
     [Space]
     public Blossom leafPrefab;
     public Blossom flowerPrefab;
@@ -68,6 +68,9 @@ public class ProceduralIvy : MonoBehaviour {
                 }
                 else
                 {
+                    var leafMaterial = leafMaterials[Random.Range(0, leafMaterials.Length-1)];
+                    var flowerMaterial = flowerMaterials[Random.Range(0, flowerMaterials.Length-1)];
+
                     b.init(nodes, branchRadius, branchMaterial, leafMaterial, leafPrefab, flowerMaterial, flowerPrefab, i == 0);
                 }
                 branch.transform.SetParent(ivy.transform);

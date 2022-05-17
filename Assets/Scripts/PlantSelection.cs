@@ -14,26 +14,37 @@ public class PlantSelection : MonoBehaviour
     {
         treeTool = FindObjectsOfType<PTGarden>();
         ivyTool = FindObjectOfType<ProceduralIvy>();
+
+        IvySprite.color = new Color(1, 1, 1, 1f);
+        TreeSprite.color = new Color(1, 1, 1, 0.5f);
+        ivyTool.enabled = true;
+
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.Alpha1))
         {
-            IvySprite.enabled = ivyTool .enabled = true;
+            ivyTool.enabled = true;
+
+            IvySprite.color = new Color(1, 1, 1, 1f);
+            TreeSprite.color = new Color(1, 1, 1, 0.5f);
 
             foreach(PTGarden surfaces in treeTool)
             {
-                TreeSprite.enabled = surfaces.enabled = false;
+                surfaces.enabled = false;
             }
         }
         if (Input.GetKey(KeyCode.Alpha2))
         {
-            IvySprite.enabled = ivyTool.enabled = false;
+            ivyTool.enabled = false;
+
+            IvySprite.color = new Color(1, 1, 1, 0.5f);
+            TreeSprite.color = new Color(1, 1, 1, 1f);
 
             foreach (PTGarden surfaces in treeTool)
             {
-                TreeSprite.enabled = surfaces.enabled = true;
+                surfaces.enabled = true;
             }
         }
     }

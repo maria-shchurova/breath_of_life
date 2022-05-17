@@ -108,7 +108,7 @@ MonoBehaviour:
     heightSegments: 12
     radialSegments: 8
     bendDegree: 0.134
-    leavesPlane: {fileID: 0}
+    leavesPlane: {fileID: 2331859440229791086, guid: 773591a5286525e45ab8d5399932e395, type: 3}
   generations: 2
   length: 1.2
   radius: 0.15
