@@ -109,9 +109,9 @@ MonoBehaviour:
     radialSegments: 8
     bendDegree: 0.134
     leavesPlane: {fileID: 2331859440229791086, guid: 773591a5286525e45ab8d5399932e395, type: 3}
-  generations: 2
-  length: 1.2
-  radius: 0.15
+  generations: 3
+  length: 1.44
+  radius: 0.23
 --- !u!114 &172721510443648151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,5 +124,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fade3408622cc489389f11fa87ef789f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillingSpeed: 25
-  scalingSpeed: 0.01
+  fillingSpeed: 1
+  scalingSpeed: 1
