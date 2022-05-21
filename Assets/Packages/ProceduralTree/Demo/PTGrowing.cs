@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace ProceduralModeling {
 
@@ -8,21 +9,26 @@ namespace ProceduralModeling {
 	public class PTGrowing : MonoBehaviour {
 
 		Material material;
-		public float fillingSpeed;
+		public float timeToFill;
 		public float scalingSpeed;
 
-		const string kGrowingKey = "_T";
+		public float FX_playRateSpeed;
+		public float FX_scalingSpeed;
 
+		const string kGrowingKey = "_T";
+		public VisualEffect VF;
+		public SizeBinder VFsize;
 		void OnEnable () {
 			material = GetComponent<MeshRenderer>().material;
 			material.SetFloat(kGrowingKey, 0f);
 
+			VF.playRate = 0;
 		}
 
 		void Start () {
 			transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 
-			StartCoroutine(IGrowing(fillingSpeed));
+			StartCoroutine(IGrowing(timeToFill));
 		}
 
 		IEnumerator IGrowing(float duration) {
@@ -44,6 +50,13 @@ namespace ProceduralModeling {
 				transform.localScale += new Vector3(scalingSpeed * Time.deltaTime, scalingSpeed * Time.deltaTime, scalingSpeed * Time.deltaTime);
 			}
 
+			if(transform.localScale.x  >= 0.5f && VF.playRate < 100)
+            {
+				VF.playRate += Time.deltaTime * FX_playRateSpeed;
+			}
+
+			if (VF.playRate > 0.02 && VFsize.effectSize < 4)
+				VFsize.effectSize += Time.deltaTime * FX_scalingSpeed;
 		}
 
 		void OnDestroy() {
