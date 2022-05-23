@@ -16,13 +16,17 @@ namespace ProceduralModeling {
 		public float FX_scalingSpeed;
 
 		const string kGrowingKey = "_T";
-		public VisualEffect VF;
-		public SizeBinder VFsize;
+		public VisualEffect[] VF;
+		public SizeBinder[] VFsize;
 		void OnEnable () {
 			material = GetComponent<MeshRenderer>().material;
 			material.SetFloat(kGrowingKey, 0f);
 
-			VF.playRate = 0;
+			foreach(VisualEffect vf in VF)
+            {
+				vf.playRate = 0;
+			}
+			
 		}
 
 		void Start () {
@@ -50,13 +54,21 @@ namespace ProceduralModeling {
 				transform.localScale += new Vector3(scalingSpeed * Time.deltaTime, scalingSpeed * Time.deltaTime, scalingSpeed * Time.deltaTime);
 			}
 
-			if(transform.localScale.x  >= 0.5f && VF.playRate < 100)
+			if(transform.localScale.x  >= 0.5f && VF[0].playRate < 100)
             {
-				VF.playRate += Time.deltaTime * FX_playRateSpeed;
+				foreach (VisualEffect vf in VF)
+				{
+					vf.playRate += Time.deltaTime * FX_playRateSpeed;
+				}
 			}
 
-			if (VF.playRate > 0.02 && VFsize.effectSize < 4)
-				VFsize.effectSize += Time.deltaTime * FX_scalingSpeed;
+			if (VF[0].playRate > 0.02 && VFsize[0].effectSize < 4)
+            {
+				foreach (SizeBinder sb in VFsize)
+				{
+					sb.effectSize += Time.deltaTime * FX_scalingSpeed;
+				}
+			}
 		}
 
 		void OnDestroy() {
