@@ -111,9 +111,9 @@ Material:
     - _ZWrite: 0
     - _isLeaf: 0
     m_Colors:
-    - _Color: {r: 1, g: 0.9320135, b: 0.1462264, a: 1}
+    - _Color: {r: 0.9056604, g: 0.38020647, b: 0.66673374, a: 1}
     - _ColorCenter: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorEnd: {r: 1, g: 0.2770127, b: 0, a: 1}
+    - _ColorEnd: {r: 0.49056602, g: 0, b: 0.328585, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
