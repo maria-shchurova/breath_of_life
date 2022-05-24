@@ -30,9 +30,9 @@ public class GrassSpawn: MonoBehaviour
             float spawnZ = Random.Range(corner1.z, corner2.z);
             Debug.Log("checking spot " + spawnX + " , " + spawnZ);
 
-            if (!(Physics.Raycast(new Vector3(spawnX, -1.1f, spawnZ), Vector3.up, 2f)))
+            if (!(Physics.Raycast(new Vector3(spawnX, 0, spawnZ), Vector3.up, 2f)))
             {
-                GameObject.Instantiate(grass, new Vector3(spawnX, -1.1f, spawnZ), Quaternion.identity, grassParent.transform);
+                GameObject.Instantiate(grass, new Vector3(spawnX, 0, spawnZ), Quaternion.identity, grassParent.transform);
                 grassCount++;
             }
 
