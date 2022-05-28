@@ -47,7 +47,9 @@ namespace ProceduralModeling {
 				go.transform.position = point;
 				go.transform.localScale = Vector3.one * Random.Range(scaleRange.x, scaleRange.y);
 				go.transform.localRotation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);
+				//check hit area conditions
 
+				//
 				var tree = go.GetComponent<ProceduralTree>();
 				tree.Data.randomSeed = Random.Range(0, 300);
 			}

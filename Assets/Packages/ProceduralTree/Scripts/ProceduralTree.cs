@@ -92,7 +92,24 @@ namespace ProceduralModeling {
 			return mesh;
 		}
 
-		protected override Mesh Build ()
+        protected override void Start()
+        {
+            base.Start();
+
+			var lightSource = GameObject.Find("Directional Light");
+
+			if (Physics.Linecast(transform.position, lightSource.transform.position))
+			{
+				print("tree grows in shadow");
+			}
+			else
+            {
+				print("tree grows in light");
+
+            }
+		}
+
+        protected override Mesh Build ()
 		{
 			return Build(data, generations, length, radius);
 		}
