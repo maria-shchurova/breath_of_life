@@ -278,6 +278,7 @@ MonoBehaviour:
   generations: 4
   length: 1
   radius: 0.1
+  isOnGround: 0
 --- !u!114 &6939019604014353118
 MonoBehaviour:
   m_ObjectHideFlags: 0

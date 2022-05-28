@@ -15,7 +15,7 @@ namespace ProceduralModeling {
 		[SerializeField, Range(2, 8)] protected int generations = 5;
 		[SerializeField, Range(0.5f, 5f)] protected float length = 1f;
 		[SerializeField, Range(0.1f, 2f)] protected float radius = 0.15f;
-
+		public bool isOnGround;
 		const float PI2 = Mathf.PI * 2f;
 
 		public static Mesh Build(TreeData data, int generations, float length, float radius) {
@@ -100,17 +100,47 @@ namespace ProceduralModeling {
 			if (Physics.Linecast(transform.position, lightSource.transform.position))
 			{
 				print("tree grows in shadow");
-				length = 1.3f;
-				generations = 4;
-				radius = 0.1f;
+				data.branchingAngle = 45;
+
+				if (!isOnGround)
+				{
+					generations = 4;
+					radius = 0.1f;
+					length = 1;
+					data.radiusAttenuation = 0.25f;
+					data.branchesMin = 1;
+					data.branchesMax = 2;
+				}
+				else
+                {
+					radius = 0.2f;
+					length = 1.5f;
+					data.radiusAttenuation = 0.5f;
+				}
 			}
 			else
             {
 				print("tree grows in light");
-				length = 2f;
-				generations = 5;
-				radius = 0.2f;
+				data.branchingAngle = 0;
+
+				if (!isOnGround)
+				{
+					generations = 4;
+					radius = 0.1f;
+					length = 1.5f;
+					data.radiusAttenuation = 0.25f;
+					data.branchesMin = 2;
+					data.branchesMax = 2;
+				}
+				else
+				{
+					radius = 0.25f;
+					length = 3f;
+					data.radiusAttenuation = 0.5f;
+				}
 			}
+
+
 
 			base.Start();
 		}

@@ -51,6 +51,7 @@ namespace ProceduralModeling {
 
 				//
 				var tree = go.GetComponent<ProceduralTree>();
+				tree.isOnGround = CompareTag("Ground");
 				tree.Data.randomSeed = Random.Range(0, 300);
 			}
 
