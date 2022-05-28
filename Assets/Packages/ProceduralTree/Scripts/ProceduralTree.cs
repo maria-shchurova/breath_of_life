@@ -14,7 +14,7 @@ namespace ProceduralModeling {
 		//Default values
 		[SerializeField, Range(2, 8)] protected int generations = 5;
 		[SerializeField, Range(0.5f, 5f)] protected float length = 1f;
-		[SerializeField, Range(0.1f, 2f)] protected float radius = 0.15f;
+		[SerializeField, Range(0.05f, 2f)] protected float radius = 0.15f;
 		public bool isOnGround;
 		const float PI2 = Mathf.PI * 2f;
 
@@ -105,9 +105,9 @@ namespace ProceduralModeling {
 				if (!isOnGround)
 				{
 					generations = 4;
-					radius = 0.1f;
-					length = 1;
-					data.radiusAttenuation = 0.25f;
+					radius = 0.05f;
+					length = 0.5f;
+					data.radiusAttenuation = 0.3f;
 					data.branchesMin = 1;
 					data.branchesMax = 2;
 				}
@@ -126,10 +126,10 @@ namespace ProceduralModeling {
 				if (!isOnGround)
 				{
 					generations = 4;
-					radius = 0.1f;
-					length = 1.5f;
-					data.radiusAttenuation = 0.25f;
-					data.branchesMin = 2;
+					radius = 0.05f;
+					length = 0.5f;
+					data.radiusAttenuation = 0.3f;
+					data.branchesMin = 1;
 					data.branchesMax = 2;
 				}
 				else
