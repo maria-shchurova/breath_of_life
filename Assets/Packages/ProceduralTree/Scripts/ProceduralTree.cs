@@ -11,6 +11,7 @@ namespace ProceduralModeling {
 		public TreeData Data { get { return data; } } 
 
 		[SerializeField] TreeData data;
+		//Default values
 		[SerializeField, Range(2, 8)] protected int generations = 5;
 		[SerializeField, Range(0.5f, 5f)] protected float length = 1f;
 		[SerializeField, Range(0.1f, 2f)] protected float radius = 0.15f;
@@ -94,19 +95,24 @@ namespace ProceduralModeling {
 
         protected override void Start()
         {
-            base.Start();
-
 			var lightSource = GameObject.Find("Directional Light");
 
 			if (Physics.Linecast(transform.position, lightSource.transform.position))
 			{
 				print("tree grows in shadow");
+				length = 1.3f;
+				generations = 4;
+				radius = 0.1f;
 			}
 			else
             {
 				print("tree grows in light");
+				length = 2f;
+				generations = 5;
+				radius = 0.2f;
+			}
 
-            }
+			base.Start();
 		}
 
         protected override Mesh Build ()
@@ -136,16 +142,26 @@ namespace ProceduralModeling {
 	[System.Serializable]
 	public class TreeData {
 		public int randomSeed = 0;
-		[Range(0.25f, 0.95f)] public float lengthAttenuation = 0.8f, radiusAttenuation = 0.5f;
-		[Range(1, 3)] public int branchesMin = 1, branchesMax = 3;
+        //DEFAULT VALUES
+        [Range(0.25f, 0.95f)] public float lengthAttenuation = 0.8f, radiusAttenuation = 0.5f;
+        [Range(1, 3)] public int branchesMin = 1, branchesMax = 3;
         [Range(-45f, 0f)] public float growthAngleMin = -15f;
         [Range(0f, 45f)] public float growthAngleMax = 15f;
         [Range(1f, 10f)] public float growthAngleScale = 4f;
         [Range(0f, 45f)] public float branchingAngle = 15f;
-		[Range(4, 20)] public int heightSegments = 10, radialSegments = 8;
-		[Range(0.0f, 0.35f)] public float bendDegree = 0.1f;
-		public GameObject leavesPlane;
-		Rand rnd;
+        [Range(4, 20)] public int heightSegments = 10, radialSegments = 8;
+        [Range(0.0f, 0.35f)] public float bendDegree = 0.1f;
+
+        //[Range(0.25f, 0.95f)] public float lengthAttenuation, radiusAttenuation;
+        //[Range(1, 3)] public int branchesMin, branchesMax;
+        //[Range(-45f, 0f)] public float growthAngleMin;
+        //[Range(0f, 45f)] public float growthAngleMax;
+        //[Range(1f, 10f)] public float growthAngleScale;
+        //[Range(0f, 45f)] public float branchingAngle;
+        //[Range(4, 20)] public int heightSegments, radialSegments;
+        //[Range(0.0f, 0.35f)] public float bendDegree;
+
+        Rand rnd;
 
 		public void Setup() {
 			rnd = new Rand(randomSeed);
