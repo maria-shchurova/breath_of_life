@@ -4,35 +4,25 @@ using UnityEngine;
 
 public class GrassSpawn: MonoBehaviour
 {
-    Vector3 corner1;
-    Vector3 corner2;
-
     float timer;
     int grassCount;
-    [SerializeField] int maxGrassCount;
+    [SerializeField] float radius;
+    [SerializeField] int grassPerSpot;
     [SerializeField] float spawnInterval;
     [SerializeField] GameObject grass;
-    [SerializeField] GameObject grassParent;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        corner1 = transform.GetChild(0).position;
-        corner2 = transform.GetChild(1).position;
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if(timer >= spawnInterval && grassCount < maxGrassCount)
+        if(timer >= spawnInterval && grassCount < grassPerSpot)
         {
-            float spawnX = Random.Range(corner1.x, corner2.x);
-            float spawnZ = Random.Range(corner1.z, corner2.z);
+            float spawnX = Random.Range(transform.position.x - radius, transform.position.x + radius);
+            float spawnZ = Random.Range(transform.position.z - radius, transform.position.z + radius);
             Debug.Log("checking spot " + spawnX + " , " + spawnZ);
 
             if (!(Physics.Raycast(new Vector3(spawnX, 0, spawnZ), Vector3.up, 2f)))
             {
-                GameObject.Instantiate(grass, new Vector3(spawnX, 0, spawnZ), Quaternion.identity, grassParent.transform);
+                GameObject.Instantiate(grass, new Vector3(spawnX, 0, spawnZ), Quaternion.identity, transform);
                 grassCount++;
             }
 
