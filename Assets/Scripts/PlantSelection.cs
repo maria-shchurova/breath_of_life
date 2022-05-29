@@ -23,6 +23,7 @@ public class PlantSelection : MonoBehaviour
         TreeSprite.color = new Color(1, 1, 1, 0.5f);
         GrassSprite.color = new Color(1, 1, 1, 0.5f);
         ivyTool.enabled = true;
+        grassTool.enabled = false;
 
     }
 
