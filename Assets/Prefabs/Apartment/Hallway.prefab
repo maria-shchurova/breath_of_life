@@ -331,6 +331,7 @@ GameObject:
   - component: {fileID: 7894967426313365941}
   - component: {fileID: 890820964767272341}
   - component: {fileID: 8281452466028921677}
+  - component: {fileID: 877490376316275546}
   m_Layer: 0
   m_Name: Cuber.011_Fractured
   m_TagString: Untagged
@@ -426,6 +427,20 @@ MonoBehaviour:
   onFractureVFX: {fileID: 0}
   onBreakSound: {fileID: 0}
   chunkCollisionVelocityToCreateVFX: 5
+--- !u!64 &877490376316275546
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 779522820512360452}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -153830957423991239, guid: 68c96428434af6a47af06b515e64516b, type: 3}
 --- !u!1 &929179634803759518
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +654,7 @@ GameObject:
   - component: {fileID: 6009848036734059171}
   - component: {fileID: 5980988796190466325}
   - component: {fileID: 8300053177586678655}
+  - component: {fileID: 18740463269835283}
   m_Layer: 0
   m_Name: Cube.039_Fractured
   m_TagString: Untagged
@@ -734,6 +750,20 @@ MonoBehaviour:
   onFractureVFX: {fileID: 0}
   onBreakSound: {fileID: 0}
   chunkCollisionVelocityToCreateVFX: 5
+--- !u!64 &18740463269835283
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095631652158595886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7860663910981750377, guid: 68c96428434af6a47af06b515e64516b, type: 3}
 --- !u!1 &1483013684774275547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,6 +1689,7 @@ GameObject:
   - component: {fileID: 1050428250381872806}
   - component: {fileID: 6338201686703815224}
   - component: {fileID: 4807559873412745749}
+  - component: {fileID: 2388219996205405146}
   m_Layer: 0
   m_Name: Cube.038_Fractured
   m_TagString: Untagged
@@ -1754,6 +1785,20 @@ MonoBehaviour:
   onFractureVFX: {fileID: 0}
   onBreakSound: {fileID: 0}
   chunkCollisionVelocityToCreateVFX: 5
+--- !u!64 &2388219996205405146
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4575437868540416264}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4583407886439279732, guid: 68c96428434af6a47af06b515e64516b, type: 3}
 --- !u!1 &4734267721736197611
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,6 +2165,7 @@ GameObject:
   - component: {fileID: 7662808539528960697}
   - component: {fileID: 5070615657638479094}
   - component: {fileID: 2165923092755093305}
+  - component: {fileID: 2626795571707746288}
   m_Layer: 0
   m_Name: Cube.040_Fractured
   m_TagString: Untagged
@@ -2215,6 +2261,20 @@ MonoBehaviour:
   onFractureVFX: {fileID: 0}
   onBreakSound: {fileID: 0}
   chunkCollisionVelocityToCreateVFX: 5
+--- !u!64 &2626795571707746288
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5308076418796030286}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1969476169269212006, guid: 68c96428434af6a47af06b515e64516b, type: 3}
 --- !u!1 &5561144216059061000
 GameObject:
   m_ObjectHideFlags: 0
@@ -2227,6 +2287,7 @@ GameObject:
   - component: {fileID: 2668122556727003039}
   - component: {fileID: 2958412270281083358}
   - component: {fileID: 631319310571359337}
+  - component: {fileID: 2432266267048137737}
   m_Layer: 0
   m_Name: Cube.035_Fractured
   m_TagString: Untagged
@@ -2322,6 +2383,20 @@ MonoBehaviour:
   onFractureVFX: {fileID: 0}
   onBreakSound: {fileID: 0}
   chunkCollisionVelocityToCreateVFX: 5
+--- !u!64 &2432266267048137737
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5561144216059061000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -939061152623264921, guid: 68c96428434af6a47af06b515e64516b, type: 3}
 --- !u!1 &5676924395863256123
 GameObject:
   m_ObjectHideFlags: 0

@@ -532,6 +532,7 @@ GameObject:
   - component: {fileID: 1806681497947205084}
   - component: {fileID: 2616682727820291067}
   - component: {fileID: 5495944126812034889}
+  - component: {fileID: 3879221686887224894}
   m_Layer: 0
   m_Name: Cube.049_Fractured
   m_TagString: Untagged
@@ -627,6 +628,20 @@ MonoBehaviour:
   onFractureVFX: {fileID: 0}
   onBreakSound: {fileID: 0}
   chunkCollisionVelocityToCreateVFX: 5
+--- !u!64 &3879221686887224894
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2185296590861252662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4753976898039024662, guid: 68c96428434af6a47af06b515e64516b, type: 3}
 --- !u!1 &2785282337517555135
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +654,7 @@ GameObject:
   - component: {fileID: 7887116525451253781}
   - component: {fileID: 6809746094127892585}
   - component: {fileID: 9219375423131386050}
+  - component: {fileID: 5883633587771193746}
   m_Layer: 0
   m_Name: Cube.048_Fractured
   m_TagString: Untagged
@@ -734,6 +750,20 @@ MonoBehaviour:
   onFractureVFX: {fileID: 0}
   onBreakSound: {fileID: 0}
   chunkCollisionVelocityToCreateVFX: 5
+--- !u!64 &5883633587771193746
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2785282337517555135}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6851752233551798572, guid: 68c96428434af6a47af06b515e64516b, type: 3}
 --- !u!1 &2913717946031738798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,6 +1629,7 @@ GameObject:
   - component: {fileID: 603841225833646725}
   - component: {fileID: 1308334668191618880}
   - component: {fileID: 7688759845666951334}
+  - component: {fileID: 2259601423141067479}
   m_Layer: 0
   m_Name: Cube.013_Fractured
   m_TagString: Untagged
@@ -1694,6 +1725,20 @@ MonoBehaviour:
   onFractureVFX: {fileID: 0}
   onBreakSound: {fileID: 0}
   chunkCollisionVelocityToCreateVFX: 5
+--- !u!64 &2259601423141067479
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4098582474464622339}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7807538432633192378, guid: 68c96428434af6a47af06b515e64516b, type: 3}
 --- !u!1 &4138432869018418291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1706,6 +1751,7 @@ GameObject:
   - component: {fileID: 3931340923152140347}
   - component: {fileID: 3689301902562214386}
   - component: {fileID: 6540972850138598933}
+  - component: {fileID: 5352415511194089449}
   m_Layer: 0
   m_Name: Cube.031_Fractured
   m_TagString: Untagged
@@ -1801,6 +1847,20 @@ MonoBehaviour:
   onFractureVFX: {fileID: 0}
   onBreakSound: {fileID: 0}
   chunkCollisionVelocityToCreateVFX: 5
+--- !u!64 &5352415511194089449
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4138432869018418291}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -362046790695249943, guid: 68c96428434af6a47af06b515e64516b, type: 3}
 --- !u!1 &4712952868268136071
 GameObject:
   m_ObjectHideFlags: 0
