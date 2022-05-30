@@ -46,21 +46,6 @@ public class PlantSelection : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Alpha2))
         {
-            grassTool.enabled = true;
-            ivyTool.enabled = false;
-
-            IvySprite.color = new Color(1, 1, 1, 0.5f);
-            TreeSprite.color = new Color(1, 1, 1, 0.5f);
-            GrassSprite.color = new Color(1, 1, 1, 1f);
-
-            foreach (PTGarden surfaces in treeTool)
-            {
-                surfaces.enabled = false;
-            }
-        }
-
-        if (Input.GetKey(KeyCode.Alpha3))
-        {
             ivyTool.enabled = false;
             grassTool.enabled = false;
 
@@ -74,7 +59,22 @@ public class PlantSelection : MonoBehaviour
             }
         }
 
-      
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            grassTool.enabled = true;
+            ivyTool.enabled = false;
+
+            IvySprite.color = new Color(1, 1, 1, 0.5f);
+            TreeSprite.color = new Color(1, 1, 1, 0.5f);
+            GrassSprite.color = new Color(1, 1, 1, 1f);
+
+            foreach (PTGarden surfaces in treeTool)
+            {
+                surfaces.enabled = false;
+            }
+        }
+
+
     }
 
 
