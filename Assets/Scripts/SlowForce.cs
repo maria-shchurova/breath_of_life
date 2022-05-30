@@ -4,29 +4,38 @@ using UnityEngine;
 
 public class SlowForce : MonoBehaviour
 {
-    [SerializeField] GameObject breaker;
-    [SerializeField] float mass  = 1.5f;
-    [SerializeField] float raduis  = 0.05f;
-    [SerializeField] float force = 0;
-    [SerializeField] float maxForce = 5.5f;
+    GameObject breaker;
+    float mass;
+    float raduis;
+    float force;
+    float maxForce;
 
-    [SerializeField] float timeInterval = 5;
+    float timeInterval = 5;
     float currentTime;
 
-    private void Start()
+    Vector3 direction;
+    public void Init(float _mass, float _radius, float _force, float _maxforce, float _timeInterval,Vector3 _direction)
     {
+        mass = _mass;
+        raduis = _radius;
+        force = _force;
+        maxForce = _maxforce;
+        timeInterval = _timeInterval;
+        direction = _direction;
+
         currentTime = timeInterval;
+
+        Instantiate();
     }
     void Instantiate()
     {
         breaker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        breaker.GetComponent<MeshRenderer>().enabled = false;
+        //breaker.GetComponent<MeshRenderer>().enabled = false;
         breaker.transform.position = transform.position;
         breaker.transform.rotation = transform.rotation;
         breaker.transform.localScale = new Vector3(raduis, raduis, raduis);
-        var  rb  = breaker.AddComponent<Rigidbody>();
+        var rb = breaker.AddComponent<Rigidbody>();
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-        breaker.AddComponent<SphereCollider>().radius = raduis;
         rb.mass = mass;
     }
 
@@ -39,12 +48,12 @@ public class SlowForce : MonoBehaviour
                 Instantiate();
             else
             {
-                if(force< maxForce)
-                    force += 0.25f;
+                if (force < maxForce)
+                    force += 0.5f;
 
                 breaker.transform.position = transform.position;
                 breaker.transform.rotation = transform.rotation;
-                breaker.GetComponent<Rigidbody>().AddForce(breaker.transform.up * -1 * force, ForceMode.Impulse);
+                breaker.GetComponent<Rigidbody>().AddForce(direction * force, ForceMode.Impulse);
             }
             currentTime = timeInterval;
         }

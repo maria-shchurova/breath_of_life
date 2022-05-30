@@ -195,11 +195,11 @@ public class Branch : MonoBehaviour {
                     b.transform.SetParent(transform);
                     bls.Add(i, b);
 
-                    if (i == 0)
-                    {
-                        var breaker = Instantiate(new GameObject(), nodes[i].getPosition() + nodes[i].getNormal(), rotation);
-                        breaker.AddComponent<SlowForce>();
-                    }
+                    //if (i == 0)
+                    //{
+                    //    var breaker = Instantiate(new GameObject(), nodes[i].getPosition() + nodes[i].getNormal(), rotation);
+                    //    breaker.AddComponent<SlowForce>();
+                    //}
                 }
             }
 

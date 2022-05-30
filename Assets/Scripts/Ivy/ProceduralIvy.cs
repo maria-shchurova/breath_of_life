@@ -21,8 +21,15 @@ public class ProceduralIvy : MonoBehaviour {
     public Blossom flowerPrefab;
     [Space]
     public bool wantBlossoms;
-
     int ivyCount = 0;
+
+    [Header("Breaking force")]
+    [SerializeField] float mass = 1.5f;
+    [SerializeField] float raduis = 0.05f;
+    [SerializeField] float force = 0;
+    [SerializeField] float maxForce = 5.5f;
+
+    [SerializeField] float timeInterval = 5;
 
     void Update() {
 
@@ -50,9 +57,14 @@ public class ProceduralIvy : MonoBehaviour {
     }
 
     public void createIvy(RaycastHit hit) {
-        //if (Cursor.lockState == CursorLockMode.Locked)
-        //{
-            Vector3 tangent = findTangentFromArbitraryNormal(hit.normal);
+
+
+        var breaker = Instantiate(new GameObject(), hit.point + hit.normal, Quaternion.identity);
+        Vector3 direction = hit.point - breaker.transform.position;
+        var destroyer = breaker.AddComponent<SlowForce>();
+        destroyer.Init(mass, raduis, force, maxForce, timeInterval, direction);
+
+        Vector3 tangent = findTangentFromArbitraryNormal(hit.normal);
             GameObject ivy = new GameObject("Ivy " + ivyCount);
             //ivy.tag = "Ivy"; 
             ivy.transform.SetParent(transform);
