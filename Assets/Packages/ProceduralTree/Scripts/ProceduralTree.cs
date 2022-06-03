@@ -92,8 +92,10 @@ namespace ProceduralModeling {
 			mesh.triangles = triangles.ToArray();
 			return mesh;
 		}
-
-        protected override void Start()
+								
+		public enum TreeTypes { LitOnGround, LitNoGround, UnlitOnGround, UnlitNoGound }; //for type depending on buing grown under sun/in soil/etc
+		public TreeTypes TreeType;
+		protected override void Start()
         {
 			var lightSource = GameObject.Find("Directional Light");
 
@@ -104,6 +106,7 @@ namespace ProceduralModeling {
 
 				if (!isOnGround)
 				{
+					TreeType = TreeTypes.UnlitNoGound;
 					generations = 4;
 					radius = 0.05f;
 					length = 0.5f;
@@ -113,9 +116,12 @@ namespace ProceduralModeling {
 				}
 				else
                 {
+					TreeType = TreeTypes.UnlitOnGround;
 					radius = 0.2f;
 					length = 1.5f;
 					data.radiusAttenuation = 0.5f;
+					data.branchesMin = 2;
+					data.branchesMax = 3;
 				}
 			}
 			else
@@ -125,6 +131,7 @@ namespace ProceduralModeling {
 
 				if (!isOnGround)
 				{
+					TreeType = TreeTypes.LitNoGround;
 					generations = 4;
 					radius = 0.05f;
 					length = 0.5f;
@@ -134,9 +141,12 @@ namespace ProceduralModeling {
 				}
 				else
 				{
+					TreeType = TreeTypes.LitOnGround;
 					radius = 0.25f;
 					length = 3f;
 					data.radiusAttenuation = 0.5f;
+					data.branchesMin = 2;
+					data.branchesMax = 4;
 				}
 			}
 

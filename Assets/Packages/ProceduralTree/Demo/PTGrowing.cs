@@ -16,13 +16,20 @@ namespace ProceduralModeling {
 		public float FX_scalingSpeed;
 
 		const string kGrowingKey = "_T";
+		ProceduralTree thisTree;
 		public VisualEffect[] VF;
 		public SizeBinder[] VFsize;
+
+		[SerializeField] float foliageSize = 4;
+		[SerializeField] int foliageDensityType; //index for VXF asset since I can not control particle capacity
+		[SerializeField] float foliageY = 0;
+		public VisualEffectAsset[] VFXpresets;
+
 		void OnEnable () {
 			material = GetComponent<MeshRenderer>().material;
+			thisTree = GetComponent<ProceduralTree>();
 			material.SetFloat(kGrowingKey, 0f);
-
-			foreach(VisualEffect vf in VF)
+			foreach (VisualEffect vf in VF)
             {
 				vf.playRate = 0;
 			}
@@ -31,6 +38,34 @@ namespace ProceduralModeling {
 
 		void Start () {
 			transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+			switch(thisTree.TreeType)
+            {
+				case ProceduralTree.TreeTypes.LitOnGround:
+					foliageSize = 8;
+					foliageDensityType = 0;
+					foliageY = 4;
+					break;
+				case ProceduralTree.TreeTypes.LitNoGround:
+					foliageSize = 1f;
+					foliageDensityType = 1;
+					foliageY = -2;
+					break;
+				case ProceduralTree.TreeTypes.UnlitOnGround:
+					foliageSize = 4;
+					foliageDensityType = 2;
+					foliageY = 0;
+					break;
+				case ProceduralTree.TreeTypes.UnlitNoGound:
+					foliageSize = 0f;
+					foliageDensityType = 3;
+					foliageY = -2;
+					break;
+			}
+			foreach (VisualEffect vf in VF)
+			{
+				vf.transform.localPosition = new Vector3(vf.transform.localPosition.x, foliageY, vf.transform.localPosition.z);
+				vf.visualEffectAsset = VFXpresets[foliageDensityType];
+			}
 
 			StartCoroutine(IGrowing(timeToFill));
 		}
@@ -62,7 +97,7 @@ namespace ProceduralModeling {
 				}
 			}
 
-			if (VF[0].playRate > 0.02 && VFsize[0].effectSize < 4)
+			if (VF[0].playRate > 0.02 && VFsize[0].effectSize < foliageSize)
             {
 				foreach (SizeBinder sb in VFsize)
 				{

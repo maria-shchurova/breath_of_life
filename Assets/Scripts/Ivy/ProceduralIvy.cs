@@ -58,7 +58,6 @@ public class ProceduralIvy : MonoBehaviour {
 
     public void createIvy(RaycastHit hit) {
 
-
         var breaker = Instantiate(new GameObject(), hit.point + hit.normal, Quaternion.identity);
         Vector3 direction = hit.point - breaker.transform.position;
         var destroyer = breaker.AddComponent<SlowForce>();

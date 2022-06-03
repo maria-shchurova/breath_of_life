@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8929219209789465503
 Transform:
   m_ObjectHideFlags: 0
@@ -42,7 +42,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2149731344503961269}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: a2ccbe279a7092f429865e09e8f29fab, type: 3}
+  m_Asset: {fileID: 0}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -116,8 +116,8 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2149731344503961269}
-  m_Enabled: 0
-  m_CastShadows: 1
+  m_Enabled: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -160,8 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9846cb949345c489973cc23fadd422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualEffect: {fileID: 0}
-  effectSize: 2
+  effectSize: 0
 --- !u!1 &8259438907799079609
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,20 +264,21 @@ MonoBehaviour:
   data:
     randomSeed: 121
     lengthAttenuation: 0.851
-    radiusAttenuation: 0.527
-    branchesMin: 2
-    branchesMax: 3
+    radiusAttenuation: 0.3
+    branchesMin: 1
+    branchesMax: 2
     growthAngleMin: -15
     growthAngleMax: 10
     growthAngleScale: 4
-    branchingAngle: 10
+    branchingAngle: 0
     heightSegments: 16
     radialSegments: 8
     bendDegree: 0.125
   generations: 4
-  length: 1
-  radius: 0.1
+  length: 0.5
+  radius: 0.05
   isOnGround: 0
+  TreeType: 1
 --- !u!114 &6939019604014353118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +301,14 @@ MonoBehaviour:
   VFsize:
   - {fileID: 8603469525096896022}
   - {fileID: 9078745156702898387}
+  foliageSize: 4
+  foliageDensityType: 0
+  foliageY: 0
+  VFXpresets:
+  - {fileID: 8926484042661614526, guid: a2ccbe279a7092f429865e09e8f29fab, type: 3}
+  - {fileID: 8926484042661614526, guid: 66f76d18609537c4784f63c4faf0ecbb, type: 3}
+  - {fileID: 8926484042661614526, guid: eeb84abece26fb04ba71ba9b1768aa5a, type: 3}
+  - {fileID: 8926484042661614526, guid: ba20cb9f5d9715845b01950242c2a245, type: 3}
 --- !u!64 &3460996801557680953
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -333,7 +341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8687873960827775583
 Transform:
   m_ObjectHideFlags: 0
@@ -357,7 +365,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8687873960827775554}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: a2ccbe279a7092f429865e09e8f29fab, type: 3}
+  m_Asset: {fileID: 0}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -431,8 +439,8 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8687873960827775554}
-  m_Enabled: 0
-  m_CastShadows: 1
+  m_Enabled: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -475,5 +483,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9846cb949345c489973cc23fadd422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualEffect: {fileID: 0}
-  effectSize: 2
+  effectSize: 0

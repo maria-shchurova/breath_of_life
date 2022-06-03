@@ -5,15 +5,11 @@ using UnityEngine.VFX.Utility;
 
 public class SizeBinder : MonoBehaviour
 {
-    [SerializeField] VisualEffect visualEffect;
     public float effectSize;
 
-    private void Start()
-    {
-        visualEffect = GetComponent<VisualEffect>();
-    }
     private void Update()
     {
-        visualEffect.SetFloat("Size", effectSize);
+        if(GetComponent<VisualEffect>() != null)
+            GetComponent<VisualEffect>().SetFloat("Size", effectSize);
     }
 }
