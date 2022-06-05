@@ -10,13 +10,22 @@ namespace Project.Scripts.Fractures
         [SerializeField] public float density = 50;
         [SerializeField] public float internalStrength = 100;
             
-        [SerializeField] private Material insideMaterial;
-        [SerializeField] private Material outsideMaterial;
+        private Material insideMaterial;
+        private Material outsideMaterial;
 
         private Random rng = new Random();
 
         private void Start()
-        {
+        {         
+            outsideMaterial = gameObject.GetComponent<MeshRenderer>().materials[0];
+            Debug.LogWarning(gameObject.name + " : " + outsideMaterial);
+
+            if(gameObject.GetComponent<MeshRenderer>().materials.Length > 1)
+                insideMaterial = gameObject.GetComponent<MeshRenderer>().materials[1];
+
+            if (insideMaterial == null)
+                insideMaterial = outsideMaterial;
+
             FractureGameobject();
             gameObject.SetActive(false);
         }

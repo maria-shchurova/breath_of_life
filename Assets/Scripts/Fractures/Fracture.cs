@@ -42,8 +42,11 @@ namespace Project.Scripts.Fractures
             var fractureObjectScript = fractureGameObject.AddComponent<FractureObject>();
             
             MeshFilter fractureMesh = fractureGameObject.AddComponent<MeshFilter>();
-            fractureGameObject.AddComponent<MeshRenderer>();
             fractureMesh.mesh = mesh;
+
+            MeshRenderer meshRenderer = fractureGameObject.AddComponent<MeshRenderer>();
+            meshRenderer.material = outsideMaterial;
+
             fractureGameObject.AddComponent<MeshCollider>();
 
             foreach (var chunk in chunks)
@@ -229,7 +232,6 @@ namespace Project.Scripts.Fractures
             rigibody.mass = mass;
 
             var mc = chunk.AddComponent<MeshCollider>();
-            mc.inflateMesh = true;
             mc.convex = true;
 
             return chunk;
