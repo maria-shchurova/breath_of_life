@@ -34,8 +34,9 @@ public class FractureObject : MonoBehaviour
     float force;
 
     // Start is called before the first frame update
-    void Start()
+    public void Starting()
     {
+        Debug.Log("RunningChunkStuff");
         InitFracture();
     }
 
@@ -53,7 +54,9 @@ public class FractureObject : MonoBehaviour
         {
             chunks[i].onFracture += OnFracture;
 
-            Rigidbody rigidbody = chunks[i].gameObject.AddComponent<Rigidbody>();
+            Debug.Log(chunks[i]);
+            chunks[i].gameObject.AddComponent<Rigidbody>();
+            Rigidbody rigidbody = chunks[i].gameObject.GetComponent<Rigidbody>();
             rigidbody.mass = mass / chunks.Length;
 
             JointMonitor jointMonitor = chunks[i].gameObject.AddComponent<JointMonitor>();

@@ -39,10 +39,23 @@ namespace Project.Scripts.Fractures
             AnchorChunks(gameObject, anchor);
 
             var fractureGameObject = new GameObject("Fracture");
+            var fractureObjectScript = fractureGameObject.AddComponent<FractureObject>();
+            
+            MeshFilter fractureMesh = fractureGameObject.AddComponent<MeshFilter>();
+            fractureGameObject.AddComponent<MeshRenderer>();
+            fractureMesh.mesh = mesh;
+            fractureGameObject.AddComponent<MeshCollider>();
+
             foreach (var chunk in chunks)
             {
                 chunk.transform.SetParent(fractureGameObject.transform, false);
+                chunk.gameObject.AddComponent<ChunkRuntimeInfo>();
+                chunk.GetComponent<MeshRenderer>().enabled = false;
             }
+
+            fractureObjectScript.Starting();
+
+
             // Graph manager freezes/unfreezes blocks depending on whether they are connected to the graph or not
             var graphManager = fractureGameObject.AddComponent<ChunkGraphManager>();
             graphManager.Setup(fractureGameObject.GetComponentsInChildren<Rigidbody>());

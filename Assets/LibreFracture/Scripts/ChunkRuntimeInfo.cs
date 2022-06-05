@@ -35,41 +35,45 @@ public class ChunkRuntimeInfo : MonoBehaviour
 
     private void Update()
     {
-        if (
+        if(rigidbody)
+        {
+            if (
             topConnections.Count == 0 ||
             bottomConnections.Count == 0 ||
             forwardConnections.Count == 0 ||
             backwardConnections.Count == 0 ||
             leftConnections.Count == 0 ||
             rightConnections.Count == 0)
-        {
-            rigidbody.isKinematic = false;
-            SwitchColliders(true);
-        }
-        else // happens if surrounded from all sides
-        {
-            rigidbody.isKinematic = true;
-            SwitchColliders(false);
+            {
+                rigidbody.isKinematic = false;
+                SwitchColliders(true);
+            }
+            else // happens if surrounded from all sides
+            {
+                rigidbody.isKinematic = true;
+                SwitchColliders(false);
+            }
+
+            if (GetComponents<FixedJoint>().Length == 0 && !isBrokenOff)
+            {
+                rigidbody.isKinematic = false;
+                gameObject.layer = 0;
+                onFracture.Invoke(this);
+                isBrokenOff = true;
+            }
+
+            if (collidersEnabled)
+            {
+                passedTime += Time.deltaTime;
+            }
+
+            if (passedTime >= 10)
+            {
+                rigidbody.isKinematic = true;
+            }
+
         }
 
-        if (GetComponents<FixedJoint>().Length == 0 && !isBrokenOff)
-        {
-            rigidbody.isKinematic = false;
-            gameObject.layer = 0;
-            onFracture.Invoke(this);
-            isBrokenOff = true;
-        }
-
-        if(collidersEnabled)
-        {
-            passedTime += Time.deltaTime;
-        }
-
-        if(passedTime >= 10)
-        {
-            rigidbody.isKinematic = true;
-        }
-            
     }
 
     void SwitchColliders(bool enabled)
