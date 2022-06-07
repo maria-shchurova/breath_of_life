@@ -23,6 +23,14 @@ namespace ProceduralModeling {
 		[SerializeField] float foliageSize = 4;
 		[SerializeField] int foliageDensityType; //index for VXF asset since I can not control particle capacity
 		[SerializeField] float foliageY = 0;
+
+		[Header("Breaking force")]
+		[SerializeField] float mass = 1.5f;
+		[SerializeField] float raduis = 0.05f;
+		[SerializeField] float force = 0;
+		[SerializeField] float maxForce = 5.5f;
+
+		[SerializeField] float timeInterval = 5;
 		public VisualEffectAsset[] VFXpresets;
 
 		void OnEnable () {
@@ -80,6 +88,13 @@ namespace ProceduralModeling {
 			}
 			material.SetFloat(kGrowingKey, 1f);
 			gameObject.AddComponent<MeshCollider>();
+
+			var height = GetComponent<ProceduralTree>().length;
+
+			var breaker = Instantiate(new GameObject(), transform.position + Vector3.up * height, Quaternion.identity);
+			Vector3 direction = Vector3.up;
+			var destroyer = breaker.AddComponent<SlowForce>();
+			destroyer.Init(mass, raduis, force, maxForce, timeInterval, direction);
 		}
 
         private void Update()
@@ -112,8 +127,7 @@ namespace ProceduralModeling {
 				material = null;
 			}
 		}
-
-	}
+    }
 		
 }
 

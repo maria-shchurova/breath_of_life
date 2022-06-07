@@ -13,7 +13,7 @@ namespace ProceduralModeling {
 		[SerializeField] TreeData data;
 		//Default values
 		[SerializeField, Range(2, 8)] protected int generations = 5;
-		[SerializeField, Range(0.5f, 5f)] protected float length = 1f;
+		[SerializeField, Range(0.5f, 5f)] public float length = 1f;
 		[SerializeField, Range(0.05f, 2f)] protected float radius = 0.15f;
 		public bool isOnGround;
 		const float PI2 = Mathf.PI * 2f;
