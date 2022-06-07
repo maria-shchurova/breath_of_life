@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4190870747165521175}
   m_Layer: 0
   m_Name: Cube.034
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6277,7 +6277,7 @@ GameObject:
   - component: {fileID: 7114844006030171937}
   m_Layer: 0
   m_Name: Cube.028
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6360,7 +6360,7 @@ GameObject:
   - component: {fileID: 3362308571205211971}
   m_Layer: 0
   m_Name: Cube.053
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6443,7 +6443,7 @@ GameObject:
   - component: {fileID: 2534151103008087388}
   m_Layer: 0
   m_Name: Cube.041
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6858,7 +6858,7 @@ GameObject:
   - component: {fileID: 2404382324358251365}
   m_Layer: 0
   m_Name: Cube.032
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7107,7 +7107,7 @@ GameObject:
   - component: {fileID: 9141997863055315147}
   m_Layer: 0
   m_Name: Cube.003
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7637,7 +7637,7 @@ GameObject:
   - component: {fileID: 7162563186242632578}
   m_Layer: 0
   m_Name: Cube.029
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7720,7 +7720,7 @@ GameObject:
   - component: {fileID: 518428735413831920}
   m_Layer: 0
   m_Name: Cube.024
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7803,7 +7803,7 @@ GameObject:
   - component: {fileID: 3703100388281914122}
   m_Layer: 0
   m_Name: Cube.039
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8052,7 +8052,7 @@ GameObject:
   - component: {fileID: 2406285270107691507}
   m_Layer: 0
   m_Name: Cube.004
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8218,7 +8218,7 @@ GameObject:
   - component: {fileID: 7555620187866244208}
   m_Layer: 0
   m_Name: Cube.052
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8301,7 +8301,7 @@ GameObject:
   - component: {fileID: 7639169171393607485}
   m_Layer: 0
   m_Name: Cube.044
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8633,7 +8633,7 @@ GameObject:
   - component: {fileID: 8653156859301666222}
   m_Layer: 0
   m_Name: Cube.042
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9082,7 +9082,7 @@ GameObject:
   - component: {fileID: 1196221083121881784}
   m_Layer: 0
   m_Name: Cube.019
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9165,7 +9165,7 @@ GameObject:
   - component: {fileID: 5086731224019899269}
   m_Layer: 0
   m_Name: Cube.040
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9248,7 +9248,7 @@ GameObject:
   - component: {fileID: 6706949740640222786}
   m_Layer: 0
   m_Name: Cube.020
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9331,7 +9331,7 @@ GameObject:
   - component: {fileID: 1309001932222554289}
   m_Layer: 0
   m_Name: Cube.018
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10193,7 +10193,7 @@ GameObject:
   - component: {fileID: 896880425494432610}
   m_Layer: 0
   m_Name: Cube.022
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10725,7 +10725,7 @@ GameObject:
   - component: {fileID: 4591839312175905094}
   m_Layer: 0
   m_Name: Cube.030
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10974,7 +10974,7 @@ GameObject:
   - component: {fileID: 1701096653946989043}
   m_Layer: 0
   m_Name: Cube.033
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11140,7 +11140,7 @@ GameObject:
   - component: {fileID: 5385562041805833171}
   m_Layer: 0
   m_Name: Cube.050
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11223,7 +11223,7 @@ GameObject:
   - component: {fileID: 7847104405676290054}
   m_Layer: 0
   m_Name: Cube.005
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11306,7 +11306,7 @@ GameObject:
   - component: {fileID: 3599212744283327792}
   m_Layer: 0
   m_Name: Cube.011
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11472,7 +11472,7 @@ GameObject:
   - component: {fileID: 7852876520720705935}
   m_Layer: 0
   m_Name: Cube.043
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11721,7 +11721,7 @@ GameObject:
   - component: {fileID: 2281789552037311128}
   m_Layer: 0
   m_Name: Cube.009
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11970,7 +11970,7 @@ GameObject:
   - component: {fileID: 193442709185582769}
   m_Layer: 0
   m_Name: Cube.038
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12253,7 +12253,7 @@ GameObject:
   - component: {fileID: 2166090022268578008}
   m_Layer: 0
   m_Name: Cube.017
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12742,7 +12742,7 @@ GameObject:
   - component: {fileID: 6311727327604653690}
   m_Layer: 0
   m_Name: Cube.006
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12991,7 +12991,7 @@ GameObject:
   - component: {fileID: 8825524872357455374}
   m_Layer: 0
   m_Name: Cube.007
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13191,7 +13191,7 @@ GameObject:
   - component: {fileID: 8745767107869773452}
   m_Layer: 0
   m_Name: Cube.051
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13508,7 +13508,7 @@ GameObject:
   - component: {fileID: 8979835819118861944}
   m_Layer: 0
   m_Name: Cube.002
-  m_TagString: Untagged
+  m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
