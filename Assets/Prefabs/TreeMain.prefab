@@ -304,9 +304,9 @@ MonoBehaviour:
   foliageSize: 4
   foliageDensityType: 0
   foliageY: 0
-  mass: 1
+  mass: 5
   raduis: 1
-  force: 25
+  force: 50
   maxForce: 100
   timeInterval: 5
   VFXpresets:
