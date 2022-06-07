@@ -33,6 +33,8 @@ public class SlowForce : MonoBehaviour
         //breaker.GetComponent<MeshRenderer>().enabled = false;
         breaker.transform.position = transform.position;
         breaker.transform.rotation = transform.rotation;
+        breaker.GetComponent<MeshRenderer>().forceRenderingOff = true;
+        breaker.layer = 2;
         breaker.transform.localScale = new Vector3(raduis, raduis, raduis);
         var rb = breaker.AddComponent<Rigidbody>();
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;

@@ -25,7 +25,7 @@ namespace Project.Scripts.Fractures
                 MeshCollider mesh = objectsToFracture[i].AddComponent<MeshCollider>();
                 mesh.convex = true;
                 Rigidbody rigidbody = objectsToFracture[i].AddComponent<Rigidbody>();
-                rigidbody.useGravity = false;
+                rigidbody.isKinematic = true;
             }
         }
     }

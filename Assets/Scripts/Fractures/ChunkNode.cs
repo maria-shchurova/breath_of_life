@@ -111,7 +111,12 @@ namespace Project.Scripts.Fractures
 
         private void OnDrawGizmos()
         {
-            var worldCenterOfMass = transform.TransformPoint(transform.GetComponent<Rigidbody>().centerOfMass);
+            Vector3 worldCenterOfMass = Vector3.zero;
+            if (transform.GetComponent<Rigidbody>() != null)
+            {
+                worldCenterOfMass = transform.TransformPoint(transform.GetComponent<Rigidbody>().centerOfMass);
+            }
+                
             
             if (IsStatic)
             {
