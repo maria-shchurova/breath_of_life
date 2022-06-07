@@ -111,29 +111,34 @@ namespace Project.Scripts.Fractures
 
         private void OnDrawGizmos()
         {
-            var worldCenterOfMass = transform.TransformPoint(transform.GetComponent<Rigidbody>().centerOfMass);
-            
-            if (IsStatic)
+            Vector3 worldCenterOfMass = Vector3.zero;
+            if (worldCenterOfMass != null)
             {
-                Gizmos.color = Color.red;
-                Gizmos.DrawSphere(worldCenterOfMass, 0.05f);
-            }
-            else
-            {
-                Gizmos.color = Color.SetAlpha(0.5f);
-                Gizmos.DrawSphere(worldCenterOfMass, 0.1f);
-            }
-            
-            foreach (var joint in JointToChunk.Keys)
-            {
-                if (joint)
+                worldCenterOfMass = transform.TransformPoint(transform.GetComponent<Rigidbody>().centerOfMass);
+
+                if (IsStatic)
                 {
-                    var from = transform.TransformPoint(rb.centerOfMass);
-                    var to = joint.connectedBody.transform.TransformPoint(joint.connectedBody.centerOfMass);
-                    Gizmos.color = Color;
-                    Gizmos.DrawLine(from, to);
+                    Gizmos.color = Color.red;
+                    Gizmos.DrawSphere(worldCenterOfMass, 0.05f);
+                }
+                else
+                {
+                    Gizmos.color = Color.SetAlpha(0.5f);
+                    Gizmos.DrawSphere(worldCenterOfMass, 0.1f);
+                }
+
+                foreach (var joint in JointToChunk.Keys)
+                {
+                    if (joint)
+                    {
+                        var from = transform.TransformPoint(rb.centerOfMass);
+                        var to = joint.connectedBody.transform.TransformPoint(joint.connectedBody.centerOfMass);
+                        Gizmos.color = Color;
+                        Gizmos.DrawLine(from, to);
+                    }
                 }
             }
+                         
         }
 
         private void OnDrawGizmosSelected()

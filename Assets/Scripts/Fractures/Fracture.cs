@@ -40,6 +40,8 @@ namespace Project.Scripts.Fractures
 
             var fractureGameObject = new GameObject("Fracture");
             var fractureObjectScript = fractureGameObject.AddComponent<FractureObject>();
+            var fracturedObjectRigid = fractureGameObject.AddComponent<Rigidbody>();
+            fracturedObjectRigid.isKinematic = true;
             
             MeshFilter fractureMesh = fractureGameObject.AddComponent<MeshFilter>();
             fractureMesh.mesh = mesh;
@@ -250,7 +252,8 @@ namespace Project.Scripts.Fractures
                 var hits = Physics.OverlapSphere(worldPosition, touchRadius);
                 for (var j = 0; j < hits.Length; j++)
                 {
-                    overlaps.Add(hits[j].GetComponent<Rigidbody>());
+                    if(hits[j].gameObject.CompareTag("Fracture"))
+                        overlaps.Add(hits[j].GetComponent<Rigidbody>());
                 }
             }
 
@@ -261,6 +264,7 @@ namespace Project.Scripts.Fractures
                     var joint = overlap.gameObject.AddComponent<FixedJoint>();
                     joint.connectedBody = rb;
                     joint.breakForce = jointBreakForce;
+                    Debug.Log(joint.breakForce);
                 }
             }
         }

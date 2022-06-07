@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Project.Scripts.Fractures;
 
 public class FractureObject : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class FractureObject : MonoBehaviour
     // Start is called before the first frame update
     public void Starting()
     {
+        jointBreakForce = FindObjectOfType<FractureThis>().internalStrength;
         Debug.Log("RunningChunkStuff");
         InitFracture();
     }
@@ -146,7 +148,7 @@ public class FractureObject : MonoBehaviour
             chunk.GetComponent<MeshRenderer>().enabled = true;
         }
 
-        
+
         foreach (ContactPoint contact in contactPoints)
         {
             Collider[] colliders = Physics.OverlapSphere(contact.point, 0.3f);
@@ -195,7 +197,7 @@ public class FractureObject : MonoBehaviour
         {
             impulse = mass * collision.relativeVelocity;
         }
-        
+
         force = (impulse * Vector3.Dot(impulse.normalized, normal.normalized)).magnitude;
     }
 
@@ -208,7 +210,7 @@ public class FractureObject : MonoBehaviour
             ActivateFracture(impulse);
 
             if (onBreakSound)
-                if(!GetComponent<AudioSource>())
+                if (!GetComponent<AudioSource>())
                     AudioSource.PlayClipAtPoint(onBreakSound, transform.position);
                 else
                     GetComponent<AudioSource>().PlayOneShot(onBreakSound);
@@ -229,7 +231,7 @@ public class FractureObject : MonoBehaviour
 
     void OnJointRemove(Rigidbody rigidbody)
     {
-        foreach (ChunkRuntimeInfo chunk in GetComponentsInChildren<ChunkRuntimeInfo>())
-            chunk.OnJointRemove(rigidbody);
+        //foreach (ChunkRuntimeInfo chunk in GetComponentsInChildren<ChunkRuntimeInfo>())
+        //chunk.OnJointRemove(rigidbody);
     }
 }

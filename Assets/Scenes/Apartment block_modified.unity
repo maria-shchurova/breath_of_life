@@ -1248,10 +1248,10 @@ MonoBehaviour:
   leafPrefab: {fileID: 2503682686998312604, guid: fb6de8fca1ef3ec4f92cb3f74dec135c, type: 3}
   flowerPrefab: {fileID: 2435367529418233688, guid: cb549a15fb3c67a4093ac3de78c2dfb9, type: 3}
   wantBlossoms: 1
-  mass: 0.5
+  mass: 5
   raduis: 0.5
-  force: 5
-  maxForce: 15
+  force: 20
+  maxForce: 50
   timeInterval: 5
 --- !u!4 &762264514
 Transform:

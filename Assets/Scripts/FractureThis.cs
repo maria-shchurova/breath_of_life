@@ -5,10 +5,10 @@ namespace Project.Scripts.Fractures
 {
     public class FractureThis : MonoBehaviour
     {
-        [SerializeField] private Anchor anchor = Anchor.Bottom;
-        [SerializeField] public int chunks = 10;
-        [SerializeField] public float density = 50;
-        [SerializeField] public float internalStrength = 100;
+        private Anchor anchor = Anchor.Bottom;
+        public int chunks = 10;
+        public float density = 50;
+        public float internalStrength = 100;
             
         private Material insideMaterial;
         private Material outsideMaterial;
