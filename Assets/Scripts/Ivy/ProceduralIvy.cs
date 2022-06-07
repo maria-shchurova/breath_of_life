@@ -23,6 +23,8 @@ public class ProceduralIvy : MonoBehaviour {
     public bool wantBlossoms;
     int ivyCount = 0;
 
+    [SerializeField] GameObject GrowthAreaPrefab;
+
     [Header("Breaking force")]
     [SerializeField] float mass = 1.5f;
     [SerializeField] float raduis = 0.05f;
@@ -30,6 +32,7 @@ public class ProceduralIvy : MonoBehaviour {
     [SerializeField] float maxForce = 5.5f;
 
     [SerializeField] float timeInterval = 5;
+
 
     void Update() {
 
@@ -57,13 +60,17 @@ public class ProceduralIvy : MonoBehaviour {
     }
 
     public void createIvy(RaycastHit hit) {
+        
+        if(GardeningControl.FirstPlantsIsPlaced == false)
+        {
+            Instantiate(GrowthAreaPrefab, hit.point, Quaternion.identity);
 
-        var breaker = Instantiate(new GameObject(), hit.point + hit.normal, Quaternion.identity);
-        Vector3 direction = hit.point - breaker.transform.position;
-        var destroyer = breaker.AddComponent<SlowForce>();
-        destroyer.Init(mass, raduis, force, maxForce, timeInterval, direction);
+            var breaker = Instantiate(new GameObject(), hit.point + hit.normal, Quaternion.identity);
+            Vector3 direction = hit.point - breaker.transform.position;
+            var destroyer = breaker.AddComponent<SlowForce>();
+            destroyer.Init(mass, raduis, force, maxForce, timeInterval, direction);
 
-        Vector3 tangent = findTangentFromArbitraryNormal(hit.normal);
+            Vector3 tangent = findTangentFromArbitraryNormal(hit.normal);
             GameObject ivy = new GameObject("Ivy " + ivyCount);
             //ivy.tag = "Ivy"; 
             ivy.transform.SetParent(transform);
@@ -79,8 +86,8 @@ public class ProceduralIvy : MonoBehaviour {
                 }
                 else
                 {
-                    var leafMaterial = leafMaterials[Random.Range(0, leafMaterials.Length-1)];
-                    var flowerMaterial = flowerMaterials[Random.Range(0, flowerMaterials.Length-1)];
+                    var leafMaterial = leafMaterials[Random.Range(0, leafMaterials.Length - 1)];
+                    var flowerMaterial = flowerMaterials[Random.Range(0, flowerMaterials.Length - 1)];
 
                     b.init(nodes, branchRadius, branchMaterial, leafMaterial, leafPrefab, flowerMaterial, flowerPrefab, i == 0);
                 }
@@ -88,6 +95,49 @@ public class ProceduralIvy : MonoBehaviour {
             }
 
             ivyCount++;
+
+            GardeningControl.FirstPlantsIsPlaced = true;
+        }
+        else
+        {
+            if(hit.transform.CompareTag("GrowthArea"))
+            {
+                Instantiate(GrowthAreaPrefab, hit.point, Quaternion.identity);
+
+                var breaker = Instantiate(new GameObject(), hit.point + hit.normal, Quaternion.identity);
+                Vector3 direction = hit.point - breaker.transform.position;
+                var destroyer = breaker.AddComponent<SlowForce>();
+                destroyer.Init(mass, raduis, force, maxForce, timeInterval, direction);
+
+                Vector3 tangent = findTangentFromArbitraryNormal(hit.normal);
+                GameObject ivy = new GameObject("Ivy " + ivyCount);
+                //ivy.tag = "Ivy"; 
+                ivy.transform.SetParent(transform);
+                for (int i = 0; i < branches; i++)
+                {
+                    Vector3 dir = Quaternion.AngleAxis(360 / branches * i + Random.Range(0, 360 / branches), hit.normal) * tangent;
+                    List<IvyNode> nodes = createBranch(maxPointsForBranch, hit.point, hit.normal, dir);
+                    GameObject branch = new GameObject("Branch " + i);
+                    Branch b = branch.AddComponent<Branch>();
+                    if (!wantBlossoms)
+                    {
+                        b.init(nodes, branchRadius, branchMaterial);
+                    }
+                    else
+                    {
+                        var leafMaterial = leafMaterials[Random.Range(0, leafMaterials.Length - 1)];
+                        var flowerMaterial = flowerMaterials[Random.Range(0, flowerMaterials.Length - 1)];
+
+                        b.init(nodes, branchRadius, branchMaterial, leafMaterial, leafPrefab, flowerMaterial, flowerPrefab, i == 0);
+                    }
+                    branch.transform.SetParent(ivy.transform);
+                }
+
+                ivyCount++;
+            }
+        }
+
+
         //}
         //else
         //    return;
