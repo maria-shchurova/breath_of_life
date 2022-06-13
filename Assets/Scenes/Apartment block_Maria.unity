@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07953173, g: 0.07080406, b: 0.06558347, a: 1}
+  m_IndirectSpecularColor: {r: 0.0795272, g: 0.0708009, b: 0.065580755, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1125,11 +1125,9 @@ MonoBehaviour:
   branchRadius: 0.01
   branchMaterial: {fileID: 2100000, guid: 5866d69ecdd3d834a96f6c0896112c48, type: 2}
   leafMaterials:
-  - {fileID: 2100000, guid: 6a716c25d5926c34e8394a3b2a52707b, type: 2}
-  - {fileID: 2100000, guid: 6879205e8ae89c74c8bec42b7abfcebc, type: 2}
+  - {fileID: 2100000, guid: cc5cf9d7eed4bc44fa0d84df88cfa2b0, type: 2}
   flowerMaterials:
   - {fileID: 2100000, guid: 505875972f1ff3a48a35963a497b8c50, type: 2}
-  - {fileID: 2100000, guid: daa0bcf2d64ac7c4f92e80c6b555d485, type: 2}
   leafPrefab: {fileID: 2503682686998312604, guid: fb6de8fca1ef3ec4f92cb3f74dec135c, type: 3}
   flowerPrefab: {fileID: 2435367529418233688, guid: cb549a15fb3c67a4093ac3de78c2dfb9, type: 3}
   wantBlossoms: 1
@@ -4572,6 +4570,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7180702215963643661, guid: 9bd686cd746800f4cb4782ab910929ba, type: 3}
       propertyPath: prefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8259438907799079609, guid: 179989d665eadf5438f3e36bc78d166d, type: 3}
+    - target: {fileID: 7180702215963643661, guid: 9bd686cd746800f4cb4782ab910929ba, type: 3}
+      propertyPath: prefabs.Array.data[1]
       value: 
       objectReference: {fileID: 8259438907799079609, guid: 179989d665eadf5438f3e36bc78d166d, type: 3}
     m_RemovedComponents: []

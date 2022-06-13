@@ -4330,7 +4330,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614801}
   - {fileID: 8926484042661615224}
   dataType: 0
-  capacity: 2000
+  capacity: 500
   stripCapacity: 1
   particlePerStripCount: 128
   needsComputeBounds: 0
@@ -10735,7 +10735,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.405
+      m_SerializableObject: 0.061
     m_Space: 2147483647
   m_Property:
     name: Blend

@@ -270,7 +270,7 @@ MonoBehaviour:
     growthAngleMin: -15
     growthAngleMax: 10
     growthAngleScale: 4
-    branchingAngle: 0
+    branchingAngle: 45
     heightSegments: 16
     radialSegments: 8
     bendDegree: 0.125
@@ -278,7 +278,7 @@ MonoBehaviour:
   length: 0.5
   radius: 0.05
   isOnGround: 0
-  TreeType: 1
+  TreeType: 3
 --- !u!114 &6939019604014353118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,7 +312,7 @@ MonoBehaviour:
   VFXpresets:
   - {fileID: 8926484042661614526, guid: a2ccbe279a7092f429865e09e8f29fab, type: 3}
   - {fileID: 8926484042661614526, guid: 66f76d18609537c4784f63c4faf0ecbb, type: 3}
-  - {fileID: 8926484042661614526, guid: eeb84abece26fb04ba71ba9b1768aa5a, type: 3}
+  - {fileID: 8926484042661614526, guid: b6690a4a059ee6a44be25ec6c2326391, type: 3}
   - {fileID: 8926484042661614526, guid: ba20cb9f5d9715845b01950242c2a245, type: 3}
 --- !u!64 &3460996801557680953
 MeshCollider:
@@ -370,7 +370,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8687873960827775554}
   m_Enabled: 1
-  m_Asset: {fileID: 0}
+  m_Asset: {fileID: 8926484042661614526, guid: a2ccbe279a7092f429865e09e8f29fab, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
