@@ -18,7 +18,7 @@ namespace Project.Scripts.Fractures
         private void Start()
         {         
             outsideMaterial = gameObject.GetComponent<MeshRenderer>().materials[0];
-            Debug.LogWarning(gameObject.name + " : " + outsideMaterial);
+            //Debug.LogWarning(gameObject.name + " : " + outsideMaterial);
 
             if(gameObject.GetComponent<MeshRenderer>().materials.Length > 1)
                 insideMaterial = gameObject.GetComponent<MeshRenderer>().materials[1];

@@ -138,6 +138,9 @@ public class FractureObject : MonoBehaviour
         Destroy(GetComponent<MeshRenderer>());
         Destroy(GetComponent<ConstantForce>());
         Destroy(GetComponent<Rigidbody>());
+        RuntimeFracture fractureScript = FindObjectOfType<RuntimeFracture>();
+        fractureScript.brokenObjects ++;
+
         foreach (Collider rootCollider in GetComponents<Collider>())
             Destroy(rootCollider);
 

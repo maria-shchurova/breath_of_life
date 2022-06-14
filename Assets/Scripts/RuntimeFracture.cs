@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Project.Scripts.Fractures
-{  
+{
     public class RuntimeFracture : MonoBehaviour
     {
         [SerializeField] int setChunks = 10;
         [SerializeField] float setDensity = 50;
         [SerializeField] float setInternalStrength = 100;
+        public float brokenPercentage;
+        public float brokenObjects;
+        float totalObjects;
 
-        GameObject[] objectsToFracture;
+        GameObject[] objectsToFracture; //size of this is number of breakable objects
+
 
         private void Start()
         {
@@ -27,6 +31,12 @@ namespace Project.Scripts.Fractures
                 Rigidbody rigidbody = objectsToFracture[i].AddComponent<Rigidbody>();
                 rigidbody.isKinematic = true;
             }
+            totalObjects = objectsToFracture.Length;
+            Debug.LogWarning("number of objects: " + objectsToFracture.Length);
+        }
+        private void Update()
+        {
+            brokenPercentage = (brokenObjects / totalObjects) * 100;
         }
     }
 }
