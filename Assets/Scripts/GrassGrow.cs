@@ -7,11 +7,14 @@ public class GrassGrow : MonoBehaviour
     const string AMOUNT = "_Amount";
     public float currentAmount = -1;
     public float growthSpeed = 0.5f;
+    float maxSize = 1;
+    float grassSize;
 
     Material material;
     // Start is called before the first frame update
     void Start()
     {
+        grassSize = Random.Range(0.8f, 1.2f);
         transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 
         material = GetComponent<MeshRenderer>().material;
@@ -22,9 +25,19 @@ public class GrassGrow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.localScale.x <= 1)
+        if(transform.localScale.x <= maxSize)
         {
             transform.localScale += new Vector3(0.01f * Time.deltaTime, 0.01f * Time.deltaTime, 0.01f * Time.deltaTime);
+        }
+
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.up, out hit) && hit.point.y - transform.position.y < grassSize)
+        {
+            maxSize = hit.point.y - transform.position.y;
+        }
+        else
+        {
+            maxSize = grassSize;
         }
 
         if(currentAmount < 1)
