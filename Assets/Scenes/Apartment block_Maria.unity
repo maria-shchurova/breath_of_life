@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0795272, g: 0.0708009, b: 0.065580755, a: 1}
+  m_IndirectSpecularColor: {r: 0.0795635, g: 0.07081485, b: 0.06560299, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1119,9 +1119,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 447004462}
   recycleInterval: 5
-  branches: 5
-  maxPointsForBranch: 15
-  segmentLength: 0.07
+  branches: 8
+  maxPointsForBranch: 20
+  segmentLength: 0.1
   branchRadius: 0.01
   branchMaterial: {fileID: 2100000, guid: 5866d69ecdd3d834a96f6c0896112c48, type: 2}
   leafMaterials:
@@ -1136,6 +1136,7 @@ MonoBehaviour:
   force: 20
   maxForce: 50
   timeInterval: 5
+  impactEffect: {fileID: 5992617932142173105, guid: 52825030eba9e0446995b7fbfbec3d02, type: 3}
 --- !u!4 &762264514
 Transform:
   m_ObjectHideFlags: 0
@@ -2542,6 +2543,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5311184728394210598, guid: fbc4bbf14f2c89440bb4edc9d74dbb85, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311184728394210598, guid: fbc4bbf14f2c89440bb4edc9d74dbb85, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311184728394210598, guid: fbc4bbf14f2c89440bb4edc9d74dbb85, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 7862553852818688143, guid: fbc4bbf14f2c89440bb4edc9d74dbb85, type: 3}
       propertyPath: m_Name
       value: SelectGrass
@@ -3289,6 +3302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grassSpawner: {fileID: 2033878958076282687, guid: 8baff0e585a475f44986c6e78bc70b2e, type: 3}
   grassParent: {fileID: 517662089}
+  impactEffect: {fileID: 5992617932142173105, guid: 52825030eba9e0446995b7fbfbec3d02, type: 3}
 --- !u!1 &1713597417
 GameObject:
   m_ObjectHideFlags: 0

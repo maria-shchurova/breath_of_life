@@ -32,6 +32,7 @@ public class ProceduralIvy : MonoBehaviour {
     [SerializeField] float maxForce = 5.5f;
 
     [SerializeField] float timeInterval = 5;
+    [SerializeField] GameObject impactEffect;
 
 
     void Update() {
@@ -60,7 +61,8 @@ public class ProceduralIvy : MonoBehaviour {
     }
 
     public void createIvy(RaycastHit hit) {
-       
+        Instantiate(impactEffect, hit.point, Quaternion.identity);
+
         var breaker = Instantiate(new GameObject(), hit.point + hit.normal, Quaternion.identity);
         Vector3 direction = hit.point - breaker.transform.position;
         var destroyer = breaker.AddComponent<SlowForce>();

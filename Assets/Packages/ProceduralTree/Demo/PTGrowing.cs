@@ -89,12 +89,21 @@ namespace ProceduralModeling {
 			material.SetFloat(kGrowingKey, 1f);
 			gameObject.AddComponent<MeshCollider>();
 
-			var height = GetComponent<ProceduralTree>().length;
+			createBreaker(5);
+		}
 
-			var breaker = Instantiate(new GameObject(), transform.position + Vector3.up * height, Quaternion.identity);
-			Vector3 direction = Vector3.up;
-			var destroyer = breaker.AddComponent<SlowForce>();
-			destroyer.Init(mass, raduis, force, maxForce, timeInterval, direction);
+		void  createBreaker(int  amount)
+        {
+			for(int i = 0; i  <=amount; i++)
+            {
+				var height = GetComponent<ProceduralTree>().length;
+
+				var breaker = Instantiate(new GameObject(), transform.position + Vector3.up * height, Quaternion.identity);
+				Vector3 direction = Vector3.up;
+				var destroyer = breaker.AddComponent<SlowForce>();
+				destroyer.Init(mass, raduis, force, maxForce, timeInterval, direction);
+			}
+
 		}
 
         private void Update()

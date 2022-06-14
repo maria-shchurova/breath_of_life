@@ -301,6 +301,7 @@ MonoBehaviour:
   VFsize:
   - {fileID: 8603469525096896022}
   - {fileID: 9078745156702898387}
+  impactEffect: {fileID: 5992617932142173105, guid: 52825030eba9e0446995b7fbfbec3d02, type: 3}
   foliageSize: 4
   foliageDensityType: 0
   foliageY: 0

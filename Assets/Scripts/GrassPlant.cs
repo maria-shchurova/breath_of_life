@@ -6,6 +6,7 @@ public class GrassPlant : MonoBehaviour
 {
     [SerializeField] GameObject grassSpawner;
     [SerializeField] GameObject grassParent;
+    [SerializeField] GameObject impactEffect;
 
     void Update()
     {
@@ -13,8 +14,10 @@ public class GrassPlant : MonoBehaviour
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
+
             if (Physics.Raycast(ray, out hit, 100))
             {
+                Instantiate(impactEffect, hit.point, Quaternion.identity);
                 SpawnGrass(hit);
             }
         }
