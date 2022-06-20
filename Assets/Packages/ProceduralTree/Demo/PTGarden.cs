@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Linq;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -10,6 +10,14 @@ namespace ProceduralModeling {
 
 		[SerializeField] Camera cam;
 		[SerializeField] List<GameObject> prefabs;
+		[SerializeField] List<Vector3> TreesOnScene  = new List<Vector3>();
+		[SerializeField] float MinimalDistanceBetweenTrees;
+		[SerializeField] float clickingCooldown; //to  avoid spamming
+		float timeSinceClick; //to  avoid spamming
+		bool readyToPlant = true; //to  avoid spamming
+		bool CanGrow;
+		bool isFirst = true;
+
 		[SerializeField] Vector2 scaleRange = new Vector2(1f, 1.2f);
 
 		const string SHADER_PATH = "Hidden/Internal-Colored";
@@ -25,6 +33,12 @@ namespace ProceduralModeling {
 		Quaternion rotation;
 
 		void Update () {
+			timeSinceClick += Time.deltaTime;
+			if (timeSinceClick >= clickingCooldown)
+            {
+				readyToPlant = true;
+			}
+
 			var mouse = Input.mousePosition;
 			var ray = cam.ScreenPointToRay(mouse);
 			RaycastHit info;
@@ -42,17 +56,53 @@ namespace ProceduralModeling {
 				rotation = Quaternion.LookRotation(normal);
 			}
 
-			if(Input.GetMouseButtonUp(0) && hit) {
-				var go = Instantiate(prefabs[Random.Range(0, prefabs.Count)]) as GameObject;
-				go.transform.position = point;
-				go.transform.localScale = Vector3.one * Random.Range(scaleRange.x, scaleRange.y);
-				go.transform.localRotation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);
-				//check hit area conditions
+			if(Input.GetMouseButtonUp(0) && hit && readyToPlant) {				
 
-				//
-				var tree = go.GetComponent<ProceduralTree>();
-				tree.isOnGround = CompareTag("Ground");
-				tree.Data.randomSeed = Random.Range(0, 300);
+				if (isFirst)
+                {
+					timeSinceClick = 0;
+					readyToPlant = false;
+					var go = Instantiate(prefabs[Random.Range(0, prefabs.Count)]) as GameObject;
+					go.transform.position = point;
+					go.transform.localScale = Vector3.one * Random.Range(scaleRange.x, scaleRange.y);
+					go.transform.localRotation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);
+					//check hit area conditions
+
+					//
+					var tree = go.GetComponent<ProceduralTree>();
+					tree.isOnGround = CompareTag("Ground");
+					tree.Data.randomSeed = Random.Range(0, 300);
+					isFirst = false;
+				}
+				else
+                {
+					foreach (Vector3 t in TreesOnScene.ToList())
+					{
+						if (Vector3.Distance(point, t) > MinimalDistanceBetweenTrees) //if  at least 1  of tips  is close  to  the hit point
+						{
+							CanGrow = true;
+						}
+					}
+
+					if (CanGrow)
+					{
+						timeSinceClick = 0;
+						readyToPlant = false;
+						var go = Instantiate(prefabs[Random.Range(0, prefabs.Count)]) as GameObject;
+						go.transform.position = point;
+						go.transform.localScale = Vector3.one * Random.Range(scaleRange.x, scaleRange.y);
+						go.transform.localRotation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);
+						//check hit area conditions
+
+						//
+						var tree = go.GetComponent<ProceduralTree>();
+						tree.isOnGround = CompareTag("Ground");
+						tree.Data.randomSeed = Random.Range(0, 300);
+
+						CanGrow = false;
+					}
+				}
+
 			}
 
 		}
@@ -62,6 +112,11 @@ namespace ProceduralModeling {
 		const float radius = 0.5f;
 		Color color = new Color(0.6f, 0.75f, 1f);
 
+
+		public void AddTreeToList(Vector3 tree)
+        {
+			TreesOnScene.Add(tree);
+        }
 		void OnRenderObject () {
 			if(!hit) return;
 

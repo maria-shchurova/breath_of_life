@@ -65,14 +65,12 @@ public class ProceduralIvy : MonoBehaviour {
                 }
                 else
                 {
-
                     foreach(Vector3 tip in branchesTips.ToList())
                     {
                         if (Vector3.Distance(hit.point, tip) < MaxDistanceBetweenSprouts) //if  at least 1  of tips  is close  to  the hit point
                         {
                             canGrow = true;
-                        }
-                            
+                        }                            
                     }
                     if(canGrow)
                     {

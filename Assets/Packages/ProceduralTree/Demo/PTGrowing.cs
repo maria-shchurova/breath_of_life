@@ -33,6 +33,7 @@ namespace ProceduralModeling {
 		[SerializeField] float timeInterval = 5;
 		public VisualEffectAsset[] VFXpresets;
 
+		PTGarden mainObject;
 		void OnEnable () {
 			material = GetComponent<MeshRenderer>().material;
 			thisTree = GetComponent<ProceduralTree>();
@@ -40,11 +41,13 @@ namespace ProceduralModeling {
 			foreach (VisualEffect vf in VF)
             {
 				vf.playRate = 0;
-			}
-			
+			}			
 		}
 
 		void Start () {
+			mainObject = FindObjectOfType<PTGarden>();
+			mainObject.AddTreeToList(transform.position);
+
 			transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 			switch(thisTree.TreeType)
             {
