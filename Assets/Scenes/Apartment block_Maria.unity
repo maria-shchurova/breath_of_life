@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.092654526, g: 0.084974945, b: 0.082054794, a: 1}
+  m_IndirectSpecularColor: {r: 0.09265959, g: 0.084988594, b: 0.08207959, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2443,7 +2443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7862553852818688143, guid: fbc4bbf14f2c89440bb4edc9d74dbb85, type: 3}
       propertyPath: m_Name
-      value: SelectGrass
+      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 8174494489018470903, guid: fbc4bbf14f2c89440bb4edc9d74dbb85, type: 3}
       propertyPath: m_AnchorMax.y
