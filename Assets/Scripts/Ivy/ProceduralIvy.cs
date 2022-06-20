@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ProceduralIvy : MonoBehaviour {
@@ -23,7 +24,7 @@ public class ProceduralIvy : MonoBehaviour {
     public bool wantBlossoms;
     int ivyCount = 0;
 
-    //[SerializeField] GameObject GrowthAreaPrefab;
+    [SerializeField] List<Vector3> branchesTips  =  new List<Vector3>();
 
     [Header("Breaking force")]
     [SerializeField] float mass = 1.5f;
@@ -34,6 +35,16 @@ public class ProceduralIvy : MonoBehaviour {
     [SerializeField] float timeInterval = 5;
     [SerializeField] GameObject impactEffect;
 
+
+    [SerializeField] float MaxDistanceBetweenSprouts;
+    [SerializeField] bool isFirst =  true;
+    [SerializeField] bool canGrow;
+
+    public void AddNodeToList(IvyNode node)
+    {
+        var pos = node.getPosition();
+        branchesTips.Add(pos); //adding the end of each branch  to calculate position to  it later
+    }
 
     void Update() {
 
@@ -46,7 +57,30 @@ public class ProceduralIvy : MonoBehaviour {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100)) {
-                createIvy(hit);
+                if(isFirst)
+                {
+                    Instantiate(impactEffect, hit.point, Quaternion.identity);
+                    createIvy(hit);
+                    isFirst = false;
+                }
+                else
+                {
+
+                    foreach(Vector3 tip in branchesTips.ToList())
+                    {
+                        if (Vector3.Distance(hit.point, tip) < MaxDistanceBetweenSprouts) //if  at least 1  of tips  is close  to  the hit point
+                        {
+                            canGrow = true;
+                        }
+                            
+                    }
+                    if(canGrow)
+                    {
+                        Instantiate(impactEffect, hit.point, Quaternion.identity);
+                        createIvy(hit);
+                        canGrow = false;
+                    }
+                }
             }
         }
     }
@@ -61,8 +95,6 @@ public class ProceduralIvy : MonoBehaviour {
     }
 
     public void createIvy(RaycastHit hit) {
-        Instantiate(impactEffect, hit.point, Quaternion.identity);
-
         var breaker = Instantiate(new GameObject(), hit.point + hit.normal, Quaternion.identity);
         Vector3 direction = hit.point - breaker.transform.position;
         var destroyer = breaker.AddComponent<SlowForce>();
@@ -70,7 +102,7 @@ public class ProceduralIvy : MonoBehaviour {
 
         Vector3 tangent = findTangentFromArbitraryNormal(hit.normal);
         GameObject ivy = new GameObject("Ivy " + ivyCount);
-        //ivy.tag = "Ivy"; 
+
         ivy.transform.SetParent(transform);
         for (int i = 0; i < branches; i++)
         {
@@ -93,6 +125,7 @@ public class ProceduralIvy : MonoBehaviour {
         }
 
         ivyCount++;
+       
     }
 
     Vector3 calculateTangent(Vector3 p0, Vector3 p1, Vector3 normal) {

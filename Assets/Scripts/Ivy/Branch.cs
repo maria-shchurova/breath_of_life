@@ -6,6 +6,7 @@ public class Branch : MonoBehaviour {
     const string RADIUS = "_Radius";
     const float MAX = 0.5f;
 
+    ProceduralIvy mainObject;
     List<IvyNode> branchNodes;
 
     Mesh mesh;
@@ -31,6 +32,9 @@ public class Branch : MonoBehaviour {
         this.branchRadius = branchRadius;
         this.material = new Material(material);
         mesh = createMesh(branchNodes);
+
+        mainObject = FindObjectOfType<ProceduralIvy>();
+        mainObject.AddNodeToList(branchNodes[branchNodes.Count - 1]);
     }
 
     public void init(List<IvyNode> branchNodes, float branchRadius, Material material, Material leafMaterial, Blossom leafPrefab, Material flowerMaterial, Blossom flowerPrefab, bool isFirst) {
@@ -45,7 +49,11 @@ public class Branch : MonoBehaviour {
         this.flowerPrefab = flowerPrefab;
         this.wantBlossoms = true;
         blossoms = createBlossoms(branchNodes, isFirst);
+
+        mainObject = FindObjectOfType<ProceduralIvy>();
+        mainObject.AddNodeToList(branchNodes[branchNodes.Count - 1]);
     }
+
 
     void Start() {
         meshFilter = gameObject.AddComponent<MeshFilter>();
@@ -194,12 +202,6 @@ public class Branch : MonoBehaviour {
                     b.init(isFlower ? flowerMaterial : leafMaterial);
                     b.transform.SetParent(transform);
                     bls.Add(i, b);
-
-                    //if (i == 0)
-                    //{
-                    //    var breaker = Instantiate(new GameObject(), nodes[i].getPosition() + nodes[i].getNormal(), rotation);
-                    //    breaker.AddComponent<SlowForce>();
-                    //}
                 }
             }
 
