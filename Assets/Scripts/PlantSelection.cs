@@ -4,9 +4,7 @@ using ProceduralModeling;
 
 public class PlantSelection : MonoBehaviour
 {
-    public Image IvySprite;
-    public Image TreeSprite;
-    public Image GrassSprite;
+    GameObject[] tools;
 
     PTGarden[] treeTool;
     ProceduralIvy ivyTool;
@@ -14,29 +12,24 @@ public class PlantSelection : MonoBehaviour
 
     private void Start()
     {
+        tools = new GameObject[3] { GameObject.Find("Ivy"), GameObject.Find("Tree"), GameObject.Find("Grass") };
+
         treeTool = FindObjectsOfType<PTGarden>();
         ivyTool = FindObjectOfType<ProceduralIvy>();
         grassTool = FindObjectOfType<GrassPlant>();
 
-
-        IvySprite.color = new Color(1, 1, 1, 1f);
-        TreeSprite.color = new Color(1, 1, 1, 0.5f);
-        GrassSprite.color = new Color(1, 1, 1, 0.5f);
-        ivyTool.enabled = true;
-        grassTool.enabled = false;
-
+        Select(0);
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            Select(0);
+            
+
             ivyTool.enabled = true;
             grassTool.enabled = false;
-
-            IvySprite.color = new Color(1, 1, 1, 1f);
-            TreeSprite.color = new Color(1, 1, 1, 0.5f);
-            GrassSprite.color = new Color(1, 1, 1, 0.5f);
 
             foreach (PTGarden surfaces in treeTool)
             {
@@ -44,14 +37,13 @@ public class PlantSelection : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            Select(1);
+            
+
             ivyTool.enabled = false;
             grassTool.enabled = false;
-
-            IvySprite.color = new Color(1, 1, 1, 0.5f);
-            TreeSprite.color = new Color(1, 1, 1, 1f);
-            GrassSprite.color = new Color(1, 1, 1, 0.5f);
 
             foreach (PTGarden surfaces in treeTool)
             {
@@ -59,23 +51,43 @@ public class PlantSelection : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            Select(2);
+            
+
             grassTool.enabled = true;
             ivyTool.enabled = false;
-
-            IvySprite.color = new Color(1, 1, 1, 0.5f);
-            TreeSprite.color = new Color(1, 1, 1, 0.5f);
-            GrassSprite.color = new Color(1, 1, 1, 1f);
 
             foreach (PTGarden surfaces in treeTool)
             {
                 surfaces.enabled = false;
             }
         }
-
-
     }
 
+    void Select(int tool)
+    {
+        for(int i = 0; i < tools.Length; i ++)
+        {
+            if(i > tool)
+            {
+                tools[i].transform.localPosition = new Vector3(i*50 + 50, 0);
+            }
+            else if(i <= tool)
+            {
+                tools[i].transform.localPosition = new Vector3(i * 50, 0);
+            }
 
+            ResetTriggers(tools[i]);
+            tools[i].GetComponentInChildren<Animator>().SetTrigger(tools[tool].name);
+        }        
+    }
+
+    void ResetTriggers(GameObject toolReset)
+    {
+        toolReset.GetComponentInChildren<Animator>().ResetTrigger("Ivy");
+        toolReset.GetComponentInChildren<Animator>().ResetTrigger("Grass");
+        toolReset.GetComponentInChildren<Animator>().ResetTrigger("Tree");
+    }
 }
