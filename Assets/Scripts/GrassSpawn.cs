@@ -10,6 +10,7 @@ public class GrassSpawn: MonoBehaviour
     [SerializeField] int grassPerSpot;
     [SerializeField] float spawnInterval;
     [SerializeField] GameObject grass;
+    [SerializeField] Material grassMaterial;
 
     // Update is called once per frame
     void Update()
@@ -25,8 +26,12 @@ public class GrassSpawn: MonoBehaviour
             {
                 if(hit.transform.CompareTag("Ground"))
                 {
-                    GameObject.Instantiate(grass, new Vector3(spawnX, hit.point.y, spawnZ), Quaternion.identity, transform);
-                    grassCount++;
+                    if(grass != null)
+                    {
+                        Instantiate(grass, new Vector3(spawnX, hit.point.y, spawnZ), Quaternion.identity, transform);
+                        grass.GetComponent<MeshRenderer>().material = grassMaterial;
+                        grassCount++;
+                    }
                 }               
             }
             

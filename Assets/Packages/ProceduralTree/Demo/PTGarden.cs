@@ -9,7 +9,7 @@ namespace ProceduralModeling {
 	public class PTGarden : MonoBehaviour {
 
 		[SerializeField] Camera cam;
-		[SerializeField] List<GameObject> prefabs;
+		public List<GameObject> prefabs;
 		[SerializeField] List<Vector3> TreesOnScene  = new List<Vector3>();
 		[SerializeField] float MinimalDistanceBetweenTrees;
 		[SerializeField] float clickingCooldown; //to  avoid spamming

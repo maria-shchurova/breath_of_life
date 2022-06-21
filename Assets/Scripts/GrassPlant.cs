@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GrassPlant : MonoBehaviour
 {
-    [SerializeField] GameObject grassSpawner;
+    public GameObject grassSpawner;
     [SerializeField] GameObject grassParent;
     [SerializeField] GameObject impactEffect;
 
@@ -25,6 +25,6 @@ public class GrassPlant : MonoBehaviour
 
     void SpawnGrass(RaycastHit place)
     {
-        GameObject.Instantiate(grassSpawner, place.point, new Quaternion(), grassParent.transform);
+        Instantiate(grassSpawner, place.point, new Quaternion(), grassParent.transform);
     }
 }

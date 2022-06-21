@@ -401,6 +401,21 @@ MonoBehaviour:
   SpringSun: {fileID: 1375981971}
   SummerSun: {fileID: 1713597417}
   AutumnSun: {fileID: 2006701724}
+  grassSpring: {fileID: 2033878958076282687, guid: ee115b8b3cbfba74ea9f52a5c135850f, type: 3}
+  grassSummer: {fileID: 2033878958076282687, guid: 21ec70ef07f257b49b812f9ee15549bc, type: 3}
+  grassAutumn: {fileID: 2033878958076282687, guid: 8baff0e585a475f44986c6e78bc70b2e, type: 3}
+  ivySpringMaterials:
+  - {fileID: 2100000, guid: 6879205e8ae89c74c8bec42b7abfcebc, type: 2}
+  ivySummerMaterials:
+  - {fileID: 2100000, guid: 6a716c25d5926c34e8394a3b2a52707b, type: 2}
+  ivyAutumnMaterials:
+  - {fileID: 2100000, guid: cc5cf9d7eed4bc44fa0d84df88cfa2b0, type: 2}
+  treeSpring:
+  - {fileID: 8259438907799079609, guid: 7cf172d1bc1c88e4aad7628717957921, type: 3}
+  treeSummer:
+  - {fileID: 8259438907799079609, guid: 504dedeb77e5aec49807aec68d290a55, type: 3}
+  treeAutumn:
+  - {fileID: 8259438907799079609, guid: 179989d665eadf5438f3e36bc78d166d, type: 3}
   debugInt: 1
 --- !u!4 &298998940
 Transform:
@@ -1204,7 +1219,7 @@ MonoBehaviour:
   branchRadius: 0.01
   branchMaterial: {fileID: 2100000, guid: 5866d69ecdd3d834a96f6c0896112c48, type: 2}
   leafMaterials:
-  - {fileID: 2100000, guid: cc5cf9d7eed4bc44fa0d84df88cfa2b0, type: 2}
+  - {fileID: 2100000, guid: 6879205e8ae89c74c8bec42b7abfcebc, type: 2}
   flowerMaterials:
   - {fileID: 2100000, guid: 505875972f1ff3a48a35963a497b8c50, type: 2}
   leafPrefab: {fileID: 2503682686998312604, guid: fb6de8fca1ef3ec4f92cb3f74dec135c, type: 3}
@@ -3493,7 +3508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05dbc93eed5be9b42b3dfc010307c11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grassSpawner: {fileID: 2033878958076282687, guid: 8baff0e585a475f44986c6e78bc70b2e, type: 3}
+  grassSpawner: {fileID: 2033878958076282687, guid: ee115b8b3cbfba74ea9f52a5c135850f, type: 3}
   grassParent: {fileID: 517662089}
   impactEffect: {fileID: 5992617932142173105, guid: 52825030eba9e0446995b7fbfbec3d02, type: 3}
 --- !u!1 &1713597417
@@ -4942,7 +4957,7 @@ PrefabInstance:
     - target: {fileID: 7180702215963643661, guid: 9bd686cd746800f4cb4782ab910929ba, type: 3}
       propertyPath: prefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 8259438907799079609, guid: 179989d665eadf5438f3e36bc78d166d, type: 3}
+      objectReference: {fileID: 8259438907799079609, guid: 7cf172d1bc1c88e4aad7628717957921, type: 3}
     - target: {fileID: 7180702215963643661, guid: 9bd686cd746800f4cb4782ab910929ba, type: 3}
       propertyPath: prefabs.Array.data[1]
       value: 

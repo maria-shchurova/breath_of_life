@@ -98,59 +98,69 @@ namespace ProceduralModeling {
 		protected override void Start()
         {
 			var lightSource = GameObject.Find("Directional Light");
-
-			if (Physics.Linecast(transform.position, lightSource.transform.position))
-			{
-				print("tree grows in shadow");
-				data.branchingAngle = 45;
-
-				if (!isOnGround)
-				{
-					TreeType = TreeTypes.UnlitNoGound;
-					generations = 4;
-					radius = 0.05f;
-					length = 0.5f;
-					data.radiusAttenuation = 0.3f;
-					data.branchesMin = 1;
-					data.branchesMax = 2;
-				}
-				else
-                {
-					TreeType = TreeTypes.UnlitOnGround;
-					radius = 0.2f;
-					length = 1.5f;
-					data.radiusAttenuation = 0.5f;
-					data.branchesMin = 2;
-					data.branchesMax = 3;
-				}
-			}
-			else
+			if(lightSource != null)
             {
-				print("tree grows in light");
-				data.branchingAngle = 0;
-
-				if (!isOnGround)
+				if (Physics.Linecast(transform.position, lightSource.transform.position))
 				{
-					TreeType = TreeTypes.LitNoGround;
-					generations = 4;
-					radius = 0.05f;
-					length = 0.5f;
-					data.radiusAttenuation = 0.3f;
-					data.branchesMin = 1;
-					data.branchesMax = 2;
+					print("tree grows in shadow");
+					data.branchingAngle = 45;
+
+					if (!isOnGround)
+					{
+						TreeType = TreeTypes.UnlitNoGound;
+						generations = 4;
+						radius = 0.05f;
+						length = 0.5f;
+						data.radiusAttenuation = 0.3f;
+						data.branchesMin = 1;
+						data.branchesMax = 2;
+					}
+					else
+					{
+						TreeType = TreeTypes.UnlitOnGround;
+						radius = 0.2f;
+						length = 1.5f;
+						data.radiusAttenuation = 0.5f;
+						data.branchesMin = 2;
+						data.branchesMax = 3;
+					}
 				}
 				else
 				{
-					TreeType = TreeTypes.LitOnGround;
-					radius = 0.25f;
-					length = 3f;
-					data.radiusAttenuation = 0.5f;
-					data.branchesMin = 2;
-					data.branchesMax = 4;
+					print("tree grows in light");
+					data.branchingAngle = 0;
+
+					if (!isOnGround)
+					{
+						TreeType = TreeTypes.LitNoGround;
+						generations = 4;
+						radius = 0.05f;
+						length = 0.5f;
+						data.radiusAttenuation = 0.3f;
+						data.branchesMin = 1;
+						data.branchesMax = 2;
+					}
+					else
+					{
+						TreeType = TreeTypes.LitOnGround;
+						radius = 0.25f;
+						length = 3f;
+						data.radiusAttenuation = 0.5f;
+						data.branchesMin = 2;
+						data.branchesMax = 4;
+					}
 				}
 			}
-
-
+			else //default  case //TODO fix this
+            {
+				TreeType = TreeTypes.LitOnGround;
+				radius = 0.25f;
+				length = 3f;
+				data.radiusAttenuation = 0.5f;
+				data.branchesMin = 2;
+				data.branchesMax = 4;
+			}
+			
 
 			base.Start();
 		}

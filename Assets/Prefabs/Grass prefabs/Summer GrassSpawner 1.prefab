@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8210166414549937633}
   - component: {fileID: 4741939636072608309}
   m_Layer: 0
-  m_Name: GrassSpawner
+  m_Name: Summer GrassSpawner 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,3 +48,4 @@ MonoBehaviour:
   grassPerSpot: 5
   spawnInterval: 1
   grass: {fileID: 709848394307112126, guid: 3ad8167b5ec122741a8eef0f0b8696a7, type: 3}
+  grassMaterial: {fileID: 2100000, guid: 073505b690057f14b9c9b85ee7af203c, type: 2}
