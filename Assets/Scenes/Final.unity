@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06554961, g: 0.07484156, b: 0.0972693, a: 1}
+  m_IndirectSpecularColor: {r: 0.06553924, g: 0.07483202, b: 0.09726119, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -416,7 +416,7 @@ MonoBehaviour:
   - {fileID: 8259438907799079609, guid: 504dedeb77e5aec49807aec68d290a55, type: 3}
   treeAutumn:
   - {fileID: 8259438907799079609, guid: 179989d665eadf5438f3e36bc78d166d, type: 3}
-  debugInt: 1
+  season: 0
 --- !u!4 &298998940
 Transform:
   m_ObjectHideFlags: 0

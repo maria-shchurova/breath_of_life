@@ -6,20 +6,22 @@ using UnityEngine.UI;
 public class ProgressTracker : MonoBehaviour
 {
     Project.Scripts.Fractures.RuntimeFracture fractureprogress;
-    Color spring;
-    Color summer;
-    Color autumn;
+    Color[] seasonColors;
     Seasons seasonManager;
+    Image blackout;
+    string season = "spring";
 
     // Start is called before the first frame update
     void Start()
     {
         fractureprogress = FindObjectOfType<Project.Scripts.Fractures.RuntimeFracture>();
         seasonManager = FindObjectOfType<Seasons>();
+        blackout = GameObject.Find("Blackout").GetComponent<Image>();
+        blackout.CrossFadeAlpha(0, 0, false);
 
-        spring = new Color(0.5882353f, 0.8823529f, 0.2745098f);
-        summer = new Color(0.3137255f, 0.8627451f, 0.1176471f);
-        autumn = new Color(0.8039216f, 0.8823529f, 0.2352941f);
+        seasonColors = new Color[] { new Color(0.5882353f, 0.8823529f, 0.2745098f), 
+                                     new Color(0.3137255f, 0.8627451f, 0.1176471f), 
+                                     new Color(0.8039216f, 0.8823529f, 0.2352941f) };
     }
 
     // Update is called once per frame
@@ -29,18 +31,30 @@ public class ProgressTracker : MonoBehaviour
 
         if(fractureprogress.brokenPercentage < 33)
         {
-            transform.GetComponent<Image>().color = spring;
-            seasonManager.season = 0;
+            if(season != "spring")
+            {
+                SeasonChange(0);
+            }
+
+            season = "spring";
         }
         else if(fractureprogress.brokenPercentage >= 33 && fractureprogress.brokenObjects < 66)
         {
-            transform.GetComponent<Image>().color = summer;
-            seasonManager.season = 1;
+            if (season != "summer")
+            {
+                SeasonChange(1);
+            }
+
+            season = "summer";
         }
         else if(fractureprogress.brokenPercentage >= 66)
         {
-            transform.GetComponent<Image>().color = autumn;
-            seasonManager.season = 2;
+            if (season != "autumn")
+            {
+                SeasonChange(2);
+            }
+
+            season = "autumn";
         }
 
         if(fractureprogress.objectsBroken)
@@ -48,5 +62,23 @@ public class ProgressTracker : MonoBehaviour
             transform.GetComponentInChildren<ParticleSystem>().Play();
             fractureprogress.objectsBroken = false;
         }
+    }
+
+    async void SeasonChange(int seasonInt)
+    {       
+        blackout.CrossFadeAlpha(1, 1, false);
+        Debug.Log("Blackout");
+
+        transform.GetComponent<Image>().color = seasonColors[seasonInt];
+        seasonManager.season = seasonInt;
+
+        await System.Threading.Tasks.Task.Delay(1500);
+        BlackFadeOut();
+    }
+
+    void BlackFadeOut()
+    {        
+        blackout.CrossFadeAlpha(0, 1, false);
+        Debug.Log("BlackoutOff " + blackout.color.a);
     }
 }
