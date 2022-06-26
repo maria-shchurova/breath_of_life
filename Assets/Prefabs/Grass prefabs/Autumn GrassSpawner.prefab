@@ -47,5 +47,5 @@ MonoBehaviour:
   radius: 2
   grassPerSpot: 5
   spawnInterval: 1
-  grass: {fileID: 709848394307112126, guid: 3ad8167b5ec122741a8eef0f0b8696a7, type: 3}
+  grass: {fileID: 3498391985927635457, guid: 383ab084bfee93e4db2d1392692f6a4f, type: 3}
   grassMaterial: {fileID: 2100000, guid: 6f99f0c235c430e469326a2b6a36e8c6, type: 2}
