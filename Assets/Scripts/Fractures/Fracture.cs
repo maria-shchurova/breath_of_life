@@ -264,7 +264,7 @@ namespace Project.Scripts.Fractures
                     var joint = overlap.gameObject.AddComponent<FixedJoint>();
                     joint.connectedBody = rb;
                     joint.breakForce = jointBreakForce;
-                    Debug.Log(joint.breakForce);
+                    //Debug.Log(joint.breakForce);
                 }
             }
         }
