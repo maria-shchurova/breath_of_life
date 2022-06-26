@@ -42,7 +42,7 @@ public class Seasons : MonoBehaviour
     [SerializeField] List<GameObject> treeSpring;
     [SerializeField] List<GameObject> treeSummer;
     [SerializeField] List<GameObject> treeAutumn;
-    public int debugInt;
+    public int season;
 
     PTGarden treeTool;
     ProceduralIvy ivyTool;
@@ -59,12 +59,12 @@ public class Seasons : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (debugInt != 2)
-                debugInt++;
+            if (season != 2)
+                season++;
             else
-                debugInt = 0;
+                season = 0;
 
-            SwitchSeason(debugInt);
+            SwitchSeason(season);
         }
     }
 
@@ -84,7 +84,7 @@ public class Seasons : MonoBehaviour
                 treeTool.prefabs = treeSpring;
                 grassTool.grassSpawner = grassSpring;
                 break;
-            case 1:
+            case 1: //Summer
                 ApplyGroundMaterial(SummerGround);
                 ActiveVolume.profile = Summer;
                 SummerSun.SetActive(true);
@@ -95,7 +95,7 @@ public class Seasons : MonoBehaviour
                 treeTool.prefabs = treeSummer;
                 grassTool.grassSpawner = grassSummer;
                 break;
-            case 2:
+            case 2: //Autumn
                 ApplyGroundMaterial(AutumnGround);
                 ActiveVolume.profile = Autumn;
                 AutumnSun.SetActive(true);

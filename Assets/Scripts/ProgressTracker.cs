@@ -9,11 +9,14 @@ public class ProgressTracker : MonoBehaviour
     Color spring;
     Color summer;
     Color autumn;
+    Seasons seasonManager;
 
     // Start is called before the first frame update
     void Start()
     {
         fractureprogress = FindObjectOfType<Project.Scripts.Fractures.RuntimeFracture>();
+        seasonManager = FindObjectOfType<Seasons>();
+
         spring = new Color(0.5882353f, 0.8823529f, 0.2745098f);
         summer = new Color(0.3137255f, 0.8627451f, 0.1176471f);
         autumn = new Color(0.8039216f, 0.8823529f, 0.2352941f);
@@ -27,14 +30,23 @@ public class ProgressTracker : MonoBehaviour
         if(fractureprogress.brokenPercentage < 33)
         {
             transform.GetComponent<Image>().color = spring;
+            seasonManager.season = 0;
         }
         else if(fractureprogress.brokenPercentage >= 33 && fractureprogress.brokenObjects < 66)
         {
             transform.GetComponent<Image>().color = summer;
+            seasonManager.season = 1;
         }
         else if(fractureprogress.brokenPercentage >= 66)
         {
             transform.GetComponent<Image>().color = autumn;
+            seasonManager.season = 2;
+        }
+
+        if(fractureprogress.objectsBroken)
+        {
+            transform.GetComponentInChildren<ParticleSystem>().Play();
+            fractureprogress.objectsBroken = false;
         }
     }
 }

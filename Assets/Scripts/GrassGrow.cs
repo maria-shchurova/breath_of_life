@@ -29,6 +29,10 @@ public class GrassGrow : MonoBehaviour
         {
             transform.localScale += new Vector3(0.01f * Time.deltaTime, 0.01f * Time.deltaTime, 0.01f * Time.deltaTime);
         }
+        else
+        {
+            gameObject.GetComponent<GrassGrow>().enabled = false;
+        }
 
         RaycastHit hit;
         if(Physics.Raycast(transform.position, Vector3.up, out hit) && hit.point.y - transform.position.y < grassSize)
