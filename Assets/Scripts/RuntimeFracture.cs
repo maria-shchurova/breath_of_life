@@ -13,8 +13,10 @@ namespace Project.Scripts.Fractures
         public float brokenPercentage;
         public float brokenObjects;
         float totalObjects;
+        float oldPercentage;
         int objectCounter;
         bool doneFracturing;
+        public bool objectsBroken;
 
         GameObject[] objectsToFracture; //size of this is number of breakable objects
         Text fracturingText;
@@ -62,6 +64,11 @@ namespace Project.Scripts.Fractures
             }
 
             brokenPercentage = (brokenObjects / totalObjects) * 100;
+
+            if (brokenPercentage > oldPercentage)
+                objectsBroken = true;
+
+            oldPercentage = brokenPercentage;
         }
     }
 }

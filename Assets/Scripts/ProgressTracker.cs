@@ -36,5 +36,11 @@ public class ProgressTracker : MonoBehaviour
         {
             transform.GetComponent<Image>().color = autumn;
         }
+
+        if(fractureprogress.objectsBroken)
+        {
+            transform.GetComponentInChildren<ParticleSystem>().Play();
+            fractureprogress.objectsBroken = false;
+        }
     }
 }
