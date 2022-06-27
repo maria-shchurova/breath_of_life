@@ -20,6 +20,8 @@ namespace ProceduralModeling {
 
 		[SerializeField] Vector2 scaleRange = new Vector2(1f, 1.2f);
 
+
+
 		const string SHADER_PATH = "Hidden/Internal-Colored";
 
 		Material lineMaterial = null;
@@ -31,6 +33,9 @@ namespace ProceduralModeling {
 		Vector3 point;
 		Vector3 normal;
 		Quaternion rotation;
+
+		[Header("Tutorial")]
+		[SerializeField] GameObject PlantArea;
 
 		void Update () {
 			timeSinceClick += Time.deltaTime;
@@ -63,6 +68,7 @@ namespace ProceduralModeling {
 					timeSinceClick = 0;
 					readyToPlant = false;
 					var go = Instantiate(prefabs[Random.Range(0, prefabs.Count)]) as GameObject;
+					var hint = Instantiate(PlantArea, point + Vector3.up *  0.1f,  PlantArea.transform.rotation);
 					go.transform.position = point;
 					go.transform.localScale = Vector3.one * Random.Range(scaleRange.x, scaleRange.y);
 					go.transform.localRotation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);

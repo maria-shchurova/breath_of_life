@@ -8817,7 +8817,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5730570748453609030}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee184d399108cc54286feac7934cc1ea, type: 3}
   m_Name: 
@@ -9501,11 +9501,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 447004462}
   prefabs:
-  - {fileID: 8259438907799079609, guid: 38b035a3c74a2c544b511db4b3ddca02, type: 3}
+  - {fileID: 8259438907799079609, guid: 504dedeb77e5aec49807aec68d290a55, type: 3}
   TreesOnScene: []
   MinimalDistanceBetweenTrees: 3
   clickingCooldown: 1
   scaleRange: {x: 1, y: 1.2}
+  PlantArea: {fileID: 2861959447090240972, guid: efe740c870dc6234985a42ffc375102a, type: 3}
 --- !u!33 &5657137870273928320
 MeshFilter:
   m_ObjectHideFlags: 0
