@@ -40,6 +40,9 @@ public class ProceduralIvy : MonoBehaviour {
     [SerializeField] bool isFirst =  true;
     [SerializeField] bool canGrow;
 
+    [Header("Tutorial")]
+    [SerializeField] GameObject PlantArea;
+
     public void AddNodeToList(IvyNode node)
     {
         var pos = node.getPosition();
@@ -59,6 +62,10 @@ public class ProceduralIvy : MonoBehaviour {
             if (Physics.Raycast(ray, out hit, 100)) {
                 if(isFirst)
                 {
+                    if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
+                    {
+                        Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
+                    }
                     Instantiate(impactEffect, hit.point, Quaternion.identity);
                     createIvy(hit);
                     isFirst = false;
@@ -76,6 +83,7 @@ public class ProceduralIvy : MonoBehaviour {
                     {
                         Instantiate(impactEffect, hit.point, Quaternion.identity);
                         createIvy(hit);
+
                         canGrow = false;
                     }
                 }

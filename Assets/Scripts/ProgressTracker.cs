@@ -15,11 +15,15 @@ public class ProgressTracker : MonoBehaviour
     void Start()
     {
         fractureprogress = FindObjectOfType<Project.Scripts.Fractures.RuntimeFracture>();
-        seasonManager = FindObjectOfType<Seasons>();
+        if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name !="Intro")
+        {
+            seasonManager = FindObjectOfType<Seasons>();
 
-        spring = new Color(0.5882353f, 0.8823529f, 0.2745098f);
-        summer = new Color(0.3137255f, 0.8627451f, 0.1176471f);
-        autumn = new Color(0.8039216f, 0.8823529f, 0.2352941f);
+            spring = new Color(0.5882353f, 0.8823529f, 0.2745098f);
+            summer = new Color(0.3137255f, 0.8627451f, 0.1176471f);
+            autumn = new Color(0.8039216f, 0.8823529f, 0.2352941f);
+        }
+
     }
 
     // Update is called once per frame
@@ -27,26 +31,30 @@ public class ProgressTracker : MonoBehaviour
     {
         transform.localScale = new Vector3(fractureprogress.brokenPercentage / 100, 1);
 
-        if(fractureprogress.brokenPercentage < 33)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Intro")
         {
-            transform.GetComponent<Image>().color = spring;
-            seasonManager.season = 0;
-        }
-        else if(fractureprogress.brokenPercentage >= 33 && fractureprogress.brokenObjects < 66)
-        {
-            transform.GetComponent<Image>().color = summer;
-            seasonManager.season = 1;
-        }
-        else if(fractureprogress.brokenPercentage >= 66)
-        {
-            transform.GetComponent<Image>().color = autumn;
-            seasonManager.season = 2;
+            if (fractureprogress.brokenPercentage < 33)
+            {
+                transform.GetComponent<Image>().color = spring;
+                seasonManager.season = 0;
+            }
+            else if (fractureprogress.brokenPercentage >= 33 && fractureprogress.brokenObjects < 66)
+            {
+                transform.GetComponent<Image>().color = summer;
+                seasonManager.season = 1;
+            }
+            else if (fractureprogress.brokenPercentage >= 66)
+            {
+                transform.GetComponent<Image>().color = autumn;
+                seasonManager.season = 2;
+            }
+
+            if (fractureprogress.objectsBroken)
+            {
+                transform.GetComponentInChildren<ParticleSystem>().Play();
+                fractureprogress.objectsBroken = false;
+            }
         }
 
-        if(fractureprogress.objectsBroken)
-        {
-            transform.GetComponentInChildren<ParticleSystem>().Play();
-            fractureprogress.objectsBroken = false;
-        }
     }
 }
