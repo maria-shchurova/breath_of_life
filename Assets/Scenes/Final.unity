@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.06553924, g: 0.07483202, b: 0.09726119, a: 1}
+  m_IndirectSpecularColor: {r: 0.070079476, g: 0.08123815, b: 0.10837424, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1426,15 +1426,16 @@ MonoBehaviour:
   flowerPrefab: {fileID: 2435367529418233688, guid: cb549a15fb3c67a4093ac3de78c2dfb9, type: 3}
   wantBlossoms: 1
   branchesTips: []
-  mass: 5
-  raduis: 0.5
-  force: 20
-  maxForce: 50
+  mass: 15
+  raduis: 1
+  force: 30
+  maxForce: 80
   timeInterval: 5
   impactEffect: {fileID: 5992617932142173105, guid: 52825030eba9e0446995b7fbfbec3d02, type: 3}
   MaxDistanceBetweenSprouts: 2
   isFirst: 1
   canGrow: 0
+  PlantArea: {fileID: 0}
 --- !u!4 &762264514
 Transform:
   m_ObjectHideFlags: 0
@@ -2659,6 +2660,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5311184728064390389, guid: fbc4bbf14f2c89440bb4edc9d74dbb85, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 19c97ca462aeafe4d9f7ed9967facf77, type: 3}
     - target: {fileID: 5311184728394210592, guid: fbc4bbf14f2c89440bb4edc9d74dbb85, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -72,8 +72,11 @@ namespace ProceduralModeling {
 					timeSinceClick = 0;
 					readyToPlant = false;
 					var go = Instantiate(prefabs[Random.Range(0, prefabs.Count)]) as GameObject;
-					var hint = Instantiate(PlantArea, point + Vector3.up,  PlantArea.transform.rotation);
-					HintOnTheScene = hint;
+					if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name ==  "Intro")
+                    {
+						var hint = Instantiate(PlantArea, point + Vector3.up, PlantArea.transform.rotation);
+						HintOnTheScene = hint;
+					}
 					go.transform.position = point;
 					go.transform.localScale = Vector3.one * Random.Range(scaleRange.x, scaleRange.y);
 					go.transform.localRotation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);
