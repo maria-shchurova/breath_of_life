@@ -1,6 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UI;
+using  ProceduralModeling;
+using System;
 
 public class tutorial : MonoBehaviour
 {
@@ -10,6 +13,36 @@ public class tutorial : MonoBehaviour
     bool one_wasPressed;
     bool two_wasPressed;
     bool three_wasPressed;
+
+    [SerializeField] ProceduralIvy IvyMaster;
+    [SerializeField] PTGarden TreeMaster;
+
+    [SerializeField] GameObject ContinueScreenUI;
+    [SerializeField] CameraControl cameraControl;
+    [SerializeField] PauseMenu pause;
+
+    Button ContinueButton;
+    private void Start()
+    {
+        Messenger.AddListener("IntroCompleted", ContinueScreen);
+        ContinueButton = GameObject.Find("PlayGame").GetComponent<Button>();
+        ContinueButton.onClick.AddListener(PlayGame);
+        ContinueScreenUI.SetActive(false);
+
+    }
+
+    private void ContinueScreen()
+    {
+        cameraControl.enabled = false;
+        pause.enabled = false;
+        Cursor.lockState = CursorLockMode.None;
+        ContinueScreenUI.SetActive(true);
+    }
+
+    void PlayGame()
+    {
+        SceneManager.LoadScene(2);
+    }
 
     void Update()
     {
@@ -22,8 +55,7 @@ public class tutorial : MonoBehaviour
         {
             Cutout.SetActive(false);
             Hint.SetActive(false);
-
-            Destroy(this);
         }
+
     }
 }

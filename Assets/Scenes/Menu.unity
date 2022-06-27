@@ -156,7 +156,7 @@ RectTransform:
   m_Children:
   - {fileID: 1541716573}
   m_Father: {fileID: 1742980040}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -780,7 +780,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Coming Soon
+  m_Text: Play tutorial
 --- !u!222 &1327356660
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -802,12 +802,12 @@ GameObject:
   - component: {fileID: 1468880698}
   - component: {fileID: 1468880697}
   m_Layer: 5
-  m_Name: Play Level 2
+  m_Name: Play tutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1468880696
 RectTransform:
   m_ObjectHideFlags: 0
@@ -822,12 +822,12 @@ RectTransform:
   m_Children:
   - {fileID: 1327356658}
   m_Father: {fileID: 1742980040}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -467.5}
-  m_SizeDelta: {x: 600, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1468880697
 MonoBehaviour:
@@ -1144,8 +1144,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 449450063}
   - {fileID: 1468880696}
+  - {fileID: 449450063}
   - {fileID: 775213227}
   - {fileID: 1517975613}
   m_Father: {fileID: 1052049488}

@@ -14,26 +14,26 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         PlayButton1 = GameObject.Find("Play Level 1");
-        //PlayButton2 = GameObject.Find("Play Level 2");
+        PlayButton2 = GameObject.Find("Play tutorial");
         CreditsButton = GameObject.Find("Credits");
         QuitButton = GameObject.Find("Quit");
         LoadingText = GameObject.Find("LoadingText");
 
         LoadingText.SetActive(false);
         PlayButton1.GetComponent<Button>().onClick.AddListener(Play_1);
-        //PlayButton2.GetComponent<Button>().onClick.AddListener(Play_2);
+        PlayButton2.GetComponent<Button>().onClick.AddListener(Tutorial);
         CreditsButton.GetComponent<Button>().onClick.AddListener(Credits);
         QuitButton.GetComponent<Button>().onClick.AddListener(Quit);
     }
 
     void Play_1()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         LoadingText.SetActive(true);
     }    
-    void Play_2()
+    void Tutorial()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
         LoadingText.SetActive(true);
     }
 

@@ -8,13 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: c77e6c0e84b962a4c8d577e88156317c
-  - enabled: 0
-    path: Assets/Scenes/Main.unity
-    guid: 7ebe406c9ccd35b4989d39316b95b273
-  - enabled: 0
-    path: Assets/Scenes/Apartment block_modified.unity
-    guid: a6446ef61310d7048a6b63a8079e7784
   - enabled: 1
-    path: Assets/Scenes/Apartment block_Maria.unity
-    guid: 55cfb1c15f561274cb069e5a2c3ab2d2
+    path: Assets/Scenes/Intro.unity
+    guid: c1b8ba1b863df1b448c6285c9a026430
+  - enabled: 1
+    path: Assets/Scenes/Final.unity
+    guid: 9f24e8c9b8310cd4aabf29e69377a007
   m_configObjects: {}

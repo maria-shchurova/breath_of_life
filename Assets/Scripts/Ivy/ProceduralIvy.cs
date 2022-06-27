@@ -42,6 +42,7 @@ public class ProceduralIvy : MonoBehaviour {
 
     [Header("Tutorial")]
     [SerializeField] GameObject PlantArea;
+    GameObject HintOnTheScene;
 
     public void AddNodeToList(IvyNode node)
     {
@@ -60,11 +61,19 @@ public class ProceduralIvy : MonoBehaviour {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100)) {
-                if(isFirst)
+
+                if (branchesTips.Count > 8)
+                {
+                    if(HintOnTheScene)
+                        Destroy(HintOnTheScene); //when enough ivys are  on  the  scene, hint disappers
+                }
+
+                if (isFirst)
                 {
                     if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
                     {
-                        Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
+                        var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
+                        HintOnTheScene = hint;
                     }
                     Instantiate(impactEffect, hit.point, Quaternion.identity);
                     createIvy(hit);
@@ -79,6 +88,7 @@ public class ProceduralIvy : MonoBehaviour {
                             canGrow = true;
                         }                            
                     }
+
                     if(canGrow)
                     {
                         Instantiate(impactEffect, hit.point, Quaternion.identity);

@@ -17,10 +17,8 @@ namespace ProceduralModeling {
 		bool readyToPlant = true; //to  avoid spamming
 		bool CanGrow;
 		bool isFirst = true;
-
+		GameObject HintOnTheScene;
 		[SerializeField] Vector2 scaleRange = new Vector2(1f, 1.2f);
-
-
 
 		const string SHADER_PATH = "Hidden/Internal-Colored";
 
@@ -61,14 +59,21 @@ namespace ProceduralModeling {
 				rotation = Quaternion.LookRotation(normal);
 			}
 
-			if(Input.GetMouseButtonUp(0) && hit && readyToPlant) {				
+			if(Input.GetMouseButtonUp(0) && hit && readyToPlant) {
+
+				if (TreesOnScene.Count > 0)
+				{
+					if(HintOnTheScene)
+					Destroy(HintOnTheScene);// after the 3rd tree hint disapperas
+				}
 
 				if (isFirst)
                 {
 					timeSinceClick = 0;
 					readyToPlant = false;
 					var go = Instantiate(prefabs[Random.Range(0, prefabs.Count)]) as GameObject;
-					var hint = Instantiate(PlantArea, point + Vector3.up *  0.1f,  PlantArea.transform.rotation);
+					var hint = Instantiate(PlantArea, point + Vector3.up,  PlantArea.transform.rotation);
+					HintOnTheScene = hint;
 					go.transform.position = point;
 					go.transform.localScale = Vector3.one * Random.Range(scaleRange.x, scaleRange.y);
 					go.transform.localRotation = Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.up);

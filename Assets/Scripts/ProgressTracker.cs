@@ -56,7 +56,16 @@ public class ProgressTracker : MonoBehaviour
 
             season = "autumn";
         }
+        
+        
 
+        if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
+        {
+            if (fractureprogress.brokenPercentage >= 80)
+            {
+                Messenger.Broadcast("IntroCompleted");
+            }
+        }
     }
 
     async void SeasonChange(int seasonInt)
