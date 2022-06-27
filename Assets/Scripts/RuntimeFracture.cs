@@ -36,15 +36,16 @@ namespace Project.Scripts.Fractures
             {
                 while (objectCounter < totalObjects && objPerFrame < 3)
                 {
-                    FractureThis fracturing = objectsToFracture[objectCounter].AddComponent<FractureThis>();
-                    fracturing.chunks = setChunks;
-                    fracturing.density = setDensity;
-                    fracturing.internalStrength = setInternalStrength;
-
                     MeshCollider mesh = objectsToFracture[objectCounter].AddComponent<MeshCollider>();
                     mesh.convex = true;
                     Rigidbody rigidbody = objectsToFracture[objectCounter].AddComponent<Rigidbody>();
                     rigidbody.isKinematic = true;
+                    Debug.Log("added rigidbody to " + objectsToFracture[objectCounter].name);
+
+                    FractureThis fracturing = objectsToFracture[objectCounter].AddComponent<FractureThis>();
+                    fracturing.chunks = setChunks;
+                    fracturing.density = setDensity;
+                    fracturing.internalStrength = setInternalStrength;
 
                     fracturingText.text = "Fracturing Objects: " + objectCounter + " / " + totalObjects;
                     objectCounter++;
