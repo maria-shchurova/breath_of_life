@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.016139716, g: 0.014448777, b: 0.016284794, a: 1}
+  m_IndirectSpecularColor: {r: 0.016142488, g: 0.014457047, b: 0.01632297, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1431,7 +1431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &452395633
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7882,7 +7882,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 88391f7606ef76c4b92c1708103be252, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f32e66b38afaa844ba6b7e62136a1df, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7954,7 +7954,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ddbcfa3125284ed48b29fba57c7c22fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3bc5df333c27b8f4db0d7804a650dd07, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -15132,7 +15132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 3ac4aa1e52618a645b100cfe38118340, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa110745185ae994892579f28d027030, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
