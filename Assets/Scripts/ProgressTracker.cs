@@ -61,7 +61,7 @@ public class ProgressTracker : MonoBehaviour
 
         if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
         {
-            if (fractureprogress.brokenPercentage >= 80)
+            if (fractureprogress.brokenPercentage >= 99)
             {
                 Messenger.Broadcast("IntroCompleted");
             }
