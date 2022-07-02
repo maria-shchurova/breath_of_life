@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.046872675, g: 0.056801677, b: 0.08178091, a: 1}
+  m_IndirectSpecularColor: {r: 0.04610467, g: 0.0558331, b: 0.08039516, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5241,20 +5241,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8545118474429777877, guid: 9b7026f304bb4d94ab8afcd516d0a069, type: 3}
---- !u!64 &1285895821
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8644605487694813981}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4685291770158733840, guid: 9b7026f304bb4d94ab8afcd516d0a069, type: 3}
 --- !u!1 &1325390527
 GameObject:
   m_ObjectHideFlags: 0
@@ -8334,7 +8320,7 @@ GameObject:
   - component: {fileID: 6390490061288016386}
   - component: {fileID: 1285113973}
   m_Layer: 0
-  m_Name: Radioactive_Sign4:pasted__pCylinder3_group90
+  m_Name: Radioactive_Sign4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8353,7 +8339,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 23
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &144034181446725359
 Animator:
@@ -8526,7 +8512,6 @@ Transform:
   - {fileID: 4192392141922280639}
   - {fileID: 6775362489813644608}
   - {fileID: 533077401377345311}
-  - {fileID: 7132947651089007516}
   - {fileID: 3728527394169463198}
   - {fileID: 8159192285051607383}
   - {fileID: 3235797328760824211}
@@ -8600,7 +8585,7 @@ GameObject:
   - component: {fileID: 1835333735254028631}
   - component: {fileID: 1868640197}
   m_Layer: 0
-  m_Name: Beer_Crates:group98_pasted__group97_pasted__pasted__group96_pasted__group95_pasted__pasted__group92_pasted__pasted__pasted__pCube45
+  m_Name: Beer_Crates
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8619,7 +8604,7 @@ GameObject:
   - component: {fileID: 1784545120483533769}
   - component: {fileID: 1437895755}
   m_Layer: 0
-  m_Name: Outside_rubble:polySurface182
+  m_Name: Outside_rubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8711,7 +8696,7 @@ GameObject:
   - component: {fileID: 9098286856117988329}
   - component: {fileID: 2883337273182850521}
   m_Layer: 0
-  m_Name: polySurface159
+  m_Name: Cupboard
   m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8764,7 +8749,7 @@ GameObject:
   - component: {fileID: 7705576229150028328}
   - component: {fileID: 395536027}
   m_Layer: 0
-  m_Name: Piece_of_Brick1:pCube49_group127
+  m_Name: Piece_of_Brick1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8918,20 +8903,12 @@ GameObject:
   - component: {fileID: 4175087252348896954}
   - component: {fileID: 1334072070}
   m_Layer: 0
-  m_Name: Coatrack1:pCylinder9
+  m_Name: Coatrack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!33 &1690791423517790054
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8644605487694813981}
-  m_Mesh: {fileID: 4685291770158733840, guid: 9b7026f304bb4d94ab8afcd516d0a069, type: 3}
 --- !u!4 &1737492719420326517
 Transform:
   m_ObjectHideFlags: 0
@@ -8945,7 +8922,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1784545120483533769
 MeshRenderer:
@@ -9002,7 +8979,7 @@ GameObject:
   - component: {fileID: 343897469730036977}
   - component: {fileID: 1181947839}
   m_Layer: 0
-  m_Name: Corner_rubble:polySurface185
+  m_Name: Corner_rubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9202,7 +9179,7 @@ GameObject:
   - component: {fileID: 4684005474417007330}
   - component: {fileID: 92373591}
   m_Layer: 0
-  m_Name: Piece_of_Brick:pCube49
+  m_Name: Piece_of_Brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9259,7 +9236,7 @@ GameObject:
   - component: {fileID: 2520766028970543095}
   - component: {fileID: 1912552445}
   m_Layer: 0
-  m_Name: Piece_of_Brick2:pCube49_group128
+  m_Name: Piece_of_Brick2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9401,7 +9378,7 @@ GameObject:
   - component: {fileID: 2553954025176152905}
   - component: {fileID: 2102901361}
   m_Layer: 0
-  m_Name: Fallen_Painting:pCube43
+  m_Name: Fallen_Painting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9504,7 +9481,7 @@ GameObject:
   - component: {fileID: 4149510635664758826}
   - component: {fileID: 932324538}
   m_Layer: 0
-  m_Name: TV_Radio:pCube36
+  m_Name: TV_Radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9667,7 +9644,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 25
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &2931192717558307213
 RectTransform:
@@ -9754,7 +9731,7 @@ GameObject:
   - component: {fileID: 8573137595500216615}
   - component: {fileID: 8042745763863449712}
   m_Layer: 0
-  m_Name: pCube41
+  m_Name: Walls
   m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9793,7 +9770,7 @@ GameObject:
   - component: {fileID: 1540094529900058596}
   - component: {fileID: 1122524383}
   m_Layer: 0
-  m_Name: Radioactive_Sign:pasted__pCylinder3
+  m_Name: Radioactive_Sign
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9812,7 +9789,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3353588779875884342
 Transform:
@@ -9885,7 +9862,7 @@ GameObject:
   - component: {fileID: 4764374508541555295}
   - component: {fileID: 175376141336104876}
   m_Layer: 0
-  m_Name: Ceiling:pCube44
+  m_Name: Ceiling
   m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9912,7 +9889,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3729175991689133115
 MeshFilter:
@@ -9972,48 +9949,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!23 &3829332012161978218
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8644605487694813981}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 257
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: ca42dc08879993e4fac8c31656636daf, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!23 &3860483427199017516
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10078,7 +10013,7 @@ GameObject:
   - component: {fileID: 139561286}
   - component: {fileID: 5475489388089320983}
   m_Layer: 0
-  m_Name: Base_Floor2:pCube39
+  m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10203,7 +10138,7 @@ GameObject:
   - component: {fileID: 5657137870273928320}
   - component: {fileID: 8061060170610170244}
   m_Layer: 0
-  m_Name: Floor:group11_Floor:pasted__pCube3_Floor:polySurface1
+  m_Name: Floor
   m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10222,7 +10157,7 @@ GameObject:
   - component: {fileID: 2675915698916973672}
   - component: {fileID: 2004581569}
   m_Layer: 0
-  m_Name: Warning_Line:pCube43
+  m_Name: Warning_Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10533,7 +10468,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 20
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5083281063379130011
 GameObject:
@@ -10548,7 +10483,7 @@ GameObject:
   - component: {fileID: 5228154400375891877}
   - component: {fileID: 2129079604}
   m_Layer: 0
-  m_Name: Table:polySurface18
+  m_Name: Table
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10620,7 +10555,7 @@ Transform:
   - {fileID: 350972537}
   - {fileID: 941894874}
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 27
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &5158749298705737055
 RectTransform:
@@ -10706,7 +10641,7 @@ GameObject:
   - component: {fileID: 6941989522755977706}
   - component: {fileID: 444502115}
   m_Layer: 0
-  m_Name: Geiger_Obj:pCylinder19
+  m_Name: Geiger_Obj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11067,7 +11002,7 @@ GameObject:
   - component: {fileID: 6409379887848605237}
   - component: {fileID: 764489209}
   m_Layer: 0
-  m_Name: Chair:pCylinder26
+  m_Name: Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11199,7 +11134,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 21
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5780575450532013562
 MeshFilter:
@@ -11278,7 +11213,7 @@ GameObject:
   - component: {fileID: 2707088371067526379}
   - component: {fileID: 1117712354}
   m_Layer: 0
-  m_Name: Rubble_pile_attempt:group119_pasted__pPlatonic3
+  m_Name: Rubble_pile_attempt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11334,7 +11269,7 @@ GameObject:
   - component: {fileID: 4919921315790109706}
   - component: {fileID: 3860483427199017516}
   m_Layer: 0
-  m_Name: Top_floor_walls:pasted__group_pasted__pasted__pCube2
+  m_Name: Top_floor_walls
   m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11455,7 +11390,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 22
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6643685720538423546
 GameObject:
@@ -11470,7 +11405,7 @@ GameObject:
   - component: {fileID: 1837901270954778532}
   - component: {fileID: 1835133632}
   m_Layer: 0
-  m_Name: Rubble_pile_attempt1:group119_pasted__pPlatonic3_group126
+  m_Name: Rubble_pile_attempt1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11671,7 +11606,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6996030724369554780
 MonoBehaviour:
@@ -11686,21 +11621,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuObject: {fileID: 455548399786476170}
---- !u!4 &7132947651089007516
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8644605487694813981}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &7242438487055166418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16698,7 +16618,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 24
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &8042745763863449712
 MeshRenderer:
@@ -16835,7 +16755,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &8163336614171387213
 RectTransform:
@@ -16890,7 +16810,7 @@ GameObject:
   - component: {fileID: 7927479823247821533}
   - component: {fileID: 46307970}
   m_Layer: 0
-  m_Name: Painting_on_wall:pCylinder30
+  m_Name: Painting_on_wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16908,7 +16828,7 @@ GameObject:
   - component: {fileID: 255150616683188028}
   - component: {fileID: 2746351487950205412}
   m_Layer: 0
-  m_Name: Corner_Structure:pasted__pCube43
+  m_Name: Corner_Structure
   m_TagString: Fracture
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17060,25 +16980,6 @@ Transform:
   m_Father: {fileID: 543450652204704971}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8644605487694813981
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7132947651089007516}
-  - component: {fileID: 1690791423517790054}
-  - component: {fileID: 3829332012161978218}
-  - component: {fileID: 1285895821}
-  m_Layer: 0
-  m_Name: pasted__pCylinder27_group72
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!4 &8654543821533518987
 Transform:
   m_ObjectHideFlags: 0
@@ -17092,7 +16993,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 26
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8886040313676103549
 GameObject:
@@ -17107,7 +17008,7 @@ GameObject:
   - component: {fileID: 7724559503782414582}
   - component: {fileID: 1552137310}
   m_Layer: 0
-  m_Name: ID_Badge:pPlane2
+  m_Name: ID_Badge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17177,7 +17078,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543450652204704971}
-  m_RootOrder: 19
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9218832989441653112
 GameObject:
