@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.07950181, g: 0.070774615, b: 0.065555006, a: 1}
+  m_IndirectSpecularColor: {r: 0.08236724, g: 0.07324427, b: 0.067649335, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -734,6 +734,7 @@ MonoBehaviour:
   MaxDistanceBetweenSprouts: 0
   isFirst: 1
   canGrow: 0
+  PlantArea: {fileID: 0}
 --- !u!4 &762264514
 Transform:
   m_ObjectHideFlags: 0
@@ -1265,10 +1266,6 @@ PrefabInstance:
     - target: {fileID: 5311184726940096053, guid: fbc4bbf14f2c89440bb4edc9d74dbb85, type: 3}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5311184726940096053, guid: fbc4bbf14f2c89440bb4edc9d74dbb85, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5311184728064390376, guid: fbc4bbf14f2c89440bb4edc9d74dbb85, type: 3}
       propertyPath: m_Name
