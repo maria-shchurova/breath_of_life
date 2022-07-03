@@ -60,7 +60,7 @@ public class ProceduralIvy : MonoBehaviour {
         if (Input.GetKeyUp(KeyCode.Space))
         {
             // call this method when you are ready to group your meshes
-            combineAndClear();
+           // combineAndClear();
         }
 
         if (Input.GetMouseButtonDown(0)) {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.070079476, g: 0.08123815, b: 0.10837424, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1422,8 +1422,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 6879205e8ae89c74c8bec42b7abfcebc, type: 2}
   flowerMaterials:
   - {fileID: 2100000, guid: 505875972f1ff3a48a35963a497b8c50, type: 2}
-  leafPrefab: {fileID: 2503682686998312604, guid: fb6de8fca1ef3ec4f92cb3f74dec135c, type: 3}
-  flowerPrefab: {fileID: 2435367529418233688, guid: cb549a15fb3c67a4093ac3de78c2dfb9, type: 3}
+  leafPrefab: {fileID: 9087570228535314032, guid: ea40ed8c7ca93ef45bc277076ed339ce, type: 3}
+  flowerPrefab: {fileID: 6443630924237732483, guid: 2ef051b3cdeb8464cb648c640c7d93e2, type: 3}
   wantBlossoms: 1
   branchesTips: []
   mass: 15
@@ -1629,6 +1629,7 @@ GameObject:
   - component: {fileID: 893118686}
   - component: {fileID: 893118685}
   - component: {fileID: 893118688}
+  - component: {fileID: 893118689}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1703,6 +1704,20 @@ MonoBehaviour:
   brokenPercentage: 0
   brokenObjects: 0
   objectsBroken: 0
+--- !u!114 &893118689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893118684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f59bf3c0a164840862ae1a67020cdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisIvyBranches: []
+  thisIvyBlossoms: []
 --- !u!1 &916754134
 GameObject:
   m_ObjectHideFlags: 0

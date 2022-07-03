@@ -26,7 +26,7 @@ public class IvyCombiningManager : MonoBehaviour
     {
         if(GrowingFinished() == true)
         {
-            //Messenger.Broadcast("CombineIvy");
+            Messenger.Broadcast("CombineIvy");
         }
     }
 
