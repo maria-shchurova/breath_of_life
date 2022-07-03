@@ -37,35 +37,35 @@ public class ProgressTracker : MonoBehaviour
             }
 
             season = "spring";
-        }
-        else if(fractureprogress.brokenPercentage >= 33 && fractureprogress.brokenObjects < 66)
-        {
-            if (season != "summer")
+
+            if (fractureprogress.brokenPercentage >= 33 && fractureprogress.brokenObjects < 66)
             {
-                SeasonChange(1);
-            }
+                if (season != "summer")
+                {
+                    SeasonChange(1);
+                }
 
-            season = "summer";
-        }
-        else if(fractureprogress.brokenPercentage >= 66)
-        {
-            if (season != "autumn")
+                season = "summer";
+            }
+            if (fractureprogress.brokenPercentage >= 66)
             {
-                SeasonChange(2);
+                if (season != "autumn")
+                {
+                    SeasonChange(2);
+                }
+
+                season = "autumn";
             }
-
-            season = "autumn";
         }
-        
-        
-
-        if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
+        else
         {
-            if (fractureprogress.brokenPercentage >= 99)
+            if (fractureprogress.brokenPercentage >= 100)
             {
                 Messenger.Broadcast("IntroCompleted");
             }
         }
+
+
     }
 
     async void SeasonChange(int seasonInt)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04610467, g: 0.0558331, b: 0.08039516, a: 1}
+  m_IndirectSpecularColor: {r: 0.046113968, g: 0.055844128, b: 0.080405295, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3036,10 +3036,10 @@ MonoBehaviour:
   flowerPrefab: {fileID: 6443630924237732483, guid: 2ef051b3cdeb8464cb648c640c7d93e2, type: 3}
   wantBlossoms: 1
   branchesTips: []
-  mass: 1.5
-  raduis: 0.05
-  force: 0
-  maxForce: 5.5
+  mass: 2
+  raduis: 1
+  force: 2
+  maxForce: 8
   timeInterval: 5
   impactEffect: {fileID: 5992617932142173105, guid: 52825030eba9e0446995b7fbfbec3d02, type: 3}
   MaxDistanceBetweenSprouts: 0.5
