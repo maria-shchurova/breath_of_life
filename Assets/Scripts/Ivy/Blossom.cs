@@ -10,14 +10,22 @@ public class Blossom : MonoBehaviour {
 
 
     Material material;
+    private IvyCombiningManager combining;
     List<MeshRenderer> renderers;
 
     bool animate;
     public float growthSpeed = 2;
     public float currentAmount = -1;
 
+    public bool Animate()
+    {
+        return animate;
+    }
     public void init(Material material) {
         this.material = new Material(material);
+
+        combining = FindObjectOfType<IvyCombiningManager>();
+        combining.AddBlossom(this);
     }
 
     void Start() {

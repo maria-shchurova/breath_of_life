@@ -7,6 +7,7 @@ public class Branch : MonoBehaviour {
     const float MAX = 0.5f;
 
     ProceduralIvy mainObject;
+    IvyCombiningManager combining;
     List<IvyNode> branchNodes;
 
     Mesh mesh;
@@ -34,7 +35,16 @@ public class Branch : MonoBehaviour {
         mesh = createMesh(branchNodes);
 
         mainObject = FindObjectOfType<ProceduralIvy>();
+
+        combining = FindObjectOfType<IvyCombiningManager>();
         mainObject.AddNodeToList(branchNodes[branchNodes.Count - 1]);
+        combining.AddBranch(this);
+
+    }
+
+    public bool  Animate()
+    {
+        return animate;
     }
 
     public void init(List<IvyNode> branchNodes, float branchRadius, Material material, Material leafMaterial, Blossom leafPrefab, Material flowerMaterial, Blossom flowerPrefab, bool isFirst) {
@@ -52,6 +62,9 @@ public class Branch : MonoBehaviour {
 
         mainObject = FindObjectOfType<ProceduralIvy>();
         mainObject.AddNodeToList(branchNodes[branchNodes.Count - 1]);
+
+        combining = FindObjectOfType<IvyCombiningManager>();
+        combining.AddBranch(this);
     }
 
 
@@ -258,5 +271,5 @@ public class Branch : MonoBehaviour {
             }
         }
 
-    }
+    } 
 }

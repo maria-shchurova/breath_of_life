@@ -44,6 +44,11 @@ public class ProceduralIvy : MonoBehaviour {
     [SerializeField] GameObject PlantArea;
     GameObject HintOnTheScene;
 
+
+    private void Start()
+    {
+        Messenger.AddListener("CombineIvy", combineAndClear);
+    }
     public void AddNodeToList(IvyNode node)
     {
         var pos = node.getPosition();
@@ -52,7 +57,8 @@ public class ProceduralIvy : MonoBehaviour {
 
     void Update() {
 
-        if (Input.GetKeyUp(KeyCode.Space)) {
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
             // call this method when you are ready to group your meshes
             combineAndClear();
         }
@@ -262,7 +268,8 @@ public class ProceduralIvy : MonoBehaviour {
 
     void combineAndClear() {
         MeshManager.instance.combineAll();
-        foreach (Transform t in transform) {
+        foreach (Transform t in transform)
+        {
             Destroy(t.gameObject);
         }
     }
