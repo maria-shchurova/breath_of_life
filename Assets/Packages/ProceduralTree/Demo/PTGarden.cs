@@ -61,7 +61,7 @@ namespace ProceduralModeling {
 
 			if(Input.GetMouseButtonUp(0) && hit && readyToPlant) {
 
-				if (TreesOnScene.Count > 0)
+				if (TreesOnScene.Count > 3)
 				{
 					if(HintOnTheScene)
 					Destroy(HintOnTheScene);// after the 3rd tree hint disapperas
