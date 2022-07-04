@@ -31,14 +31,17 @@ public class ProgressTracker : MonoBehaviour
 
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "Intro")
         {
-            if(season != "spring")
+            if (fractureprogress.brokenPercentage < 33)
             {
-                SeasonChange(0);
+                if (season != "spring")
+                {
+                    SeasonChange(0);
+                }
+
+                season = "spring";
             }
 
-            season = "spring";
-
-            if (fractureprogress.brokenPercentage >= 33 && fractureprogress.brokenObjects < 66)
+            else if (fractureprogress.brokenPercentage >= 33 && fractureprogress.brokenObjects < 66)
             {
                 if (season != "summer")
                 {
@@ -47,7 +50,8 @@ public class ProgressTracker : MonoBehaviour
 
                 season = "summer";
             }
-            if (fractureprogress.brokenPercentage >= 66)
+
+            else if (fractureprogress.brokenPercentage >= 66)
             {
                 if (season != "autumn")
                 {
