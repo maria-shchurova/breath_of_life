@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.06555408, g: 0.074845016, b: 0.09726977, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1413,29 +1413,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 447004462}
   recycleInterval: 5
-  branches: 8
-  maxPointsForBranch: 20
-  segmentLength: 0.1
+  branches: 5
+  maxPointsForBranch: 15
+  segmentLength: 0.07
   branchRadius: 0.01
   branchMaterial: {fileID: 2100000, guid: 5866d69ecdd3d834a96f6c0896112c48, type: 2}
   leafMaterials:
-  - {fileID: 2100000, guid: 6879205e8ae89c74c8bec42b7abfcebc, type: 2}
+  - {fileID: 2100000, guid: 6a716c25d5926c34e8394a3b2a52707b, type: 2}
   flowerMaterials:
-  - {fileID: 2100000, guid: 505875972f1ff3a48a35963a497b8c50, type: 2}
+  - {fileID: 2100000, guid: 29b081629c1448c4db203b5187c68e42, type: 2}
   leafPrefab: {fileID: 9087570228535314032, guid: ea40ed8c7ca93ef45bc277076ed339ce, type: 3}
   flowerPrefab: {fileID: 6443630924237732483, guid: 2ef051b3cdeb8464cb648c640c7d93e2, type: 3}
   wantBlossoms: 1
   branchesTips: []
-  mass: 15
+  mass: 2
   raduis: 1
-  force: 30
-  maxForce: 80
+  force: 2
+  maxForce: 8
   timeInterval: 5
   impactEffect: {fileID: 5992617932142173105, guid: 52825030eba9e0446995b7fbfbec3d02, type: 3}
-  MaxDistanceBetweenSprouts: 2
+  breakerPrefab: {fileID: 1600811615855159224, guid: 0475bc08d3740104685e2fb9428d0ab1, type: 3}
+  MaxDistanceBetweenSprouts: 0.5
   isFirst: 1
   canGrow: 0
-  PlantArea: {fileID: 0}
+  PlantArea: {fileID: 1237865899976323144, guid: 35b38a0bf5877a349965ea1882024107, type: 3}
 --- !u!4 &762264514
 Transform:
   m_ObjectHideFlags: 0

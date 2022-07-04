@@ -70,6 +70,20 @@ namespace Project.Scripts.Fractures
                 objectsBroken = true;
 
             oldPercentage = brokenPercentage;
+
+            if(Input.GetKeyUp(KeyCode.Space))
+            {
+                combineAndClear();
+            }
+        }
+
+        void combineAndClear()
+        {
+            MeshManager.instance.combineAllChunks();
+            foreach (Transform t in transform)
+            {
+                Destroy(t.gameObject);
+            }
         }
     }
 }

@@ -29,7 +29,9 @@ public class MeshGroup {
 
 public class MeshManager : Singleton<MeshManager> {
     Dictionary<string, MeshGroupRenderer> meshGroupRenderers;
+    Dictionary<string, MeshGroupRenderer> fractureMeshGroupRenderers;
     GameObject meshParent;
+    GameObject fractureMeshParent;
 
     public void addMesh(Transform t, Mesh mesh, Material material) {
         if (meshParent == null) {
@@ -59,12 +61,59 @@ public class MeshManager : Singleton<MeshManager> {
 
     }
 
+    public void addFractureMesh(Transform t, Mesh mesh, Material material)
+    {
+        if (fractureMeshParent == null)
+        {
+            fractureMeshParent = new GameObject("FractureMeshParent");
+        }
+
+        if (fractureMeshGroupRenderers == null)
+        {
+            fractureMeshGroupRenderers = new Dictionary<string, MeshGroupRenderer>();
+        }
+
+        if (fractureMeshGroupRenderers.ContainsKey(material.name))
+        {
+            fractureMeshGroupRenderers[material.name].add(t, mesh, material);
+        }
+        else
+        {
+            GameObject render = new GameObject("meshGroup - " + material.name);
+            print("new object:" + material.name);
+            render.transform.SetParent(meshParent.transform);
+
+            MeshFilter mFilter = render.AddComponent<MeshFilter>();
+            MeshRenderer mRenderer = render.AddComponent<MeshRenderer>();
+
+            MeshGroupRenderer groupRenderer = render.AddComponent<MeshGroupRenderer>();
+            groupRenderer.meshFilter = mFilter;
+            groupRenderer.meshRenderer = mRenderer;
+            groupRenderer.add(t, mesh, material);
+            fractureMeshGroupRenderers.Add(material.name, groupRenderer);
+        }
+
+    }
+
     public void combineAll() {
         if (meshGroupRenderers != null) {
             foreach (var group in meshGroupRenderers) {
                 group.Value.combineAndRender();
             }
             meshGroupRenderers.Clear();
+            Resources.UnloadUnusedAssets();
+        }
+    }
+
+    public void  combineAllChunks()
+    {
+        if (fractureMeshGroupRenderers != null)
+        {
+            foreach (var group in fractureMeshGroupRenderers)
+            {
+                group.Value.combineAndRender();
+            }
+            fractureMeshGroupRenderers.Clear();
             Resources.UnloadUnusedAssets();
         }
     }

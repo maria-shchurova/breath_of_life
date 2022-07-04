@@ -97,6 +97,9 @@ public class ChunkRuntimeInfo : MonoBehaviour
         rightConnections.Remove(connectedBody);
 
         rigidbody.ResetCenterOfMass();
+
+        MeshManager.instance.addFractureMesh(transform, GetComponent<MeshFilter>().mesh, GetComponent<MeshRenderer>().sharedMaterial);
+
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -89,4 +89,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 959d9bd9f157f3a40815a499f9c799f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deleteInterval: 0.5
+  deleteInterval: 0.25

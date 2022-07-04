@@ -57,52 +57,49 @@ public class ProceduralIvy : MonoBehaviour {
     }
 
     void Update() {
-
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            // call this method when you are ready to group your meshes
-           // combineAndClear();
-        }
-
         if (Input.GetMouseButtonDown(0)) {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100)) {
 
-                foreach (Vector3 tip in branchesTips.ToList())
+                if (isFirst)
                 {
-                    if (Vector3.Distance(hit.point, tip) < MaxDistanceBetweenSprouts) //if  at least 1  of tips  is close  to  the hit point
-                    {
-                        canGrow = true;
-                    }
-                }               
-
-                if (ivyCount > 10)
-                {
-                    if(HintOnTheScene)
-                        Destroy(HintOnTheScene); //when enough ivys are  on  the  scene, hint disappers
+                    Instantiate(impactEffect, hit.point, Quaternion.identity);
+                    createIvy(hit);
+                    isFirst = false;
                 }
                 else
                 {
-                    if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
+                    foreach (Vector3 tip in branchesTips.ToList())
                     {
-                        if(isFirst)
+                        if (Vector3.Distance(hit.point, tip) < MaxDistanceBetweenSprouts) //if  at least 1  of tips  is close  to  the hit point
                         {
-                            Instantiate(impactEffect, hit.point, Quaternion.identity);
-                            createIvy(hit);
-
-                            var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
-                            hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                            hint.transform.parent = HintOnTheScene.transform;
+                            canGrow = true;
                         }
-                        else if(canGrow)
-                        {
-                            var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
-                            hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                            hint.transform.parent = HintOnTheScene.transform;
-                            hint.transform.GetChild(0).gameObject.SetActive(false);
-                        }                       
-                    }    
+                    }
+                }            
+
+                if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
+                {
+                    if (isFirst)
+                    {
+                        var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
+                        hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                        hint.transform.parent = HintOnTheScene.transform;
+                    }
+                    else if (canGrow)
+                    {
+                        var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
+                        hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                        hint.transform.parent = HintOnTheScene.transform;
+                        hint.transform.GetChild(0).gameObject.SetActive(false);
+                    }
+
+                    if (ivyCount > 10)
+                    {
+                        if (HintOnTheScene)
+                            Destroy(HintOnTheScene); //when enough ivys are  on  the  scene, hint disappers
+                    }
                 }
 
                 if (canGrow)
@@ -112,12 +109,11 @@ public class ProceduralIvy : MonoBehaviour {
 
                     canGrow = false;
                 }
-                else if(!isFirst)
+                else
                 {
                     Messenger.Broadcast("CantPlant");
                 }
 
-                isFirst = false;
             }
         }
     }
@@ -282,11 +278,11 @@ public class ProceduralIvy : MonoBehaviour {
     }
 
     void combineAndClear() {
-        MeshManager.instance.combineAll();
-        foreach (Transform t in transform)
-        {
-            Destroy(t.gameObject);
-        }
+        //MeshManager.instance.combineAll();
+        //foreach (Transform t in transform)
+        //{
+        //    Destroy(t.gameObject);
+        //}
     }
 
 }
