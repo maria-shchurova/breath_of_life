@@ -115,6 +115,10 @@ namespace ProceduralModeling {
 
 						CanGrow = false;
 					}
+					else
+                    {
+						Messenger.Broadcast("CantPlant");
+                    }
 				}
 
 			}

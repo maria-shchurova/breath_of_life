@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04611087, g: 0.05583763, b: 0.08039993, a: 1}
+  m_IndirectSpecularColor: {r: 0.046102643, g: 0.0558334, b: 0.0803951, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11029,13 +11029,27 @@ GameObject:
   - component: {fileID: 5311184728325837378}
   - component: {fileID: 5311184728325837376}
   - component: {fileID: 5311184728325837379}
+  - component: {fileID: 5311184728325837406}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5311184728325837406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311184728325837405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e56fe017d011254f846f3f4f510b26e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cantPlantSign: {fileID: 7691085913292527474, guid: 5ec615f8b85d09148926e945e92a370f, type: 3}
 --- !u!1 &5345821104125805941
 GameObject:
   m_ObjectHideFlags: 0

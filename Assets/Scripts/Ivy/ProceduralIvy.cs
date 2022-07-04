@@ -101,9 +101,7 @@ public class ProceduralIvy : MonoBehaviour {
                             hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
                             hint.transform.parent = HintOnTheScene.transform;
                             hint.transform.GetChild(0).gameObject.SetActive(false);
-                        }
-
-                        isFirst = false;
+                        }                       
                     }    
                 }
 
@@ -114,6 +112,12 @@ public class ProceduralIvy : MonoBehaviour {
 
                     canGrow = false;
                 }
+                else if(!isFirst)
+                {
+                    Messenger.Broadcast("CantPlant");
+                }
+
+                isFirst = false;
             }
         }
     }
