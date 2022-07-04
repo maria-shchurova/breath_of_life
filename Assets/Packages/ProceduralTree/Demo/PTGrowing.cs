@@ -31,6 +31,7 @@ namespace ProceduralModeling {
 		[SerializeField] float maxForce = 5.5f;
 
 		[SerializeField] float timeInterval = 5;
+		[SerializeField] GameObject breakerPrefab;
 		public VisualEffectAsset[] VFXpresets;
 
 		PTGarden mainObject;
@@ -101,9 +102,9 @@ namespace ProceduralModeling {
             {
 				var height = GetComponent<ProceduralTree>().length;
 
-				var breaker = Instantiate(new GameObject(), transform.position + Vector3.up * height, Quaternion.identity);
+				var breaker = Instantiate(breakerPrefab, transform.position + Vector3.up * height, Quaternion.identity);
 				Vector3 direction = Vector3.up;
-				var destroyer = breaker.AddComponent<SlowForce>();
+				var destroyer = breaker.GetComponent<SlowForce>();
 				destroyer.Init(mass, raduis, force, maxForce, timeInterval, direction);
 			}
 

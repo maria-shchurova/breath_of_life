@@ -339,6 +339,7 @@ MonoBehaviour:
   force: 100
   maxForce: 100
   timeInterval: 5
+  breakerPrefab: {fileID: 1600811615855159224, guid: 0475bc08d3740104685e2fb9428d0ab1, type: 3}
   VFXpresets:
   - {fileID: 8926484042661614526, guid: a2ccbe279a7092f429865e09e8f29fab, type: 3}
   - {fileID: 8926484042661614526, guid: 66f76d18609537c4784f63c4faf0ecbb, type: 3}

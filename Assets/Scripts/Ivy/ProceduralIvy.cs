@@ -34,7 +34,7 @@ public class ProceduralIvy : MonoBehaviour {
 
     [SerializeField] float timeInterval = 5;
     [SerializeField] GameObject impactEffect;
-
+    [SerializeField] GameObject breakerPrefab;
 
     [SerializeField] float MaxDistanceBetweenSprouts;
     [SerializeField] bool isFirst =  true;
@@ -128,9 +128,9 @@ public class ProceduralIvy : MonoBehaviour {
     }
 
     public void createIvy(RaycastHit hit) {
-        var breaker = Instantiate(new GameObject(), hit.point + hit.normal, Quaternion.identity);
+        var breaker = Instantiate(breakerPrefab, hit.point + hit.normal, Quaternion.identity);
         Vector3 direction = hit.point - breaker.transform.position;
-        var destroyer = breaker.AddComponent<SlowForce>();
+        var destroyer = breaker.GetComponent<SlowForce>();
         destroyer.Init(mass, raduis, force, maxForce, timeInterval, direction);
 
         Vector3 tangent = findTangentFromArbitraryNormal(hit.normal);
