@@ -30,6 +30,7 @@ public class SlowForce : MonoBehaviour
     void Instantiate()
     {
         breaker = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        breaker.AddComponent<AutoRemove>();
         breaker.GetComponent<MeshRenderer>().enabled = false;
         breaker.transform.position = transform.position;
         breaker.transform.rotation = transform.rotation;
