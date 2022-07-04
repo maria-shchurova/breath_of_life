@@ -48,6 +48,7 @@ public class ProceduralIvy : MonoBehaviour {
     private void Start()
     {
         Messenger.AddListener("CombineIvy", combineAndClear);
+        HintOnTheScene = GameObject.Find("HintOnTheScene");
     }
     public void AddNodeToList(IvyNode node)
     {
@@ -68,40 +69,50 @@ public class ProceduralIvy : MonoBehaviour {
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 100)) {
 
-                if (branchesTips.Count > 8)
+                foreach (Vector3 tip in branchesTips.ToList())
+                {
+                    if (Vector3.Distance(hit.point, tip) < MaxDistanceBetweenSprouts) //if  at least 1  of tips  is close  to  the hit point
+                    {
+                        canGrow = true;
+                    }
+                }               
+
+                if (ivyCount > 10)
                 {
                     if(HintOnTheScene)
                         Destroy(HintOnTheScene); //when enough ivys are  on  the  scene, hint disappers
                 }
-
-                if (isFirst)
+                else
                 {
                     if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
                     {
-                        var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
-                        HintOnTheScene = hint;
-                    }
+                        if(isFirst)
+                        {
+                            Instantiate(impactEffect, hit.point, Quaternion.identity);
+                            createIvy(hit);
+
+                            var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
+                            hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                            hint.transform.parent = HintOnTheScene.transform;
+                        }
+                        else if(canGrow)
+                        {
+                            var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
+                            hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                            hint.transform.parent = HintOnTheScene.transform;
+                            hint.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+
+                        isFirst = false;
+                    }    
+                }
+
+                if (canGrow)
+                {
                     Instantiate(impactEffect, hit.point, Quaternion.identity);
                     createIvy(hit);
-                    isFirst = false;
-                }
-                else
-                {
-                    foreach(Vector3 tip in branchesTips.ToList())
-                    {
-                        if (Vector3.Distance(hit.point, tip) < MaxDistanceBetweenSprouts) //if  at least 1  of tips  is close  to  the hit point
-                        {
-                            canGrow = true;
-                        }                            
-                    }
 
-                    if(canGrow)
-                    {
-                        Instantiate(impactEffect, hit.point, Quaternion.identity);
-                        createIvy(hit);
-
-                        canGrow = false;
-                    }
+                    canGrow = false;
                 }
             }
         }
