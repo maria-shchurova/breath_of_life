@@ -11,6 +11,7 @@ public class GrassGrow : MonoBehaviour
     float grassSize;
 
     Material material;
+    bool addedToCombiner =  false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,6 @@ public class GrassGrow : MonoBehaviour
 
         material = GetComponent<MeshRenderer>().material;
         material.SetFloat(AMOUNT, currentAmount);
-
     }
 
     // Update is called once per frame
@@ -48,6 +48,12 @@ public class GrassGrow : MonoBehaviour
         {
             currentAmount += Time.deltaTime * growthSpeed;
             material.SetFloat(AMOUNT, currentAmount);
+        }
+
+        if(currentAmount >= 1 && addedToCombiner == false)
+        {
+            addedToCombiner = true;
+            MeshManager.instance.addGrassMesh(transform, GetComponent<MeshFilter>().mesh, GetComponent<MeshRenderer>().sharedMaterial);
         }
     }
 }

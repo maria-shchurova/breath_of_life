@@ -1,4 +1,4 @@
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,6 @@ public class GrassSpawn: MonoBehaviour
     [SerializeField] float spawnInterval;
     [SerializeField] GameObject grass;
     [SerializeField] Material grassMaterial;
-
     // Update is called once per frame
     void Update()
     {
@@ -40,6 +39,17 @@ public class GrassSpawn: MonoBehaviour
             timer = 0;            
         }
 
+        if(grassCount >= grassPerSpot)
+        {
+            combineAndClear();
+        }
+
         timer += Time.deltaTime;
+    }
+
+    void combineAndClear()
+    {
+        MeshManager.instance.combineAllGrass();
+        Destroy(gameObject);
     }
 }

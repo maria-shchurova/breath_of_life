@@ -17,23 +17,15 @@ public class MeshGroup {
     }
 }
 
-// public class MeshChunk {
-//     public Mesh mesh;
-//     public Transform transform;
-
-//     public MeshChunk(Mesh mesh, Transform transform) {
-//         this.mesh = mesh;
-//         this.transform = transform;
-//     }
-// }
-
 public class MeshManager : Singleton<MeshManager> {
     Dictionary<string, MeshGroupRenderer> ivyMeshGroupRenderers;
     Dictionary<string, MeshGroupRenderer> treeMeshGroupRenderers;
     Dictionary<string, MeshGroupRenderer> fractureMeshGroupRenderers;
+    Dictionary<string, MeshGroupRenderer> grassMeshGroupRenderers;
     GameObject ivyMeshParent;
     GameObject fractureMeshParent;
     GameObject TreeMeshParent;
+    GameObject grassMeshParent;
 
     public void addMesh(Transform t, Mesh mesh, Material material) {
         if (ivyMeshParent == null) {
@@ -135,6 +127,41 @@ public class MeshManager : Singleton<MeshManager> {
 
     }
 
+    public void addGrassMesh(Transform t, Mesh mesh, Material material)
+    {
+        if (grassMeshParent == null)
+        {
+            grassMeshParent = new GameObject("grassMeshParent");
+        }
+
+        if (grassMeshGroupRenderers == null)
+        {
+            grassMeshGroupRenderers = new Dictionary<string, MeshGroupRenderer>();
+        }
+
+        if (grassMeshGroupRenderers.ContainsKey(material.name))
+        {
+            grassMeshGroupRenderers[material.name].add(t, mesh, material);
+        }
+        else
+        {
+            GameObject render = new GameObject("meshGroup - " + material.name);
+            print("new object:" + material.name);
+            render.transform.SetParent(grassMeshParent.transform);
+
+            MeshFilter mFilter = render.AddComponent<MeshFilter>();
+            MeshRenderer mRenderer = render.AddComponent<MeshRenderer>();
+
+            MeshGroupRenderer groupRenderer = render.AddComponent<MeshGroupRenderer>();
+            groupRenderer.meshFilter = mFilter;
+            groupRenderer.meshRenderer = mRenderer;
+            groupRenderer.add(t, mesh, material);
+            grassMeshGroupRenderers.Add(material.name, groupRenderer);
+        }
+
+
+    }
+
     public void combineAll() {
         if (ivyMeshGroupRenderers != null) {
             foreach (var group in ivyMeshGroupRenderers) {
@@ -167,6 +194,18 @@ public class MeshManager : Singleton<MeshManager> {
                 group.Value.combineAndRender();
             }
             treeMeshGroupRenderers.Clear();
+            Resources.UnloadUnusedAssets();
+        }
+    }    
+    public void combineAllGrass()
+    {
+        if (grassMeshGroupRenderers != null)
+        {
+            foreach (var group in grassMeshGroupRenderers)
+            {
+                group.Value.combineAndRender();
+            }
+            grassMeshGroupRenderers.Clear();
             Resources.UnloadUnusedAssets();
         }
     }
