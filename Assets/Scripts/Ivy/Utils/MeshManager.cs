@@ -28,26 +28,28 @@ public class MeshGroup {
 // }
 
 public class MeshManager : Singleton<MeshManager> {
-    Dictionary<string, MeshGroupRenderer> meshGroupRenderers;
+    Dictionary<string, MeshGroupRenderer> ivyMeshGroupRenderers;
+    Dictionary<string, MeshGroupRenderer> treeMeshGroupRenderers;
     Dictionary<string, MeshGroupRenderer> fractureMeshGroupRenderers;
-    GameObject meshParent;
+    GameObject ivyMeshParent;
     GameObject fractureMeshParent;
+    GameObject TreeMeshParent;
 
     public void addMesh(Transform t, Mesh mesh, Material material) {
-        if (meshParent == null) {
-            meshParent = new GameObject("meshParent");
+        if (ivyMeshParent == null) {
+            ivyMeshParent = new GameObject("meshParent");
         }
 
-        if (meshGroupRenderers == null) {
-            meshGroupRenderers = new Dictionary<string, MeshGroupRenderer>();
+        if (ivyMeshGroupRenderers == null) {
+            ivyMeshGroupRenderers = new Dictionary<string, MeshGroupRenderer>();
         }
 
-        if (meshGroupRenderers.ContainsKey(material.name)) {
-            meshGroupRenderers[material.name].add(t, mesh, material);
+        if (ivyMeshGroupRenderers.ContainsKey(material.name)) {
+            ivyMeshGroupRenderers[material.name].add(t, mesh, material);
         } else {
             GameObject render = new GameObject("meshGroup - " + material.name);
             print("new object:" + material.name);
-            render.transform.SetParent(meshParent.transform);
+            render.transform.SetParent(ivyMeshParent.transform);
 
             MeshFilter mFilter = render.AddComponent<MeshFilter>();
             MeshRenderer mRenderer = render.AddComponent<MeshRenderer>();
@@ -56,7 +58,7 @@ public class MeshManager : Singleton<MeshManager> {
             groupRenderer.meshFilter = mFilter;
             groupRenderer.meshRenderer = mRenderer;
             groupRenderer.add(t, mesh, material);
-            meshGroupRenderers.Add(material.name, groupRenderer);
+            ivyMeshGroupRenderers.Add(material.name, groupRenderer);
         }
 
     }
@@ -93,19 +95,57 @@ public class MeshManager : Singleton<MeshManager> {
             fractureMeshGroupRenderers.Add(material.name, groupRenderer);
         }
 
+    }    
+    public void addTreeMesh(Transform t, Mesh mesh, Material material, Transform[] VFX)
+    {
+        if (TreeMeshParent == null)
+        {
+            TreeMeshParent = new GameObject("TreeMeshParent");
+        }
+
+        if (treeMeshGroupRenderers == null)
+        {
+            treeMeshGroupRenderers = new Dictionary<string, MeshGroupRenderer>();
+        }
+
+        if (treeMeshGroupRenderers.ContainsKey(material.name))
+        {
+            treeMeshGroupRenderers[material.name].add(t, mesh, material);
+        }
+        else
+        {
+            GameObject render = new GameObject("meshGroup - " + material.name);
+            print("new object:" + material.name);
+            render.transform.SetParent(TreeMeshParent.transform);
+
+            MeshFilter mFilter = render.AddComponent<MeshFilter>();
+            MeshRenderer mRenderer = render.AddComponent<MeshRenderer>();
+
+            MeshGroupRenderer groupRenderer = render.AddComponent<MeshGroupRenderer>();
+            groupRenderer.meshFilter = mFilter;
+            groupRenderer.meshRenderer = mRenderer;
+            groupRenderer.add(t, mesh, material);
+            treeMeshGroupRenderers.Add(material.name, groupRenderer);
+        }
+
+        foreach(Transform vfx  in VFX)
+        {
+            vfx.transform.parent = TreeMeshParent.transform;
+        }
+
     }
 
     public void combineAll() {
-        if (meshGroupRenderers != null) {
-            foreach (var group in meshGroupRenderers) {
+        if (ivyMeshGroupRenderers != null) {
+            foreach (var group in ivyMeshGroupRenderers) {
                 group.Value.combineAndRender();
             }
-            meshGroupRenderers.Clear();
+            ivyMeshGroupRenderers.Clear();
             Resources.UnloadUnusedAssets();
         }
     }
 
-    public void  combineAllChunks()
+    public void  combineAllFractured()
     {
         if (fractureMeshGroupRenderers != null)
         {
@@ -114,6 +154,19 @@ public class MeshManager : Singleton<MeshManager> {
                 group.Value.combineAndRender();
             }
             fractureMeshGroupRenderers.Clear();
+            Resources.UnloadUnusedAssets();
+        }
+    }
+
+    public void combineAllTrees()
+    {
+        if (treeMeshGroupRenderers != null)
+        {
+            foreach (var group in treeMeshGroupRenderers)
+            {
+                group.Value.combineAndRender();
+            }
+            treeMeshGroupRenderers.Clear();
             Resources.UnloadUnusedAssets();
         }
     }

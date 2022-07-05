@@ -76,7 +76,7 @@ namespace Project.Scripts.Fractures
 
         void combineAndClear()
         {
-            MeshManager.instance.combineAllChunks();
+            MeshManager.instance.combineAllFractured();
             foreach (Transform t in transform)
             {
                 Destroy(t.gameObject);

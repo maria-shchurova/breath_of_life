@@ -35,6 +35,7 @@ namespace ProceduralModeling {
 		public VisualEffectAsset[] VFXpresets;
 
 		PTGarden mainObject;
+		TreesMeshCombiner meshCombiner;
 		void OnEnable () {
 			material = GetComponent<MeshRenderer>().material;
 			thisTree = GetComponent<ProceduralTree>();
@@ -85,7 +86,7 @@ namespace ProceduralModeling {
 		IEnumerator IGrowing(float duration) {
 			yield return 0;
 			var time = 0f;
-			while(time < duration) { 
+			while (time < duration) {
 				yield return 0;
 				material.SetFloat(kGrowingKey, time / duration);
 				time += Time.deltaTime;
@@ -93,6 +94,12 @@ namespace ProceduralModeling {
 			material.SetFloat(kGrowingKey, 1f);
 			gameObject.AddComponent<MeshCollider>();
 
+			Transform[] vfx = new Transform[2] { transform.GetChild(0), transform.GetChild(1) }; 
+
+			MeshManager.instance.addTreeMesh(transform, GetComponent<MeshFilter>().mesh, GetComponent<MeshRenderer>().sharedMaterial, vfx);
+
+			meshCombiner = FindObjectOfType<TreesMeshCombiner>();
+			meshCombiner.AddTreeToList(gameObject);
 			createBreaker(5);
 		}
 
@@ -134,13 +141,7 @@ namespace ProceduralModeling {
 			}
 		}
 
-		void OnDestroy() {
-			if(material != null) {
-				Destroy(material);
-				material = null;
-			}
-		}
-    }
+	}
 		
 }
 

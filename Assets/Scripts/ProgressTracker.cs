@@ -82,7 +82,7 @@ public class ProgressTracker : MonoBehaviour
 
         await System.Threading.Tasks.Task.Delay(1500);
         BlackFadeOut();
-        Messenger.Broadcast("SwitchSeason", seasonInt);
+        Messenger.Broadcast("SwitchSeason", seasonInt); 
     }
 
     void BlackFadeOut()
