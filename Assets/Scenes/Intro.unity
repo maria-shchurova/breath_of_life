@@ -7240,8 +7240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 228.89996, y: -295}
-  m_SizeDelta: {x: 345, y: 50}
+  m_AnchoredPosition: {x: 246.409, y: -438.96515}
+  m_SizeDelta: {x: 380.019, y: 337.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1717088902
 MonoBehaviour:
@@ -7263,7 +7263,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use number keys to select a tool
+  m_text: 'Use number keys to select a tool
+
+
+    WASD to move
+
+    Mouse to turn
+
+    SPACE
+    for step up
+
+    CTRL for step down'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
