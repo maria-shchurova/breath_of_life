@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 namespace Project.Scripts.Fractures
 {
@@ -19,14 +19,14 @@ namespace Project.Scripts.Fractures
         public bool objectsBroken;
 
         GameObject[] objectsToFracture; //size of this is number of breakable objects
-        Text fracturingText;
+        TMP_Text fracturingText;
 
 
         private void Start()
         {
             objectsToFracture = GameObject.FindGameObjectsWithTag("Fracture");           
             totalObjects = objectsToFracture.Length;
-            fracturingText = GameObject.Find("FracturingText").GetComponent<Text>();
+            fracturingText = GameObject.Find("FracturingText").GetComponent<TMP_Text>();
             Debug.LogWarning("number of objects: " + objectsToFracture.Length);
 
             Messenger.AddListener("CombineFractured", combineAndClear);
@@ -49,7 +49,9 @@ namespace Project.Scripts.Fractures
                     fracturing.density = setDensity;
                     fracturing.internalStrength = setInternalStrength;
 
-                    fracturingText.text = "Fracturing Objects: " + objectCounter + " / " + totalObjects;
+                    if(fracturingText)
+                        fracturingText.text = Mathf.RoundToInt((objectCounter / totalObjects) * 100) + "%";
+
                     objectCounter++;
                     objPerFrame++;
                     Debug.LogWarning("Fractured " + objectCounter + " objects");
@@ -59,7 +61,8 @@ namespace Project.Scripts.Fractures
 
                 if (objectCounter >= totalObjects)
                 {
-                    fracturingText.transform.gameObject.SetActive(false);
+                    if (fracturingText)
+                        fracturingText.transform.gameObject.SetActive(false);
                     doneFracturing = true;
                     Messenger.Broadcast("Done Fracturing");                    
                 }
