@@ -65,6 +65,7 @@ public class Branch : MonoBehaviour {
 
         combining = FindObjectOfType<IvyCombiningManager>();
         combining.AddBranch(this);
+        animate = true;
     }
 
 
@@ -83,7 +84,7 @@ public class Branch : MonoBehaviour {
 
         material.SetFloat(RADIUS, branchRadius);
         material.SetFloat(AMOUNT, currentAmount);
-        animate = true;
+        //animate = true;
     }
 
     void Update() {

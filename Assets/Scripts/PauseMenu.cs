@@ -10,13 +10,12 @@ public class PauseMenu : MonoBehaviour
     private GameObject MenuButton;
     private GameObject QuitButton;
 
-    CameraControl cameraControl;
+    [SerializeField]CameraControl cameraControl;
     void Start()
     {
         MenuButton = GameObject.Find("MenuButton");
         QuitButton = GameObject.Find("QuitButton");
 
-        cameraControl = FindObjectOfType<CameraControl>();
 
         MenuButton.GetComponent<Button>().onClick.AddListener(ToMenu);
         QuitButton.GetComponent<Button>().onClick.AddListener(Quit);

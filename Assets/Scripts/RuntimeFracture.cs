@@ -59,7 +59,7 @@ namespace Project.Scripts.Fractures
                 {
                     fracturingText.transform.gameObject.SetActive(false);
                     doneFracturing = true;
-                    Debug.LogWarning("Done Fracturing");
+                    Messenger.Broadcast("Done Fracturing");                    
                 }
                     
             }

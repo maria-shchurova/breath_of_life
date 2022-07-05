@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using UnityEngine.EventSystems;
 public class ProceduralIvy : MonoBehaviour {
 
     public Camera cam;
@@ -58,67 +58,72 @@ public class ProceduralIvy : MonoBehaviour {
 
     void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 100)) {
-
-                if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
+            if(!EventSystem.current.IsPointerOverGameObject())   //prevent clicking through UI
+            {
+                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, 100))
                 {
-                    if (isFirst)
-                    {
-                        Instantiate(impactEffect, hit.point, Quaternion.identity);
-                        createIvy(hit);
-                        isFirst = false;
-
-                        var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
-                        hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                        hint.transform.parent = HintOnTheScene.transform;
-                    }
-
-                    if (ivyCount > 10)
-                    {
-                        if (HintOnTheScene)
-                            Destroy(HintOnTheScene); //when enough ivys are  on  the  scene, hint disappers
-                    }
-                }
-                else if(isFirst)
-                {                 
-                    
-                    Instantiate(impactEffect, hit.point, Quaternion.identity);
-                    createIvy(hit);
-                    isFirst = false;                    
-                }
-
-                foreach (Vector3 tip in branchesTips.ToList())
-                {
-                    if (Vector3.Distance(hit.point, tip) < MaxDistanceBetweenSprouts) //if  at least 1  of tips  is close  to  the hit point
-                    {
-                        canGrow = true;
-                    }
-                }                      
-
-                if (canGrow)
-                {
-                    Instantiate(impactEffect, hit.point, Quaternion.identity);
-                    createIvy(hit);
 
                     if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
                     {
-                        var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
-                        hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                        hint.transform.parent = HintOnTheScene.transform;
-                        hint.transform.GetChild(0).gameObject.SetActive(false);
+                        if (isFirst)
+                        {
+                            Instantiate(impactEffect, hit.point, Quaternion.identity);
+                            createIvy(hit);
+                            isFirst = false;
+
+                            var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
+                            hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                            hint.transform.parent = HintOnTheScene.transform;
+                        }
+
+                        if (ivyCount > 10)
+                        {
+                            if (HintOnTheScene)
+                                Destroy(HintOnTheScene); //when enough ivys are  on  the  scene, hint disappers
+                        }
+                    }
+                    else if (isFirst)
+                    {
+
+                        Instantiate(impactEffect, hit.point, Quaternion.identity);
+                        createIvy(hit);
+                        isFirst = false;
                     }
 
-                    canGrow = false;
-                }
-                else if(isFirst == false)
-                {
-                    Messenger.Broadcast("CantPlant");
-                }
+                    foreach (Vector3 tip in branchesTips.ToList())
+                    {
+                        if (Vector3.Distance(hit.point, tip) < MaxDistanceBetweenSprouts) //if  at least 1  of tips  is close  to  the hit point
+                        {
+                            canGrow = true;
+                        }
+                    }
 
+                    if (canGrow)
+                    {
+                        Instantiate(impactEffect, hit.point, Quaternion.identity);
+                        createIvy(hit);
+
+                        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
+                        {
+                            var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
+                            hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                            hint.transform.parent = HintOnTheScene.transform;
+                            hint.transform.GetChild(0).gameObject.SetActive(false);
+                        }
+
+                        canGrow = false;
+                    }
+                    else if (isFirst == false)
+                    {
+                        Messenger.Broadcast("CantPlant");
+                    }
+
+                }
             }
         }
+            
     }
 
     Vector3 findTangentFromArbitraryNormal(Vector3 normal) {
