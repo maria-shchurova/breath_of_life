@@ -107,10 +107,14 @@ public class ProceduralIvy : MonoBehaviour {
 
                         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "Intro")
                         {
-                            var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
-                            hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-                            hint.transform.parent = HintOnTheScene.transform;
-                            hint.transform.GetChild(0).gameObject.SetActive(false);
+                            if(HintOnTheScene)
+                            {
+                                var hint = Instantiate(PlantArea, hit.point + Vector3.up * 0.1f, PlantArea.transform.rotation);
+                                hint.transform.GetChild(1).rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
+                                hint.transform.parent = HintOnTheScene.transform;
+                                hint.transform.GetChild(0).gameObject.SetActive(false);
+                            }
+                            
                         }
 
                         canGrow = false;
