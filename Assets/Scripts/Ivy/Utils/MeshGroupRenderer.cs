@@ -48,8 +48,12 @@ public class MeshGroupRenderer : MonoBehaviour {
     Mesh combineMeshes(MeshGroup group) {
         var combine = new CombineInstance[group.meshes.Count];
         for (int i = 0; i < group.meshes.Count; i++) {
-            combine[i].mesh = group.meshes[i];
-            combine[i].transform = group.transforms[i].localToWorldMatrix;
+            if(combine[i].transform != null)
+            {
+                combine[i].mesh = group.meshes[i];
+                combine[i].transform = group.transforms[i].localToWorldMatrix;
+            }
+
         }
 
         var mesh = new Mesh { indexFormat = UnityEngine.Rendering.IndexFormat.UInt32 };
