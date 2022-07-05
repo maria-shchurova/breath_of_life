@@ -5,7 +5,6 @@ using Project.Scripts.Fractures;
 
 public class FractureObject : MonoBehaviour
 {
-
     public float mass = 100;
     public float jointBreakForce = 0;
 
@@ -149,6 +148,7 @@ public class FractureObject : MonoBehaviour
         {
             chunk.gameObject.SetActive(true);
             chunk.GetComponent<MeshRenderer>().enabled = true;
+            chunk.addChunkToMeshGroup();
         }
 
 

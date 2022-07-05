@@ -53,19 +53,23 @@ public class Seasons : MonoBehaviour
         treeTool = FindObjectOfType<PTGarden>();
         ivyTool = FindObjectOfType<ProceduralIvy>();
         grassTool = FindObjectOfType<GrassPlant>();
+
+        Messenger.AddListener<int>("SwitchSeason", SwitchSeason);
     }
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            if (season != 2)
-                season++;
-            else
-                season = 0;
 
-            SwitchSeason(season);
-        }
+        //DEBUG TOOL
+        //if(Input.GetKeyDown(KeyCode.RightArrow))
+        //{
+        //    if (season != 2)
+        //        season++;
+        //    else
+        //        season = 0;
+
+        //    SwitchSeason(season);
+        //}
     }
 
     // Update is called once per frame

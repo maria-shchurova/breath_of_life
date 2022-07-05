@@ -70,6 +70,7 @@ public class ChunkRuntimeInfo : MonoBehaviour
             if (passedTime >= 10)
             {
                 rigidbody.isKinematic = true;
+                Messenger.Broadcast("CombineFractured");
             }
 
         }
@@ -97,9 +98,6 @@ public class ChunkRuntimeInfo : MonoBehaviour
         rightConnections.Remove(connectedBody);
 
         rigidbody.ResetCenterOfMass();
-
-        MeshManager.instance.addFractureMesh(transform, GetComponent<MeshFilter>().mesh, GetComponent<MeshRenderer>().sharedMaterial);
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -112,9 +110,17 @@ public class ChunkRuntimeInfo : MonoBehaviour
 
         if(collision.transform.CompareTag("Armature") && passedTime <= 1)
         {
+            Messenger.Broadcast("CombineFractured");
+
             if (Random.Range(0, 2) == 0)
                 rigidbody.isKinematic = true;
         }
+
+    }
+
+    public void addChunkToMeshGroup()
+    {
+        MeshManager.instance.addFractureMesh(transform, GetComponent<MeshFilter>().mesh, GetComponent<MeshRenderer>().sharedMaterial);
 
     }
 

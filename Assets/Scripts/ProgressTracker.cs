@@ -41,7 +41,7 @@ public class ProgressTracker : MonoBehaviour
                 season = "spring";
             }
 
-            else if (fractureprogress.brokenPercentage >= 33 && fractureprogress.brokenObjects < 66)
+            if (fractureprogress.brokenPercentage >= 33 && fractureprogress.brokenPercentage <= 66)
             {
                 if (season != "summer")
                 {
@@ -51,7 +51,7 @@ public class ProgressTracker : MonoBehaviour
                 season = "summer";
             }
 
-            else if (fractureprogress.brokenPercentage >= 66)
+            if (fractureprogress.brokenPercentage >= 66)
             {
                 if (season != "autumn")
                 {
@@ -82,6 +82,7 @@ public class ProgressTracker : MonoBehaviour
 
         await System.Threading.Tasks.Task.Delay(1500);
         BlackFadeOut();
+        Messenger.Broadcast("SwitchSeason", seasonInt);
     }
 
     void BlackFadeOut()

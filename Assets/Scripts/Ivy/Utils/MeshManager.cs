@@ -81,7 +81,7 @@ public class MeshManager : Singleton<MeshManager> {
         {
             GameObject render = new GameObject("meshGroup - " + material.name);
             print("new object:" + material.name);
-            render.transform.SetParent(meshParent.transform);
+            render.transform.SetParent(fractureMeshParent.transform);
 
             MeshFilter mFilter = render.AddComponent<MeshFilter>();
             MeshRenderer mRenderer = render.AddComponent<MeshRenderer>();

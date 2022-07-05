@@ -28,6 +28,8 @@ namespace Project.Scripts.Fractures
             totalObjects = objectsToFracture.Length;
             fracturingText = GameObject.Find("FracturingText").GetComponent<Text>();
             Debug.LogWarning("number of objects: " + objectsToFracture.Length);
+
+            Messenger.AddListener("CombineFractured", combineAndClear);
         }
         private void Update()
         {
@@ -70,11 +72,6 @@ namespace Project.Scripts.Fractures
                 objectsBroken = true;
 
             oldPercentage = brokenPercentage;
-
-            if(Input.GetKeyUp(KeyCode.Space))
-            {
-                combineAndClear();
-            }
         }
 
         void combineAndClear()
