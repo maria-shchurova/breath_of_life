@@ -206,11 +206,12 @@ public class FractureObject : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (force >= jointBreakForce)
+        if (force >= jointBreakForce && !fractureActivated)
         {
             contactPoints = new List<ContactPoint>();
             collision.GetContacts(contactPoints);
             ActivateFracture(impulse);
+            fractureActivated = true;
 
             if (onBreakSound)
                 if (!GetComponent<AudioSource>())
